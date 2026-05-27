@@ -1,0 +1,1356 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Finding Deep Sleep — 5-Day Deep Sleep Reset Challenge</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ivory: #F2EDE3;
+    --cream: #EDE5D5;
+    --bone: #E8DFCB;
+    --soft-grey: #E8E6E2;
+    --mist: #DCDAD5;
+    --ink: #1A1A1F;
+    --ink-soft: #3A3A42;
+    --ink-mute: #6B6B70;
+    --line: #D8CFBC;
+    --line-light: #E8E1CD;
+    --blue: #002FE0;
+    --blue-deep: #001FAB;
+    --orange: #FF5500;
+    --orange-deep: #E64900;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: 'Inter', sans-serif;
+    background: var(--ivory);
+    color: var(--ink);
+    font-weight: 400;
+    line-height: 1.55;
+    font-size: 16px;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .container { max-width: 1240px; margin: 0 auto; padding: 0 32px; }
+
+  h1, h2, h3, h4 {
+    font-family: 'Fraunces', serif;
+    font-weight: 300;
+    letter-spacing: -0.02em;
+    line-height: 1.05;
+    color: var(--ink);
+  }
+  h1 { font-size: clamp(48px, 7vw, 96px); }
+  h2 { font-size: clamp(36px, 5vw, 64px); }
+  h3 { font-size: clamp(24px, 3vw, 36px); }
+
+  .eyebrow {
+    font-family: 'Inter', sans-serif;
+    font-size: 11px; font-weight: 500;
+    letter-spacing: 0.18em; text-transform: uppercase;
+    color: var(--ink-mute);
+  }
+
+  .lede {
+    font-family: 'Fraunces', serif;
+    font-weight: 300;
+    font-size: clamp(20px, 2vw, 24px);
+    line-height: 1.4;
+    color: var(--ink-soft);
+  }
+
+  em.accent { font-style: italic; font-weight: 300; color: var(--blue); }
+
+  /* Nav */
+  nav.top {
+    position: sticky; top: 0; z-index: 100;
+    background: rgba(242, 237, 227, 0.92);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--line);
+  }
+  nav.top .inner {
+    max-width: 1240px; margin: 0 auto; padding: 16px 32px;
+    display: flex; align-items: center; justify-content: space-between;
+  }
+  /* Wordmark logo (image) */
+  .wordmark { display: flex; align-items: center; gap: 12px; line-height: 1; }
+  .wordmark .logo-img { height: 42px; width: auto; display: block; }
+  .wordmark .loc {
+    color: var(--ink-mute); font-size: 10px;
+    letter-spacing: 0.18em; text-transform: uppercase;
+    font-family: 'Inter', sans-serif; font-weight: 500;
+  }
+
+  .nav-links { display: flex; gap: 30px; align-items: center; }
+  .nav-links a {
+    color: var(--ink-soft); text-decoration: none;
+    font-size: 14px; font-weight: 400;
+  }
+  .nav-links a:hover { color: var(--ink); }
+  .nav-links a.btn { color: #fff !important; }
+  .nav-links a.btn:hover { color: #fff !important; }
+
+  /* Buttons — explicit colour rules to override link defaults */
+  .btn {
+    display: inline-block; padding: 14px 28px;
+    background: var(--blue); color: #fff;
+    text-decoration: none; border-radius: 4px;
+    font-size: 14px; font-weight: 500; letter-spacing: 0.04em;
+    transition: background 0.2s ease;
+    cursor: pointer; border: none;
+    font-family: 'Inter', sans-serif;
+  }
+  a.btn:link, a.btn:visited, a.btn:hover, a.btn:active { color: #fff; text-decoration: none; }
+  .btn:hover { background: var(--blue-deep); }
+
+  .btn-ghost { background: transparent; color: var(--ink); border: 1px solid var(--ink); }
+  a.btn.btn-ghost:link, a.btn.btn-ghost:visited { color: var(--ink); }
+  .btn-ghost:hover { background: var(--ink); color: var(--ivory); }
+  a.btn.btn-ghost:hover { color: var(--ivory); }
+
+  .btn-orange { background: var(--orange); color: #fff; }
+  a.btn.btn-orange:link, a.btn.btn-orange:visited, a.btn.btn-orange:hover { color: #fff; }
+  .btn-orange:hover { background: var(--orange-deep); }
+
+  /* Hero */
+  .hero { padding: 80px 0 100px; }
+  .hero .grid {
+    display: grid; grid-template-columns: 1.05fr 1fr;
+    gap: 80px; align-items: center;
+  }
+  .hero .copy { padding-right: 20px; }
+  .hero h1 { margin: 28px 0 32px; }
+  .hero .lede { margin-bottom: 40px; max-width: 480px; }
+  .hero .cta-row { display: flex; gap: 16px; align-items: center; margin-bottom: 24px; flex-wrap: wrap; }
+  .hero .price-note { font-size: 13px; color: var(--ink-mute); }
+  .hero .image {
+    position: relative; aspect-ratio: 4/5;
+    overflow: hidden; border-radius: 4px; background: var(--cream);
+  }
+  .hero .image img {
+    width: 100%; height: 100%; object-fit: cover;
+    filter: contrast(0.95) brightness(0.92);
+  }
+  .hero .image-caption {
+    position: absolute; bottom: 24px; left: 24px; right: 24px;
+    color: var(--ivory); font-family: 'Fraunces', serif;
+    font-size: 18px; font-style: italic; font-weight: 300;
+    text-shadow: 0 1px 12px rgba(0,0,0,0.5);
+  }
+
+  /* Trust strip */
+  .trust {
+    border-top: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+    padding: 28px 0; background: var(--cream);
+  }
+  .trust .row {
+    display: flex; justify-content: space-between;
+    align-items: center; flex-wrap: wrap; gap: 24px;
+  }
+  .trust .item {
+    font-family: 'Fraunces', serif; font-weight: 300;
+    font-size: 15px; color: var(--ink-soft); font-style: italic;
+  }
+  .trust .item strong {
+    font-style: normal; font-weight: 400;
+    color: var(--ink); margin-right: 6px;
+  }
+
+  /* Countdown */
+  .countdown-band {
+    background: var(--ink); color: var(--ivory);
+    padding: 28px 0;
+  }
+  .countdown-band .row {
+    display: flex; align-items: center; justify-content: space-between;
+    gap: 32px; flex-wrap: wrap;
+  }
+  .countdown-band .label {
+    display: flex; flex-direction: column; gap: 4px;
+  }
+  .countdown-band .label .top {
+    font-size: 11px; letter-spacing: 0.18em;
+    text-transform: uppercase; color: rgba(242,237,227,0.65);
+    font-weight: 500;
+  }
+  .countdown-band .label .when {
+    font-family: 'Fraunces', serif; font-size: 22px;
+    font-weight: 300; color: var(--ivory); letter-spacing: -0.01em;
+  }
+  .countdown-band .label .when em { color: var(--orange); font-style: italic; }
+  .countdown-band .timer { display: flex; gap: 14px; }
+  .countdown-band .unit {
+    display: flex; flex-direction: column; align-items: center;
+    min-width: 64px;
+  }
+  .countdown-band .unit .num {
+    font-family: 'Fraunces', serif;
+    font-size: 36px; font-weight: 300;
+    color: var(--orange); line-height: 1;
+    font-variant-numeric: tabular-nums;
+  }
+  .countdown-band .unit .key {
+    font-size: 10px; letter-spacing: 0.18em;
+    text-transform: uppercase; color: rgba(242,237,227,0.6);
+    margin-top: 6px; font-weight: 500;
+  }
+  .countdown-band .cta-btn { white-space: nowrap; }
+
+  section { padding: 120px 0; }
+  .section-head {
+    display: grid; grid-template-columns: 1fr 1.4fr;
+    gap: 80px; margin-bottom: 72px; align-items: start;
+  }
+  .section-head .title h2 { margin-top: 18px; }
+  .section-head .desc { padding-top: 18px; }
+
+  /* WHAT YOU GET — tabbed */
+  .expect { background: var(--bone); }
+  .tabs { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-bottom: 32px; }
+  .tab {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 18px 24px; background: transparent;
+    border: 1px solid var(--ink); border-radius: 999px;
+    cursor: pointer; transition: all 0.2s ease;
+    color: var(--ink); font-family: 'Inter', sans-serif;
+    font-size: 15px; font-weight: 500; text-align: left;
+    letter-spacing: 0.01em;
+  }
+  .tab .tab-left { display: flex; align-items: center; gap: 16px; }
+  .tab .tab-num {
+    font-family: 'Fraunces', serif; font-weight: 400;
+    font-size: 14px; color: var(--ink-mute); letter-spacing: 0.04em;
+  }
+  .tab .tab-mark {
+    font-family: 'Fraunces', serif; font-size: 24px;
+    font-weight: 300; color: var(--ink-mute); line-height: 1;
+  }
+  .tab:hover { background: var(--cream); }
+  .tab.active { background: var(--orange); color: #fff; border-color: var(--orange); }
+  .tab.active .tab-num, .tab.active .tab-mark { color: rgba(255,255,255,0.85); }
+
+  .tab-panel {
+    display: grid; grid-template-columns: 1fr 1.1fr;
+    border: 1px solid var(--line); border-radius: 4px;
+    overflow: hidden; background: var(--ivory);
+  }
+  .tab-image { background: var(--cream); overflow: hidden; min-height: 480px; }
+  .tab-image img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .tab-content { padding: 48px 56px; display: flex; flex-direction: column; }
+  .tab-content .row {
+    display: grid; grid-template-columns: 140px 1fr; gap: 24px;
+    padding: 20px 0; border-bottom: 1px dashed var(--line); align-items: start;
+  }
+  .tab-content .row:first-child { padding-top: 0; }
+  .tab-content .row .label {
+    font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase;
+    color: var(--ink-mute); font-weight: 500; padding-top: 4px;
+  }
+  .tab-content .row .value { font-size: 15px; color: var(--ink); line-height: 1.55; }
+  .tab-content .row .value.title-row {
+    font-family: 'Fraunces', serif; font-size: 22px; font-weight: 400;
+    letter-spacing: -0.01em; line-height: 1.25;
+  }
+  .tab-content .row .value ul { list-style: none; }
+  .tab-content .row .value ul li {
+    position: relative; padding-left: 20px; color: var(--ink-soft); margin-bottom: 6px;
+  }
+  .tab-content .row .value ul li:before {
+    content: ""; position: absolute; left: 0; top: 10px;
+    width: 8px; height: 8px; background: var(--orange); border-radius: 50%;
+  }
+  .tab-content .tab-cta { margin-top: 32px; }
+  .tab-content .tab-cta a { width: 100%; text-align: center; display: inline-block; }
+
+  /* INSIDE */
+  .inside-grid {
+    display: grid; grid-template-columns: repeat(2, 1fr); gap: 1px;
+    background: var(--line);
+    border-top: 1px solid var(--line); border-bottom: 1px solid var(--line);
+  }
+  .inside-card { background: var(--ivory); padding: 56px 48px; }
+  .inside-card .num {
+    font-family: 'Fraunces', serif; font-size: 14px;
+    color: var(--orange); letter-spacing: 0.04em;
+    margin-bottom: 24px; font-weight: 400;
+  }
+  .inside-card h3 { font-size: 28px; margin-bottom: 16px; font-weight: 400; }
+  .inside-card p { color: var(--ink-soft); font-size: 15px; line-height: 1.6; max-width: 460px; }
+
+  /* SENSORY — six-card grid */
+  .sensory { background: var(--ivory); }
+  .sensory-grid {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px;
+  }
+  .sensory-card {
+    border: 1px solid var(--line); border-radius: 4px;
+    padding: 32px 28px 28px;
+    background: var(--cream);
+    display: flex; flex-direction: column;
+    min-height: 240px;
+  }
+  .sensory-card .sense-header {
+    display: flex; align-items: baseline; justify-content: space-between;
+    padding-bottom: 14px; margin-bottom: 18px;
+    border-bottom: 1px dashed var(--line);
+  }
+  .sensory-card .sense-label {
+    font-family: 'Fraunces', serif; font-weight: 400;
+    font-size: 20px; color: var(--ink); letter-spacing: -0.01em;
+  }
+  .sensory-card .sense-num {
+    font-family: 'Inter', sans-serif; font-weight: 500;
+    font-size: 11px; letter-spacing: 0.18em; color: var(--ink-mute);
+  }
+  .sensory-card p {
+    color: var(--ink-soft); font-size: 14px;
+    line-height: 1.6;
+  }
+
+  /* COMPARE — table */
+  .compare { background: var(--cream); }
+  .compare-table-wrap {
+    background: var(--ivory);
+    border-radius: 4px;
+    padding: 48px 40px 40px;
+    border: 1px solid var(--line);
+    position: relative;
+    overflow-x: auto;
+  }
+  .compare-table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    min-width: 760px;
+  }
+  .compare-table th, .compare-table td {
+    text-align: center; padding: 18px 14px;
+    vertical-align: middle;
+    border-bottom: 1px dashed var(--line);
+  }
+  .compare-table thead th {
+    font-family: 'Fraunces', serif; font-weight: 400;
+    font-size: 18px; color: var(--ink); letter-spacing: -0.01em;
+    border-bottom: 1px solid var(--ink); padding-bottom: 20px;
+  }
+  .compare-table tbody td:first-child,
+  .compare-table thead th:first-child { text-align: left; }
+  .compare-table .row-label {
+    font-family: 'Inter', sans-serif; font-weight: 600;
+    font-size: 15px; color: var(--ink); display: block;
+    margin-bottom: 4px;
+  }
+  .compare-table .row-desc {
+    font-size: 12px; color: var(--ink-mute);
+    font-weight: 400; letter-spacing: 0.02em;
+  }
+  .compare-table thead th.ours,
+  .compare-table tbody td.ours {
+    background: rgba(255,85,0,0.05);
+    position: relative;
+  }
+  .compare-table thead th.ours {
+    background: rgba(255,85,0,0.1);
+    color: var(--ink);
+    border-radius: 6px 6px 0 0;
+  }
+  .compare-table tbody tr:last-child td.ours { border-radius: 0 0 6px 6px; }
+
+  .mark-yes, .mark-no, .mark-partial {
+    display: inline-flex; align-items: center; justify-content: center;
+    width: 36px; height: 36px; border-radius: 6px;
+    font-weight: 600; font-size: 15px;
+  }
+  .mark-yes { background: rgba(0,47,224,0.1); color: var(--blue); }
+  .ours .mark-yes { background: var(--orange); color: #fff; }
+  .mark-no { background: rgba(0,0,0,0.05); color: var(--ink-mute); }
+  .mark-partial { background: rgba(0,0,0,0.05); color: var(--ink-mute); }
+
+  /* MANIFESTO breaker */
+  .manifesto {
+    position: relative; padding: 160px 0;
+    background: var(--ink);
+    overflow: hidden;
+  }
+  .manifesto .bg {
+    position: absolute; inset: 0;
+    background-size: cover; background-position: center;
+    opacity: 0.4;
+  }
+  .manifesto .overlay {
+    position: absolute; inset: 0;
+    background: linear-gradient(180deg, rgba(26,26,31,0.65), rgba(26,26,31,0.85));
+  }
+  .manifesto .container { position: relative; z-index: 2; text-align: center; }
+  .manifesto h2 {
+    color: var(--ivory);
+    font-size: clamp(40px, 6vw, 72px);
+    max-width: 960px; margin: 0 auto 28px;
+  }
+  .manifesto h2 em.accent { color: var(--orange); }
+  .manifesto .sub {
+    font-family: 'Fraunces', serif; font-weight: 300;
+    font-size: clamp(18px, 2vw, 22px);
+    color: rgba(242,237,227,0.78);
+    max-width: 620px; margin: 0 auto 48px;
+    font-style: italic; line-height: 1.5;
+  }
+  .manifesto .pills {
+    display: flex; flex-wrap: wrap; justify-content: center; gap: 12px;
+  }
+  .manifesto .pill {
+    padding: 10px 22px;
+    border: 1px solid rgba(242,237,227,0.5);
+    border-radius: 999px;
+    color: var(--ivory);
+    font-size: 13px; font-weight: 500;
+    letter-spacing: 0.04em;
+  }
+
+  /* WHY */
+  .why { background: var(--cream); }
+  .why-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 48px; margin-top: 60px; }
+  .why-item { border-top: 1px solid var(--line); padding-top: 28px; }
+  .why-item .num {
+    font-family: 'Fraunces', serif; font-size: 13px;
+    color: var(--ink-mute); margin-bottom: 16px; letter-spacing: 0.06em;
+  }
+  .why-item h4 {
+    font-family: 'Fraunces', serif; font-size: 22px; font-weight: 400;
+    margin-bottom: 14px; letter-spacing: -0.01em;
+  }
+  .why-item p { font-size: 14px; color: var(--ink-soft); line-height: 1.6; }
+
+  /* BUILT FOR */
+  .builtfor-grid {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 80px; align-items: center;
+  }
+  .builtfor-list { list-style: none; }
+  .builtfor-list li {
+    padding: 24px 0; border-bottom: 1px solid var(--line);
+    display: grid; grid-template-columns: 120px 1fr; gap: 24px; align-items: baseline;
+  }
+  .builtfor-list li:last-child { border-bottom: none; }
+  .builtfor-list .who {
+    font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase;
+    color: var(--ink-mute); padding-top: 4px;
+  }
+  .builtfor-list .what {
+    font-family: 'Fraunces', serif; font-weight: 300;
+    font-size: 21px; line-height: 1.35; color: var(--ink);
+  }
+  .builtfor-image { aspect-ratio: 1/1; overflow: hidden; border-radius: 4px; }
+  .builtfor-image img {
+    width: 100%; height: 100%; object-fit: cover;
+    filter: contrast(0.96) brightness(0.94);
+  }
+
+  /* FOUNDER */
+  .founder { background: var(--bone); }
+  .founder-grid {
+    display: grid; grid-template-columns: 0.9fr 1.2fr;
+    gap: 72px; align-items: start;
+  }
+  .founder-image-wrap {
+    position: sticky; top: 100px;
+  }
+  .founder-image {
+    aspect-ratio: 4/5; overflow: hidden; border-radius: 4px;
+    background: var(--cream);
+    border: 1px solid var(--line);
+  }
+  .founder-image img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .founder-image .placeholder {
+    width: 100%; height: 100%;
+    display: flex; align-items: center; justify-content: center;
+    flex-direction: column; padding: 32px; text-align: center;
+    color: var(--ink-mute); font-size: 13px;
+    background: var(--cream);
+  }
+  .founder-image .placeholder strong { display: block; margin-bottom: 8px; color: var(--ink); }
+  .founder-meta { margin-top: 20px; }
+  .founder-meta .name {
+    font-family: 'Fraunces', serif; font-weight: 400;
+    font-size: 22px; color: var(--ink); letter-spacing: -0.01em;
+  }
+  .founder-meta .role {
+    font-size: 13px; color: var(--ink-mute); margin-top: 4px;
+    letter-spacing: 0.02em;
+  }
+  .founder-text h2 { margin-bottom: 36px; }
+  .founder-text p {
+    font-family: 'Fraunces', serif; font-weight: 300;
+    font-size: 18px; line-height: 1.55; color: var(--ink-soft);
+    margin-bottom: 20px;
+  }
+  .pull-quote {
+    margin-top: 40px; padding: 32px 36px;
+    border-left: 4px solid var(--orange);
+    background: var(--ivory);
+    font-family: 'Fraunces', serif;
+    font-size: 22px; font-style: italic; font-weight: 300;
+    color: var(--ink); line-height: 1.4;
+    border-radius: 0 4px 4px 0;
+  }
+
+  /* PRICING */
+  .pricing { background: var(--bone); }
+  .pricing-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; margin-top: 60px; }
+  .plan {
+    background: var(--ivory); border: 1px solid var(--line);
+    padding: 48px 40px; border-radius: 4px;
+    display: flex; flex-direction: column; position: relative;
+  }
+  .plan.featured {
+    background: var(--blue); color: var(--ivory); border-color: var(--blue);
+  }
+  .plan.featured .plan-name,
+  .plan.featured .plan-price,
+  .plan.featured h3 { color: var(--ivory); }
+  .plan.featured .plan-desc { color: rgba(242,237,227,0.8); }
+  .plan.featured .includes li {
+    color: rgba(242,237,227,0.9); border-color: rgba(242,237,227,0.18);
+  }
+  .plan.featured .includes li:before { color: var(--orange); }
+  .plan .badge {
+    position: absolute; top: -12px; right: 24px;
+    background: var(--orange); color: #fff;
+    padding: 6px 14px; font-size: 10px;
+    letter-spacing: 0.14em; text-transform: uppercase;
+    border-radius: 100px; font-weight: 500;
+  }
+  .plan-name { font-family: 'Fraunces', serif; font-size: 28px; font-weight: 400; margin-bottom: 8px; }
+  .plan-desc { font-size: 14px; color: var(--ink-mute); margin-bottom: 32px; }
+  .plan-price { display: flex; align-items: baseline; gap: 8px; margin-bottom: 32px; }
+  .plan-price .amount {
+    font-family: 'Fraunces', serif; font-size: 56px;
+    font-weight: 300; letter-spacing: -0.02em;
+  }
+  .plan-price .currency {
+    font-family: 'Fraunces', serif; font-size: 22px;
+    font-weight: 300; color: var(--ink-mute);
+  }
+  .plan.featured .plan-price .currency { color: rgba(242,237,227,0.65); }
+  .includes { list-style: none; margin-bottom: 32px; }
+  .includes li {
+    padding: 12px 0 12px 28px; border-bottom: 1px solid var(--line);
+    font-size: 14px; color: var(--ink-soft); position: relative;
+  }
+  .includes li:before {
+    content: "·"; position: absolute; left: 8px; top: 8px;
+    font-size: 24px; color: var(--orange); line-height: 1;
+  }
+  .includes li:last-child { border-bottom: none; }
+  .plan .btn { width: 100%; text-align: center; margin-top: auto; }
+  .plan.featured .btn { background: var(--orange); color: #fff; }
+  .plan.featured .btn:hover { background: var(--orange-deep); }
+
+  /* TESTIMONIALS */
+  .testimonials-grid {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; margin-top: 60px;
+  }
+  .testimonial {
+    padding: 40px 32px; border: 1px solid var(--line);
+    background: var(--ivory); border-radius: 4px;
+    display: flex; flex-direction: column;
+  }
+  .testimonial p.quote {
+    font-family: 'Fraunces', serif; font-weight: 300;
+    font-size: 19px; line-height: 1.5; color: var(--ink);
+    margin-bottom: 32px; flex: 1;
+  }
+  .testimonial .attribution { padding-top: 24px; border-top: 1px solid var(--line); }
+  .testimonial .name { font-size: 14px; color: var(--ink); font-weight: 500; margin-bottom: 4px; }
+  .testimonial .role { font-size: 12px; color: var(--ink-mute); letter-spacing: 0.04em; }
+
+  /* FAQ */
+  .faq { background: var(--cream); }
+  .faq-list { margin-top: 60px; }
+  details.faq-item { border-bottom: 1px solid var(--line); padding: 28px 0; }
+  details.faq-item:first-of-type { border-top: 1px solid var(--line); }
+  details.faq-item summary {
+    list-style: none; cursor: pointer;
+    font-family: 'Fraunces', serif; font-weight: 400;
+    font-size: 22px; color: var(--ink);
+    display: flex; justify-content: space-between;
+    align-items: center; letter-spacing: -0.01em;
+  }
+  details.faq-item summary::-webkit-details-marker { display: none; }
+  details.faq-item summary::after {
+    content: "+"; font-family: 'Fraunces', serif;
+    font-size: 32px; font-weight: 300;
+    color: var(--ink-mute); transition: transform 0.2s;
+  }
+  details.faq-item[open] summary::after { content: "−"; color: var(--orange); }
+  details.faq-item p {
+    margin-top: 18px; color: var(--ink-soft);
+    font-size: 15px; line-height: 1.65; max-width: 760px;
+  }
+  .faq-cta {
+    margin-top: 48px; padding: 36px 40px;
+    background: var(--ivory); border: 1px solid var(--line);
+    border-radius: 4px;
+    display: flex; align-items: center; justify-content: space-between;
+    flex-wrap: wrap; gap: 24px;
+  }
+  .faq-cta .note {
+    font-family: 'Fraunces', serif; font-weight: 300;
+    font-size: 20px; color: var(--ink); font-style: italic;
+    max-width: 560px;
+  }
+
+  /* FINAL CTA — light grey per request */
+  .final-cta {
+    background: var(--soft-grey); color: var(--ink);
+    text-align: center; padding: 140px 0;
+  }
+  .final-cta .eyebrow { color: var(--orange); }
+  .final-cta h2 { color: var(--ink); margin: 24px auto 32px; max-width: 800px; }
+  .final-cta h2 em.accent { color: var(--orange); }
+  .final-cta p.lede { color: var(--ink-soft); margin: 0 auto 48px; max-width: 560px; }
+  .final-cta .btn { background: var(--orange); color: #fff; padding: 18px 40px; font-size: 15px; }
+  .final-cta .btn:hover { background: var(--orange-deep); }
+
+  /* ENROL FORM */
+  .enrol { background: var(--blue); color: var(--ivory); padding: 120px 0; }
+  .enrol-wrap { max-width: 880px; margin: 0 auto; }
+  .enrol .eyebrow { color: rgba(255,255,255,0.7); }
+  .enrol h2 { color: var(--ivory); margin: 18px 0 24px; }
+  .enrol h2 em.accent { color: var(--orange); }
+  .enrol .desc-top {
+    font-family: 'Fraunces', serif; font-weight: 300;
+    font-size: 19px; color: rgba(242,237,227,0.85);
+    line-height: 1.5; margin-bottom: 56px; max-width: 720px;
+  }
+  .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+  .form-field { display: flex; flex-direction: column; }
+  .form-field.full { grid-column: 1 / -1; }
+  .form-field label {
+    font-size: 12px; letter-spacing: 0.12em;
+    text-transform: uppercase; color: rgba(242,237,227,0.85);
+    font-weight: 500; margin-bottom: 10px;
+  }
+  .form-field label .req { color: var(--orange); margin-left: 4px; }
+  .form-field input,
+  .form-field select {
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.18);
+    color: var(--ivory);
+    padding: 14px 16px;
+    border-radius: 4px;
+    font-family: 'Inter', sans-serif;
+    font-size: 15px;
+    transition: border-color 0.2s, background 0.2s;
+  }
+  .form-field input::placeholder { color: rgba(242,237,227,0.45); }
+  .form-field input:focus,
+  .form-field select:focus {
+    outline: none; border-color: var(--orange);
+    background: rgba(255,255,255,0.1);
+  }
+  .form-field select {
+    appearance: none;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'><path d='M1 1l5 5 5-5' stroke='%23F2EDE3' stroke-width='1.5' fill='none' stroke-linecap='round' stroke-linejoin='round'/></svg>");
+    background-repeat: no-repeat; background-position: right 16px center;
+    padding-right: 40px;
+  }
+  .form-field select option { background: var(--blue); color: var(--ivory); }
+
+  .challenge-hint { font-size: 13px; color: rgba(242,237,227,0.65); margin-bottom: 14px; }
+  .challenge-counter { font-size: 13px; color: var(--orange); margin-left: 8px; font-weight: 500; }
+  .challenge-cloud { display: flex; flex-wrap: wrap; gap: 10px; }
+  .chip {
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.22);
+    color: var(--ivory);
+    padding: 11px 18px; border-radius: 999px;
+    cursor: pointer; font-size: 14px; font-weight: 400;
+    transition: all 0.18s ease; user-select: none;
+  }
+  .chip:hover { background: rgba(255,255,255,0.12); border-color: rgba(255,255,255,0.4); }
+  .chip.selected { background: var(--orange); border-color: var(--orange); color: #fff; }
+  .chip.disabled { opacity: 0.4; cursor: not-allowed; }
+
+  .submit-area { margin-top: 40px; }
+  .submit-btn {
+    width: 100%; background: var(--orange); color: #fff;
+    border: none; padding: 20px; border-radius: 4px;
+    font-family: 'Inter', sans-serif;
+    font-size: 16px; font-weight: 600;
+    letter-spacing: 0.04em; cursor: pointer;
+    transition: background 0.2s ease;
+  }
+  .submit-btn:hover { background: var(--orange-deep); }
+
+  .nudges {
+    margin-top: 20px; text-align: center;
+    font-size: 13px; color: rgba(242,237,227,0.7);
+    line-height: 1.8;
+  }
+  .nudges .dot { margin: 0 10px; color: rgba(242,237,227,0.4); }
+
+  .form-error {
+    margin-top: 14px; padding: 12px 16px;
+    background: rgba(255,85,0,0.18);
+    border: 1px solid var(--orange);
+    border-radius: 4px;
+    color: #FFD9C2; font-size: 14px;
+    display: none;
+  }
+  .form-error.show { display: block; }
+
+  /* Footer */
+  footer { background: var(--ink); color: rgba(242,237,227,0.7); padding: 64px 0 32px; }
+  footer .grid {
+    display: grid; grid-template-columns: 2fr 1fr 1fr 1fr;
+    gap: 60px; margin-bottom: 60px;
+  }
+  footer h5 {
+    font-family: 'Inter', sans-serif; font-size: 11px;
+    letter-spacing: 0.18em; text-transform: uppercase;
+    color: var(--ivory); margin-bottom: 20px; font-weight: 500;
+  }
+  footer .brand-large {
+    display: flex; flex-direction: column; gap: 4px;
+    line-height: 1; margin-bottom: 16px;
+  }
+  footer .brand-large .row {
+    font-family: 'Fraunces', serif; font-weight: 400;
+    font-size: 28px; color: var(--ivory);
+    letter-spacing: 0.04em; text-transform: uppercase;
+  }
+  footer .brand p {
+    margin-top: 16px; font-size: 14px; line-height: 1.6;
+    max-width: 360px; color: rgba(242,237,227,0.6);
+  }
+  footer ul { list-style: none; }
+  footer ul li { margin-bottom: 12px; }
+  footer ul li a {
+    color: rgba(242,237,227,0.7); text-decoration: none; font-size: 14px;
+  }
+  footer ul li a:hover { color: var(--ivory); }
+  footer .bottom {
+    border-top: 1px solid rgba(242,237,227,0.15);
+    padding-top: 32px; display: flex; justify-content: space-between;
+    font-size: 12px; color: rgba(242,237,227,0.5); flex-wrap: wrap; gap: 16px;
+  }
+
+  .load-error {
+    padding: 40px; margin: 40px auto; max-width: 720px;
+    background: #fff5e6; border-left: 4px solid var(--orange);
+    font-family: 'Inter', sans-serif; font-size: 15px; color: var(--ink);
+  }
+
+  @media (max-width: 960px) {
+    .hero .grid, .section-head, .builtfor-grid, .inside-grid,
+    .pricing-grid, .testimonials-grid, .why-grid, footer .grid,
+    .form-grid, .tab-panel, .founder-grid, .sensory-grid {
+      grid-template-columns: 1fr; gap: 32px;
+    }
+    .tabs { grid-template-columns: 1fr; }
+    .tab-image { min-height: 280px; }
+    .tab-content { padding: 32px 24px; }
+    .tab-content .row { grid-template-columns: 1fr; gap: 6px; }
+    section { padding: 80px 0; }
+    .hero { padding: 48px 0 64px; }
+    .container { padding: 0 20px; }
+    nav.top .inner { padding: 14px 20px; }
+    .nav-links { display: none; }
+    .nav-links a.btn { display: inline-block; }
+    .nav-links { display: flex; gap: 12px; }
+    .nav-links a:not(.btn) { display: none; }
+    .faq-cta { flex-direction: column; align-items: flex-start; }
+    .countdown-band .row { justify-content: flex-start; }
+    .founder-image-wrap { position: static; }
+    .manifesto { padding: 100px 0; }
+  }
+</style>
+</head>
+<body>
+
+<div id="app"></div>
+
+<script src="content.js"></script>
+
+<script>
+(function () {
+  if (typeof CONTENT === 'undefined') {
+    document.getElementById('app').innerHTML =
+      '<div class="load-error"><strong>Could not find content.js.</strong>' +
+      ' Make sure content.js is in the same folder as this HTML file, then refresh.</div>';
+    return;
+  }
+
+  // helpers
+  const esc = (s) => String(s == null ? '' : s)
+    .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+
+  const richText = (s) => {
+    if (s == null) return '';
+    const parts = String(s).split(/(\[em\][\s\S]*?\[\/em\])/g);
+    return parts.map(p => {
+      const m = p.match(/^\[em\]([\s\S]*?)\[\/em\]$/);
+      return m ? `<em class="accent">${esc(m[1])}</em>` : esc(p);
+    }).join('');
+  };
+
+  const pad = (n) => String(n).padStart(2, '0');
+
+  // sections
+  const renderNav = (b) => `
+    <nav class="top">
+      <div class="inner">
+        <a href="#" class="wordmark" style="text-decoration:none;">
+          <span class="mark">${esc(b.name)}</span>
+          <span class="loc">${esc(b.locator)}</span>
+        </a>
+        <div class="nav-links">
+          ${b.navLinks.map(l => `<a href="${esc(l.href)}">${esc(l.label)}</a>`).join('')}
+          <a href="${esc(b.navCta.href)}" class="btn">${esc(b.navCta.label)}</a>
+        </div>
+      </div>
+    </nav>`;
+
+  const renderHero = (h) => `
+    <section class="hero">
+      <div class="container">
+        <div class="grid">
+          <div class="copy">
+            <div class="eyebrow">${esc(h.eyebrow)}</div>
+            <h1>${richText(h.headline)}</h1>
+            <p class="lede">${esc(h.lede)}</p>
+            <div class="cta-row">
+              <a href="${esc(h.primaryCta.href)}" class="btn btn-orange">${esc(h.primaryCta.label)}</a>
+              <a href="${esc(h.secondaryCta.href)}" class="btn btn-ghost">${esc(h.secondaryCta.label)}</a>
+            </div>
+            <p class="price-note">${esc(h.priceNote)}</p>
+          </div>
+          <div class="image">
+            <img src="${esc(h.imageUrl)}" alt="${esc(h.imageAlt)}">
+            <div class="image-caption">${esc(h.imageCaption)}</div>
+          </div>
+        </div>
+      </div>
+    </section>`;
+
+  const renderTrust = (items) => `
+    <div class="trust">
+      <div class="container">
+        <div class="row">
+          ${items.map(i => `<div class="item"><strong>${esc(i.strong)}</strong>${esc(i.text)}</div>`).join('')}
+        </div>
+      </div>
+    </div>`;
+
+  const renderCountdown = (c) => `
+    <div class="countdown-band" id="countdownBand">
+      <div class="container">
+        <div class="row">
+          <div class="label">
+            <div class="top">${esc(c.label)}</div>
+            <div class="when">${esc(c.when)}</div>
+          </div>
+          <div class="timer" id="cdTimer">
+            <div class="unit"><div class="num" id="cdDays">--</div><div class="key">Days</div></div>
+            <div class="unit"><div class="num" id="cdHours">--</div><div class="key">Hours</div></div>
+            <div class="unit"><div class="num" id="cdMins">--</div><div class="key">Mins</div></div>
+            <div class="unit"><div class="num" id="cdSecs">--</div><div class="key">Secs</div></div>
+          </div>
+          <a href="${esc(c.cta.href)}" class="btn btn-orange cta-btn">${esc(c.cta.label)}</a>
+        </div>
+      </div>
+    </div>`;
+
+  const sectionHead = (eyebrow, title, desc) => `
+    <div class="section-head">
+      <div class="title">
+        <div class="eyebrow">${esc(eyebrow)}</div>
+        <h2>${richText(title)}</h2>
+      </div>
+      <div class="desc"><p class="lede">${esc(desc)}</p></div>
+    </div>`;
+
+  const renderExpect = (e) => `
+    <section class="expect" id="expect">
+      <div class="container">
+        ${sectionHead(e.eyebrow, e.title, e.desc)}
+        <div class="tabs" id="expectTabs">
+          ${e.tabs.map((t, i) => `
+            <button class="tab${i === 0 ? ' active' : ''}" data-tab="${i}">
+              <span class="tab-left">
+                <span class="tab-num">${esc(t.num)}</span>
+                <span>${esc(t.label)}</span>
+              </span>
+              <span class="tab-mark">+</span>
+            </button>`).join('')}
+        </div>
+        <div class="tab-panel" id="expectPanel">${renderExpectPanel(e.tabs[0])}</div>
+      </div>
+    </section>`;
+
+  const renderExpectPanel = (t) => `
+    <div class="tab-image"><img src="${esc(t.image)}" alt="${esc(t.imageAlt)}"></div>
+    <div class="tab-content">
+      <div class="row">
+        <div class="label">${esc(t.label.toLowerCase())}</div>
+        <div class="value title-row">${esc(t.title)}<div style="font-family:'Inter',sans-serif;font-size:14px;color:var(--ink-mute);margin-top:8px;font-weight:400;line-height:1.5;">${esc(t.oneLiner)}</div></div>
+      </div>
+      <div class="row">
+        <div class="label">what you get</div>
+        <div class="value"><ul>${t.whatYouGet.map(b => `<li>${esc(b)}</li>`).join('')}</ul></div>
+      </div>
+      <div class="row"><div class="label">time</div><div class="value">${esc(t.time)}</div></div>
+      <div class="row"><div class="label">frequency</div><div class="value">${esc(t.frequency)}</div></div>
+      <div class="tab-cta">
+        <a href="#enrol" class="btn btn-orange">Reserve my spot</a>
+      </div>
+    </div>`;
+
+  const renderInside = (i) => `
+    <section>
+      <div class="container">
+        ${sectionHead(i.eyebrow, i.title, i.desc)}
+        <div class="inside-grid">
+          ${i.items.map(item => `
+            <div class="inside-card">
+              <div class="num">${esc(item.num)}</div>
+              <h3>${esc(item.heading)}</h3>
+              <p>${esc(item.text)}</p>
+            </div>`).join('')}
+        </div>
+      </div>
+    </section>`;
+
+  const renderSensory = (s) => `
+    <section class="sensory">
+      <div class="container">
+        ${sectionHead(s.eyebrow, s.title, s.desc)}
+        <div class="sensory-grid">
+          ${s.items.map(item => `
+            <div class="sensory-card">
+              <div class="sense-header">
+                <div class="sense-label">${esc(item.label)}</div>
+                <div class="sense-num">${esc(item.num)}</div>
+              </div>
+              <p>${esc(item.text)}</p>
+            </div>`).join('')}
+        </div>
+      </div>
+    </section>`;
+
+  const renderCompare = (c) => {
+    const markFor = (v) => {
+      if (v === 'yes') return '<span class="mark-yes">✓</span>';
+      if (v === 'no')  return '<span class="mark-no">✕</span>';
+      return '<span class="mark-partial">—</span>';
+    };
+    return `
+    <section class="compare" id="compare">
+      <div class="container">
+        ${sectionHead(c.eyebrow, c.title, c.desc)}
+        <div class="compare-table-wrap">
+          <table class="compare-table">
+            <thead>
+              <tr>
+                <th></th>
+                ${c.columns.map((col, i) => `<th${i === 0 ? ' class="ours"' : ''}>${esc(col)}</th>`).join('')}
+              </tr>
+            </thead>
+            <tbody>
+              ${c.rows.map(r => `
+                <tr>
+                  <td>
+                    <span class="row-label">${esc(r.label)}</span>
+                    <span class="row-desc">${esc(r.desc)}</span>
+                  </td>
+                  ${r.values.map((v, i) => `<td${i === 0 ? ' class="ours"' : ''}>${markFor(v)}</td>`).join('')}
+                </tr>`).join('')}
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>`;
+  };
+
+  const renderManifesto = (m) => `
+    <section class="manifesto">
+      <div class="bg" style="background-image:url('${esc(m.imageUrl)}');"></div>
+      <div class="overlay"></div>
+      <div class="container">
+        <h2>${richText(m.punchline)}</h2>
+        <p class="sub">${esc(m.subtext)}</p>
+        <div class="pills">
+          ${m.highlights.map(h => `<div class="pill">${esc(h)}</div>`).join('')}
+        </div>
+      </div>
+    </section>`;
+
+  const renderWhy = (w) => `
+    <section class="why" id="why">
+      <div class="container">
+        ${sectionHead(w.eyebrow, w.title, w.desc)}
+        <div class="why-grid">
+          ${w.items.map(item => `
+            <div class="why-item">
+              <div class="num">${esc(item.num)}</div>
+              <h4>${esc(item.heading)}</h4>
+              <p>${esc(item.text)}</p>
+            </div>`).join('')}
+        </div>
+      </div>
+    </section>`;
+
+  const renderBuiltFor = (b) => `
+    <section>
+      <div class="container">
+        <div class="builtfor-grid">
+          <div>
+            <div class="eyebrow">${esc(b.eyebrow)}</div>
+            <h2 style="margin-top: 18px; margin-bottom: 40px;">${richText(b.title)}</h2>
+            <ul class="builtfor-list">
+              ${b.items.map(item => `
+                <li>
+                  <div class="who">${esc(item.who)}</div>
+                  <div class="what">${esc(item.what)}</div>
+                </li>`).join('')}
+            </ul>
+          </div>
+          <div class="builtfor-image">
+            <img src="${esc(b.imageUrl)}" alt="${esc(b.imageAlt)}">
+          </div>
+        </div>
+      </div>
+    </section>`;
+
+  const renderFounder = (f) => `
+    <section class="founder" id="founder">
+      <div class="container">
+        <div class="founder-grid">
+          <div class="founder-image-wrap">
+            <div class="founder-image">
+              <img src="${esc(f.imageUrl)}" alt="${esc(f.imageAlt)}"
+                onerror="this.style.display='none';this.parentNode.innerHTML='<div class=&quot;placeholder&quot;><strong>Add your photo</strong>Save your portrait as founder.jpg in this folder and refresh, or replace founder.imageUrl in content.js.</div>'">
+            </div>
+            <div class="founder-meta">
+              <div class="name">${esc(f.name)}</div>
+              <div class="role">${esc(f.role)}</div>
+            </div>
+          </div>
+          <div class="founder-text">
+            <div class="eyebrow">${esc(f.eyebrow)}</div>
+            <h2 style="margin-top: 18px;">${richText(f.title)}</h2>
+            ${f.paragraphs.map(p => `<p>${esc(p)}</p>`).join('')}
+            <div class="pull-quote">${esc(f.pullQuote)}</div>
+          </div>
+        </div>
+      </div>
+    </section>`;
+
+  const renderPricing = (p) => `
+    <section class="pricing" id="pricing">
+      <div class="container">
+        ${sectionHead(p.eyebrow, p.title, p.desc)}
+        <div class="pricing-grid">
+          ${p.plans.map(plan => `
+            <div class="plan${plan.featured ? ' featured' : ''}">
+              ${plan.badge ? `<div class="badge">${esc(plan.badge)}</div>` : ''}
+              <div class="plan-name">${esc(plan.name)}</div>
+              <div class="plan-desc">${esc(plan.subtitle)}</div>
+              <div class="plan-price">
+                <span class="currency">${esc(plan.currency)}</span>
+                <span class="amount">${esc(plan.amount)}</span>
+              </div>
+              <ul class="includes">
+                ${plan.includes.map(line => `<li>${esc(line)}</li>`).join('')}
+              </ul>
+              <a href="${esc(plan.cta.href)}" class="btn">${esc(plan.cta.label)}</a>
+            </div>`).join('')}
+        </div>
+      </div>
+    </section>`;
+
+  const renderTestimonials = (t) => `
+    <section>
+      <div class="container">
+        ${sectionHead(t.eyebrow, t.title, t.desc)}
+        <div class="testimonials-grid">
+          ${t.items.map(item => `
+            <div class="testimonial">
+              <p class="quote">"${esc(item.quote)}"</p>
+              <div class="attribution">
+                <div class="name">${esc(item.name)}</div>
+                <div class="role">${esc(item.role)}</div>
+              </div>
+            </div>`).join('')}
+        </div>
+      </div>
+    </section>`;
+
+  const renderFaq = (f) => `
+    <section class="faq" id="faq">
+      <div class="container">
+        ${sectionHead(f.eyebrow, f.title, f.desc)}
+        <div class="faq-list">
+          ${f.items.map(item => `
+            <details class="faq-item">
+              <summary>${esc(item.q)}</summary>
+              <p>${esc(item.a)}</p>
+            </details>`).join('')}
+        </div>
+        <div class="faq-cta">
+          <div class="note">${esc(f.closingNote)}</div>
+          <a href="${esc(f.cta.href)}" class="btn btn-orange">${esc(f.cta.label)}</a>
+        </div>
+      </div>
+    </section>`;
+
+  const renderFinalCta = (c) => `
+    <section class="final-cta">
+      <div class="container">
+        <div class="eyebrow">${esc(c.eyebrow)}</div>
+        <h2>${richText(c.title)}</h2>
+        <p class="lede">${esc(c.lede)}</p>
+        <a href="${esc(c.cta.href)}" class="btn btn-orange">${esc(c.cta.label)}</a>
+      </div>
+    </section>`;
+
+  const renderEnrol = (e) => {
+    const f = e.fields;
+    return `
+    <section class="enrol" id="enrol">
+      <div class="container">
+        <div class="enrol-wrap">
+          <div class="eyebrow">${esc(e.eyebrow)}</div>
+          <h2>${richText(e.title)}</h2>
+          <p class="desc-top">${esc(e.desc)}</p>
+          <form id="enrolForm" novalidate>
+            <div class="form-grid">
+              <div class="form-field">
+                <label>${esc(f.nameLabel)}<span class="req">*</span></label>
+                <input type="text" name="fullName" placeholder="${esc(f.namePlaceholder)}" required>
+              </div>
+              <div class="form-field">
+                <label>${esc(f.whatsappLabel)}<span class="req">*</span></label>
+                <input type="tel" name="whatsapp" placeholder="${esc(f.whatsappPlaceholder)}" required>
+              </div>
+              <div class="form-field">
+                <label>${esc(f.emailLabel)}</label>
+                <input type="email" name="email" placeholder="${esc(f.emailPlaceholder)}">
+              </div>
+              <div class="form-field">
+                <label>${esc(f.cityLabel)}<span class="req">*</span></label>
+                <input type="text" name="city" placeholder="${esc(f.cityPlaceholder)}" required>
+              </div>
+              <div class="form-field">
+                <label>${esc(f.occupationLabel)}<span class="req">*</span></label>
+                <select name="occupation" required>
+                  <option value="">Select…</option>
+                  ${f.occupations.map(o => `<option value="${esc(o)}">${esc(o)}</option>`).join('')}
+                </select>
+              </div>
+              <div class="form-field">
+                <label>${esc(f.planLabel)}<span class="req">*</span></label>
+                <select name="plan" required>
+                  <option value="">Select…</option>
+                  ${f.plans.map(p => `<option value="${esc(p.value)}">${esc(p.label)}</option>`).join('')}
+                </select>
+              </div>
+              <div class="form-field full">
+                <label>${esc(f.batchLabel)}<span class="req">*</span></label>
+                <select name="batch" required>
+                  <option value="">Select…</option>
+                  ${f.batches.map(b => `<option value="${esc(b)}">${esc(b)}</option>`).join('')}
+                </select>
+              </div>
+              <div class="form-field full">
+                <label>${esc(f.challengeLabel)}<span class="req">*</span><span class="challenge-counter" id="chCounter">(0 / 3)</span></label>
+                <div class="challenge-hint">${esc(f.challengeHint)}</div>
+                <div class="challenge-cloud" id="chCloud">
+                  ${f.challenges.map(c => `<span class="chip" data-value="${esc(c)}">${esc(c)}</span>`).join('')}
+                </div>
+              </div>
+            </div>
+            <div class="submit-area">
+              <button type="submit" class="submit-btn">${esc(e.submitLabel)}</button>
+              <div class="form-error" id="formError">Please complete all required fields and select at least one current challenge.</div>
+              <div class="nudges">
+                ${e.nudges.map((n, i) => `<span>${esc(n)}</span>${i < e.nudges.length - 1 ? '<span class="dot">·</span>' : ''}`).join('')}
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </section>`;
+  };
+
+  const renderFooter = (f, brand) => `
+    <footer>
+      <div class="container">
+        <div class="grid">
+          <div class="brand">
+            <div class="brand-large">
+              <div class="row">Finding</div>
+              <div class="row">Deep Sleep</div>
+            </div>
+            <p>${esc(f.blurb)}</p>
+          </div>
+          ${f.columns.map(col => `
+            <div>
+              <h5>${esc(col.heading)}</h5>
+              <ul>
+                ${col.links.map(l => `<li><a href="${esc(l.href)}">${esc(l.label)}</a></li>`).join('')}
+              </ul>
+            </div>`).join('')}
+        </div>
+        <div class="bottom">
+          <div>${esc(f.copyright)}</div>
+          <div>${esc(f.locator)}</div>
+        </div>
+      </div>
+    </footer>`;
+
+  // mount
+  document.getElementById('app').innerHTML = [
+    renderNav(CONTENT.brand),
+    renderHero(CONTENT.hero),
+    renderTrust(CONTENT.trust),
+    renderCountdown(CONTENT.countdown),
+    renderExpect(CONTENT.expect),
+    renderInside(CONTENT.inside),
+    renderSensory(CONTENT.sensory),
+    renderCompare(CONTENT.compare),
+    renderManifesto(CONTENT.manifesto),
+    renderWhy(CONTENT.why),
+    renderBuiltFor(CONTENT.builtFor),
+    renderFounder(CONTENT.founder),
+    renderPricing(CONTENT.pricing),
+    renderTestimonials(CONTENT.testimonials),
+    renderFaq(CONTENT.faq),
+    renderFinalCta(CONTENT.finalCta),
+    renderEnrol(CONTENT.enrol),
+    renderFooter(CONTENT.footer, CONTENT.brand)
+  ].join('');
+
+  document.title = CONTENT.brand.name + ' — 5-Day Deep Sleep Reset Challenge';
+
+  // tabs
+  const tabs = document.querySelectorAll('#expectTabs .tab');
+  const panel = document.getElementById('expectPanel');
+  tabs.forEach(t => {
+    t.addEventListener('click', () => {
+      tabs.forEach(x => x.classList.remove('active'));
+      t.classList.add('active');
+      const idx = parseInt(t.dataset.tab, 10);
+      panel.innerHTML = renderExpectPanel(CONTENT.expect.tabs[idx]);
+    });
+  });
+
+  // countdown
+  const target = new Date(CONTENT.countdown.targetISO).getTime();
+  const elDays = document.getElementById('cdDays');
+  const elHours = document.getElementById('cdHours');
+  const elMins = document.getElementById('cdMins');
+  const elSecs = document.getElementById('cdSecs');
+  const timerEl = document.getElementById('cdTimer');
+
+  function tickCountdown() {
+    const diff = target - Date.now();
+    if (diff <= 0) {
+      timerEl.innerHTML = `<div style="font-family:'Fraunces',serif;font-size:22px;color:var(--orange);font-style:italic;">${esc(CONTENT.countdown.livePrefix)} <span style="color:var(--ivory);">${esc(CONTENT.countdown.liveSuffix)}</span></div>`;
+      return false;
+    }
+    const days = Math.floor(diff / 86400000);
+    const hours = Math.floor((diff % 86400000) / 3600000);
+    const mins = Math.floor((diff % 3600000) / 60000);
+    const secs = Math.floor((diff % 60000) / 1000);
+    elDays.textContent = pad(days);
+    elHours.textContent = pad(hours);
+    elMins.textContent = pad(mins);
+    elSecs.textContent = pad(secs);
+    return true;
+  }
+  if (tickCountdown()) { setInterval(tickCountdown, 1000); }
+
+  // chips
+  const MAX_CHALLENGES = 3;
+  const cloud = document.getElementById('chCloud');
+  const counter = document.getElementById('chCounter');
+  const selected = new Set();
+  const refreshChips = () => {
+    counter.textContent = `(${selected.size} / ${MAX_CHALLENGES})`;
+    cloud.querySelectorAll('.chip').forEach(c => {
+      const isSel = selected.has(c.dataset.value);
+      c.classList.toggle('selected', isSel);
+      c.classList.toggle('disabled', !isSel && selected.size >= MAX_CHALLENGES);
+    });
+  };
+  cloud.querySelectorAll('.chip').forEach(c => {
+    c.addEventListener('click', () => {
+      const v = c.dataset.value;
+      if (selected.has(v)) selected.delete(v);
+      else if (selected.size < MAX_CHALLENGES) selected.add(v);
+      refreshChips();
+    });
+  });
+
+  // form → WhatsApp
+  const form = document.getElementById('enrolForm');
+  const errorBox = document.getElementById('formError');
+  form.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const data = new FormData(form);
+    const fullName = (data.get('fullName') || '').toString().trim();
+    const whatsapp = (data.get('whatsapp') || '').toString().trim();
+    const email    = (data.get('email')    || '').toString().trim();
+    const city     = (data.get('city')     || '').toString().trim();
+    const occupation = (data.get('occupation') || '').toString();
+    const plan     = (data.get('plan')     || '').toString();
+    const batch    = (data.get('batch')    || '').toString();
+    const challenges = Array.from(selected);
+
+    if (!fullName || !whatsapp || !city || !occupation || !plan || !batch || challenges.length === 0) {
+      errorBox.classList.add('show');
+      window.scrollTo({ top: form.getBoundingClientRect().top + window.scrollY - 60, behavior: 'smooth' });
+      return;
+    }
+    errorBox.classList.remove('show');
+
+    const lines = [
+      CONTENT.enrol.messagePrefix,
+      '',
+      'Hi! I would like to enrol in the program.',
+      '',
+      '*My Details:*',
+      '• Full Name: ' + fullName,
+      '• WhatsApp: ' + whatsapp,
+      '• Email: ' + (email || 'Not provided'),
+      '• City: ' + city,
+      '• Occupation: ' + occupation,
+      '',
+      '*Programme Choice:*',
+      '• Plan: ' + plan,
+      '• Batch: ' + batch,
+      '',
+      '*Current Challenges:*',
+      ...challenges.map(c => '• ' + c),
+      '',
+      'Please share the payment link to confirm my spot. Thank you.'
+    ];
+    const body = lines.join('\n');
+    const url = `https://wa.me/${CONTENT.enrol.whatsappNumber}?text=${encodeURIComponent(body)}`;
+    window.open(url, '_blank', 'noopener');
+  });
+
+})();
+</script>
+
+</body>
+</html>
