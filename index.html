@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Finding Deep Sleep — 5-Day Deep Sleep Reset Challenge</title>
+<title>SLEAP — Your Leap Into Deep Sleep · 5-Day Guided Shutdown Ritual</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -79,12 +79,20 @@
     display: flex; align-items: center; justify-content: space-between;
   }
   /* Wordmark logo (image) — 50% larger than before */
-  .wordmark { display: flex; align-items: center; gap: 12px; line-height: 1; }
-  .wordmark .logo-img { height: 63px; width: auto; display: block; }
+  .wordmark { display: flex; align-items: baseline; gap: 14px; line-height: 1; }
+  .wordmark .logo-text {
+    font-family: 'Fraunces', serif; font-weight: 400;
+    font-size: 38px; letter-spacing: 0.10em;
+    color: var(--ink); text-transform: uppercase;
+  }
   .wordmark .loc {
     color: var(--ink-mute); font-size: 10px;
     letter-spacing: 0.18em; text-transform: uppercase;
     font-family: 'Inter', sans-serif; font-weight: 500;
+  }
+  @media (max-width: 600px) {
+    .wordmark .logo-text { font-size: 28px; }
+    .wordmark .loc { display: none; }
   }
 
   .nav-links { display: flex; gap: 30px; align-items: center; }
@@ -698,10 +706,17 @@
     color: var(--ivory); margin-bottom: 20px; font-weight: 500;
   }
   /* Footer logo — 50% larger than before */
-  footer .logo-img-footer {
-    height: 96px; width: auto; display: block;
-    margin-bottom: 16px;
-    filter: brightness(0) invert(1);
+  footer .footer-wordmark { margin-bottom: 16px; }
+  footer .footer-wordmark .fw-name {
+    font-family: 'Fraunces', serif; font-weight: 400;
+    font-size: 52px; letter-spacing: 0.10em;
+    color: var(--ivory); text-transform: uppercase; line-height: 1;
+    margin-bottom: 10px;
+  }
+  footer .footer-wordmark .fw-tag {
+    font-family: 'Inter', sans-serif; font-weight: 500;
+    font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase;
+    color: var(--orange);
   }
   footer .brand p {
     margin-top: 16px; font-size: 14px; line-height: 1.6;
@@ -764,9 +779,9 @@
 const CONTENT = {
 
   brand: {
-    name: "Finding Deep Sleep",
-    locator: "India Edition",
-    logoUrl: "https://static.wixstatic.com/media/474762_5bb89d2c4647408ab008090092f76fc1~mv2.png",
+    name: "SLEAP",
+    tagline: "Your Leap Into Deep Sleep",
+    locator: "sleap.in",
     navLinks: [
       { label: "What You Get",   href: "#expect"  },
       { label: "Why This Works", href: "#compare" },
@@ -778,12 +793,12 @@ const CONTENT = {
   },
 
   hero: {
-    eyebrow: "5-Day Deep Sleep Reset Challenge · Delivered on your WhatsApp",
+    eyebrow: "SLEAP · 5-Day Guided Shutdown Ritual · Delivered on your WhatsApp",
     headline: "Sleep that [em]finds you.[/em] Not the other way around.",
-    lede: "A guided evening shutdown ritual for exhausted minds that can’t switch off. No theory. No fluff. Just a few powerful nudges over the next 5 evenings to help your nervous system finally slow down, so you wake up saying, “I finally slept like a baby today.”",
+    lede: "SLEAP is a guided shutdown ritual for exhausted minds that can’t switch off. No theory. No fluff. Just a few powerful nudges over the next 5 evenings to help your nervous system finally slow down, so you wake up saying, “I finally slept like a baby today.”",
     primaryCta:   { label: "Start your reset",  href: "#enrol"  },
     secondaryCta: { label: "See what you get",  href: "#expect" },
-    priceNote: "From ₹499 · No app to download · Begins 8PM IST · 1st June 2026 (Monday).",
+    priceNote: "From ₹499 · No app to download · Begins 8PM IST · 1st September 2026 (Tuesday).",
     imageUrl: "https://images.unsplash.com/photo-1510632233616-88025944e960?auto=format&fit=crop&w=1200&q=80",
     imageAlt: "Deep sleep is not a luxury; it’s a return to ourselves.",
     imageCaption: "\"Deep sleep is not a luxury; it’s a return to ourselves.\""
@@ -797,9 +812,9 @@ const CONTENT = {
   ],
 
   countdown: {
-    label: "Challenge begins",
-    when: "1st June 2026 · 8:00 PM IST",
-    targetISO: "2026-06-01T20:00:00+05:30",
+    label: "Your SLEAP begins",
+    when: "1st September 2026 · 8:00 PM IST",
+    targetISO: "2026-09-01T20:00:00+05:30",
     livePrefix: "Live now —",
     liveSuffix: "join the next batch",
     cta: { label: "Reserve my spot", href: "#enrol" }
@@ -808,7 +823,7 @@ const CONTENT = {
   expect: {
     eyebrow: "What To Expect",
     title: "Five nights. [em]A mix of nudges, not a course.[/em]",
-    desc: "This is not a sleep course. It is a five-evening rebuild of the small habits that have quietly broken our sleep. Each night arrives on WhatsApp at 8:00pm IST. You read/listen/view, you do one short practice, you put your phone down. The next morning, you tell us how it went.",
+    desc: "SLEAP is not a sleep course. It is a five-evening rebuild of the small habits that have quietly broken our sleep. Each night arrives on WhatsApp at 8:00pm IST. You read/listen/view, you do one short practice, you put your phone down. The next morning, you tell us how it went.",
     tabs: [
       {
         num: "01",
@@ -864,7 +879,7 @@ const CONTENT = {
   inside: {
     eyebrow: "What Arrives",
     title: "What lands on your WhatsApp [em]each evening.[/em]",
-    desc: "No app. No login. No daily streaks to chase. Just few carefully built nudge a night, the same way a thoughtful friend would send it.",
+    desc: "No app. No login. No daily streaks to chase. Every SLEAP evening is just a few carefully built nudges, sent the same way a thoughtful friend would send them.",
     items: [
       {
         num: "01 / Audio",
@@ -892,7 +907,7 @@ const CONTENT = {
   sensory: {
     eyebrow: "Multi-Sensory Method",
     title: "Six inputs. [em]One body that learns to rest.[/em]",
-    desc: "Deep sleep is not built through one channel. We cue multiple senses across the evening, each chosen for its proven effect on the nervous system.",
+    desc: "Deep sleep is not built through one channel. SLEAP cues multiple senses across the evening, each one chosen for its proven effect on the nervous system.",
     items: [
       { num: "01", label: "Sound",       text: "Slow voice notes designed for low-light bedrooms. Headphones optional. No music swell. Nothing performative." },
       { num: "02", label: "Light",       text: "A sunset cue, a 9:30pm screen-dim ping, and one warm-light suggestion for the last 45 minutes." },
@@ -906,9 +921,9 @@ const CONTENT = {
   compare: {
     eyebrow: "Why This Works",
     title: "Five days. WhatsApp. [em]A real outcome.[/em]",
-    desc: "Most sleep tools borrow from one tradition. We picked the parts of each that actually work, removed the rest, and put it on the surface you already use.",
+    desc: "Most sleep tools borrow from one tradition. We spent two years experimenting, most rituals failed, and built SLEAP around the ones that held, picked the parts that actually work, removed the rest, and put it on the surface you already use.",
     columns: [
-      "5-Day Deep Sleep Reset",
+      "SLEAP · Guided Shutdown Ritual",
       "Meditation Apps",
       "Traditional Yog Nidra",
       "Spotify Sleep Playlist"
@@ -928,18 +943,18 @@ const CONTENT = {
     imageUrl: "https://images.unsplash.com/photo-1419242902214-272b3f66ee7a?auto=format&fit=crop&w=2000&q=80",
     imageAlt: "Mountain dusk, calm light",
     punchline: "Five evenings. A nervous system [em]that learns to rest again.[/em]",
-    subtext: "What if the off-switch you have been looking for was just five WhatsApp messages away.",
-    highlights: ["Guided", "Evidence-based", "Built in Bengaluru", "14-day refund"]
+    subtext: "What if the off-switch you have been looking for was just five WhatsApp messages away. That leap is SLEAP.",
+    highlights: ["Guided shutdown ritual", "Evidence-based", "Built in Bengaluru", "14-day refund"]
   },
 
   why: {
     eyebrow: "The Method",
     title: "Why this works when [em]apps have not.[/em]",
-    desc: "Most sleep apps ask for behaviour change you have already tried and failed at. We assume you have. So we built something different, smaller, and built around the way an urban Indian evenings actually unfold.",
+    desc: "Most sleep apps ask for behaviour change you have already tried and failed at. We assume you have. So SLEAP was built differently, smaller, and around the way an urban Indian evening actually unfolds.",
     items: [
       { num: "01", heading: "Smallest viable change, every night",                text: "Behavioural science is clear: tiny actions, daily, beat big resolutions, occasionally. We design for the minimum behaviour change that produces the maximum sleep shift. No 30-day overhauls." },
       { num: "02", heading: "Where your attention already is",                    text: "You already check WhatsApp before sleeping. We meet you on the surface you actually use, instead of asking you to download something new and remember to open it." },
-      { num: "03", heading: "Built for the Indian night",                         text: "Late dinners, joint family wake-times, summer heat, monsoon humidity, the 11pm work call. The program accounts for the specifics of an Indian evening. Not a translated Western product." },
+      { num: "03", heading: "Built for the Indian night",                         text: "Late dinners, joint family wake-times, summer heat, monsoon humidity, the 11pm work call. SLEAP accounts for the specifics of an Indian evening. Not a translated Western product." },
       { num: "04", heading: "Pulled from sleep medicine, not wellness culture",   text: "The core methods are drawn from cognitive behavioural therapy for insomnia (CBT-I), the gold-standard non-pharmaceutical treatment for sleep difficulty. Stripped of jargon, kept honest." },
       { num: "05", heading: "Designed by someone who could not sleep",            text: "Built by a founder who spent two years rebuilding his own sleep from a broken state. Refined across 200+ private clients before being offered publicly. Lived, then taught." },
       { num: "06", heading: "What you keep, lasts",                               text: "By night five, you have a one-page SleepOS ritual built from your own week. Not a habit list. A rhythm. The kind your body learns to expect, the way it expects food at 8pm." }
@@ -962,18 +977,18 @@ const CONTENT = {
 
   founder: {
     eyebrow: "Built By Someone Who Needed It",
-    title: "Why I built [em]Finding Deep Sleep.[/em]",
-    name: "SBD - Your Deep Rest Coach",
+    title: "Why I built [em]SLEAP?[/em]",
+    name: "SBD - Your Recovery Coach",
     role: "Day-job at a defence deep-tech startup",
     imageUrl: "https://lh3.googleusercontent.com/a/ACg8ocLmaate-9J0g00TA3s3jbC8Pvl9HLACh6jQoKtJHcCvdABjQNAZQQ=s576-c-no",
-    imageAlt: "SBD, founder of Finding Deep Sleep",
+    imageAlt: "SBD, founder of SLEAP",
     paragraphs: [
       "Two years ago, I began noticing something deeply unsettling at home. My spouse struggled to sleep night after night. My father would wake up repeatedly in the middle of the night. My mother-in-law silently battled chronic insomnia that slowly affected her energy, mood, and quality of life.",
       "Over time, I realized sleep deprivation had quietly become the background noise of modern life. Everyone looked functional on the outside. Very few were truly rested.",
       "That realization turned into an obsession.",
       "Over the last two years, I studied sleep behaviour, nervous system regulation, evening rituals, environmental cues, breathing patterns, digital overstimulation, and the psychology of modern exhaustion. More importantly, I tested small, practical interventions at home, tiny changes that could help the body feel safe enough to slow down again. Some worked. Many didn’t. Slowly, patterns began to emerge.",
       "Recently, things became more real when my wife underwent a Level 1 Sleep Study at a hospital. What shocked me wasn’t just the findings, it was discovering that most hospital sleep labs had waiting periods stretching close to two months. That’s when it hit me. We are in the middle of a silent sleep crisis. People are exhausted, overstimulated, anxious, and mentally “on” all the time. Yet most solutions available are either clinical, intimidating, expensive, or impossible to sustain consistently in everyday life.",
-      "That is why I created the 5-Day Deep Sleep Reset. Not as a medical solution. Not as another wellness trend. But as a simple, human, guided evening shutdown ritual designed to help exhausted minds finally slow down. Everything in this program has been inspired by real struggles, tested in real homes, and shaped by one belief."
+      "That is why I created SLEAP. Not as a medical solution. Not as another wellness trend. But as a simple, human, guided shutdown ritual designed to help exhausted minds finally slow down. The name says the whole idea: a leap into deep sleep, taken five small steps at a time. Everything in this program has been inspired by real struggles, tested in real homes, and shaped by one belief."
     ],
     pullQuote: "Sometimes the body already knows how to sleep. The mind just needs help finding the doorway back to rest."
   },
@@ -981,7 +996,7 @@ const CONTENT = {
   pricing: {
     eyebrow: "Begin Now",
     title: "Two ways in. [em]Same five nights.[/em]",
-    desc: "Choose self-paced if you want the full program on WhatsApp. Choose guided if you also want a 45-minute private call to walk through your sleep history and tailor the week to you.",
+    desc: "Choose self-paced if you want the full SLEAP ritual on WhatsApp. Choose guided if you also want a 45-minute private call to walk through your sleep history and tailor the week to you.",
     plans: [
       {
         featured: false, badge: "",
@@ -994,7 +1009,7 @@ const CONTENT = {
           "Daily morning check-in question",
           "Your personal one-page SleepOS at night five",
           "Program yours forever, replay anytime",
-          "You enroll today, program starts Monday at 8PM"
+          "You enroll today, SLEAP begins 1st September at 8PM"
         ],
         cta: { label: "Begin self-paced", href: "#enrol" }
       },
@@ -1019,7 +1034,7 @@ const CONTENT = {
   testimonials: {
     eyebrow: "From the First 200",
     title: "What people said [em]after night five.[/em]",
-    desc: "A small sample from the private cohort the program was built with. Names abbreviated for privacy. Full reviews available on request.",
+    desc: "A small sample from the private cohort SLEAP was built with. Names abbreviated for privacy. Full reviews available on request.",
     items: [
       { quote: "I went into this not believing five nights could move anything. By night three I was asleep before 11. By night five I had stopped checking my phone in bed. I have not paid for sleep advice that worked before.", name: "A.M.", role: "Founder, B2B SaaS · Bengaluru" },
       { quote: "The morning check-in was the thing. Knowing someone would ask me how the night went made me actually do the practice. By the third evening it was the part of the day I looked forward to.", name: "R.K.", role: "Product Lead · Gurugram" },
@@ -1030,14 +1045,15 @@ const CONTENT = {
   faq: {
     eyebrow: "Honest Answers",
     title: "What you may be [em]wondering.[/em]",
-    desc: "If you have a question that is not answered here, write to us before you enroll for the reset program. We would rather talk you out of it than disappoint you.",
+    desc: "If you have a question that is not answered here, write to us before you enroll for SLEAP. We would rather talk you out of it than disappoint you.",
     items: [
-      { q: "Do I need to download an app?",                       a: "No. The entire program runs on WhatsApp. The audio notes play inline. The reading is in the chat. The morning check-in is a single reply. We chose WhatsApp specifically so there is nothing between you and beginning tonight." },
+      { q: "Do I need to download an app?",                       a: "No. All of SLEAP runs on WhatsApp. The audio notes play inline. The reading is in the chat. The morning check-in is a single reply. We chose WhatsApp specifically so there is nothing between you and beginning tonight." },
       { q: "What if I miss a night?",                             a: "Pick up the next evening. The five nights work as a sequence but the gaps do not undo the work. You also keep the messages forever, so you can replay any night, anytime." },
       { q: "Is this a substitute for treating insomnia?",         a: "No. If you have been diagnosed with clinical insomnia, sleep apnoea, or another sleep disorder, this is a complement to your treatment, not a replacement. We say so in plain language in the welcome message." },
       { q: "What language is it in?",                             a: "Audio notes and visual cues are available in English only. The written content is in English. We are working on other languages for the next cohort. Tell us your preference at enrollment." },
       { q: "What if it does not work for me?",                    a: "Full refund within 14 days of starting if the program has not measurably moved your sleep. No questions, no friction, no form. One WhatsApp message and the money is back." },
-      { q: "Why charge so low?",                                  a: "Deep rest should not feel like a luxury available only to a few people paying premium wellness prices. The ₹499 is not the value of the transformation. It is the commitment fee to help you actually show up for the next 5 nights. And honestly, if this reset program genuinely helps you wake up calmer, lighter, and deeply rested again, you can pay it forward for someone who you think needs it." }
+      { q: "Why charge so low?",                                  a: "Deep rest should not feel like a luxury available only to a few people paying premium wellness prices. The ₹499 is not the value of the transformation. It is the commitment fee to help you actually show up for the next 5 nights. And honestly, if SLEAP genuinely helps you wake up calmer, lighter, and deeply rested again, you can pay it forward for someone who you think needs it." },
+      { q: "Why the name SLEAP?",                                 a: "Sleep, with a leap in the middle. It is what the five nights actually are: not a slow grind toward better habits, but a short, deliberate jump from the way you sleep now to the way your body already knows how to. Five evenings, one leap." }
     ],
     closingNote: "We would rather talk you out of it than disappoint you.",
     cta: { label: "Send us your query", href: "#enrol" }
@@ -1046,16 +1062,16 @@ const CONTENT = {
   finalCta: {
     eyebrow: "Begin tonight",
     title: "Your next deep sleep night is [em]five evenings away.[/em]",
-    lede: "Enroll for the next upcoming batch. The first message lands on your WhatsApp at 8:00pm on a Monday.",
+    lede: "Enroll for the next upcoming batch. Your first SLEAP message lands on your WhatsApp at 8:00pm on 1st September 2026.",
     cta: { label: "Start your reset", href: "#enrol" }
   },
 
   enrol: {
     eyebrow: "Reserve Your Spot",
     title: "Help us help you [em]sleep.[/em]",
-    desc: "Share a few details. We respond on WhatsApp within 24 hours with a starter plan and the payment link for your chosen batch. You only pay after the spot is confirmed.",
+    desc: "Share a few details and take the leap. We respond on WhatsApp within 24 hours with a starter plan and the payment link for your chosen SLEAP batch. You only pay after the spot is confirmed.",
     whatsappNumber: "917406226789",
-    messagePrefix: "*New Query: 5-Day Deep Sleep Reset*",
+    messagePrefix: "*New Query: SLEAP · 5-Day Guided Shutdown Ritual*",
     submitLabel: "Help me Reset my Sleep",
     fields: {
       nameLabel: "Full Name",
@@ -1075,24 +1091,24 @@ const CONTENT = {
       ],
       batchLabel: "Choose your batch",
       batches: [
-        "1st June (Monday) – 5th June (Friday) 2026",
-        "15th June (Monday) – 19th June (Friday) 2026",
-        "29th June (Monday) – 3rd July (Friday) 2026",
-        "13th July (Monday) – 17th July (Friday) 2026"
+        "1st September (Tuesday) – 5th September (Saturday) 2026",
+        "15th September (Tuesday) – 19th September (Saturday) 2026",
+        "29th September (Tuesday) – 3rd October (Saturday) 2026",
+        "13th October (Tuesday) – 17th October (Saturday) 2026"
       ],
       challengeLabel: "Your current sleep challenge",
       challengeHint: "Select up to 3 that describe you most",
       challenges: ["Racing thoughts at night","Waking at 3am","Can’t fall asleep","Wake up exhausted","Phone-before-bed loop","Late-night anxiety"]
     },
     nudges: [
-      "You will receive a payment link over WhatsApp to join the batch",
+      "You will receive a payment link over WhatsApp to join your SLEAP batch",
       "Limited spots available","Filling fast","No signup required",
       "100% money-back guarantee","No questions asked"
     ]
   },
 
   footer: {
-    blurb: "A small, careful sleep program built to help you rest better. Delivered on WhatsApp. Five nights to your deepest sleep, or your money back.",
+    blurb: "SLEAP is a guided shutdown ritual built to help you rest better. Delivered on WhatsApp. Five nights to your deepest sleep, or your money back. sleap.in",
     columns: [
       { heading: "Program", links: [
         { label: "What you get",   href: "#expect" },
@@ -1112,7 +1128,7 @@ const CONTENT = {
         { label: "Refund policy",  href: "#" }
       ]}
     ],
-    copyright: "© Finding Deep Sleep · 2026",
+    copyright: "© SLEAP · sleap.in · 2026",
     locator: "Made with ❤ in Bengaluru"
   }
 };
@@ -1147,8 +1163,8 @@ const CONTENT = {
     <nav class="top">
       <div class="inner">
         <a href="#" class="wordmark" style="text-decoration:none;">
-          <img src="${esc(b.logoUrl)}" alt="${esc(b.name)}" class="logo-img">
-          <span class="loc">${esc(b.locator)}</span>
+          <span class="logo-text">${esc(b.name)}</span>
+          <span class="loc">${esc(b.tagline)}</span>
         </a>
         <div class="nav-links">
           ${b.navLinks.map(l => `<a href="${esc(l.href)}">${esc(l.label)}</a>`).join('')}
@@ -1534,7 +1550,10 @@ const CONTENT = {
       <div class="container">
         <div class="grid">
           <div class="brand">
-            <img src="${esc(brand.logoUrl)}" alt="${esc(brand.name)}" class="logo-img-footer">
+            <div class="footer-wordmark">
+              <div class="fw-name">${esc(brand.name)}</div>
+              <div class="fw-tag">${esc(brand.tagline)}</div>
+            </div>
             <p>${esc(f.blurb)}</p>
           </div>
           ${f.columns.map(col => `
@@ -1573,7 +1592,7 @@ const CONTENT = {
     renderFooter(CONTENT.footer, CONTENT.brand)
   ].join('');
 
-  document.title = CONTENT.brand.name + ' — 5-Day Deep Sleep Reset Challenge';
+  document.title = CONTENT.brand.name + ' — ' + CONTENT.brand.tagline + ' · 5-Day Guided Shutdown Ritual';
 
   // Tabs
   const tabs = document.querySelectorAll('#expectTabs .tab');
@@ -1655,7 +1674,7 @@ const CONTENT = {
     const lines = [
       CONTENT.enrol.messagePrefix,
       '',
-      'Hi! I would like to enrol in the program.',
+      'Hi! I would like to take the leap and enrol in SLEAP.',
       '',
       '*My Details:*',
       '• Full Name: ' + fullName,
