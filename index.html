@@ -2,1702 +2,1290 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>SLEAP — Your Leap Into Deep Sleep · 5-Day Guided Shutdown Ritual</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="description" content="The SLEAP Playbook: how 100 of Bengaluru's most accomplished people switch off, sleep, wake and recharge. Join the waitlist.">
+<meta property="og:title" content="SLEAP Playbook · How 100 of Bengaluru's best switch off">
+<meta property="og:description" content="The private rituals that actually work, decoded. Join the waitlist.">
+<meta property="og:url" content="https://sleap.in">
+<title>SLEAP Playbook</title>
+<meta name="claude:viewport-fit-sides" content="cover">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;1,9..144,300;1,9..144,400&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
+  /* Layout: editorial long-scroll field guide. Ivory day sections alternate with ink night bands.
+     Type system (strict): Fraunces = headings, quotes, big numbers only. Inter = every line of reading text.
+     Reading text never below 16px; body 18px with generous leading, sized for a 50-year-old reader. */
   :root {
     --ivory: #F2EDE3;
     --cream: #EDE5D5;
     --bone: #E8DFCB;
-    --soft-grey: #E8E6E2;
-    --mist: #DCDAD5;
+    --paper: #FBF8F2;
     --ink: #1A1A1F;
-    --ink-soft: #3A3A42;
-    --ink-mute: #6B6B70;
-    --line: #D8CFBC;
-    --line-light: #E8E1CD;
+    --ink-soft: #2E2E36;
+    --ink-mute: #55555D;
+    --line: #D3C9B4;
     --blue: #002FE0;
     --blue-deep: #001FAB;
     --orange: #FF5500;
     --orange-deep: #E64900;
+    --night: #070A24;
+    --glow: #FFB27A;
+    --on-dark: #F2EDE3;
+    --on-dark-soft: rgba(242,237,227,0.86);
+    --on-dark-mute: rgba(242,237,227,0.66);
+    --f-display: 'Fraunces', Georgia, 'Times New Roman', serif;
+    --f-body: 'Inter', -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    --fs-body: 18px;
+    --fs-lede: clamp(19px, 1.7vw, 22px);
+    --fs-small: 16px;
+    --fs-label: 12.5px;
+    color-scheme: light;
   }
 
   * { margin: 0; padding: 0; box-sizing: border-box; }
+  [hidden] { display: none !important; }
   html { scroll-behavior: smooth; }
   body {
-    font-family: 'Inter', sans-serif;
-    background: var(--ivory);
-    color: var(--ink);
-    font-weight: 400;
-    line-height: 1.55;
-    font-size: 16px;
-    -webkit-font-smoothing: antialiased;
+    font-family: var(--f-body); background: var(--ivory); color: var(--ink);
+    line-height: 1.65; font-size: var(--fs-body);
+    -webkit-font-smoothing: antialiased; overflow-x: hidden;
   }
-
-  .container { max-width: 1240px; margin: 0 auto; padding: 0 32px; }
-
-  h1, h2, h3, h4 {
-    font-family: 'Fraunces', serif;
-    font-weight: 300;
-    letter-spacing: -0.02em;
-    line-height: 1.05;
-    color: var(--ink);
+  body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px); z-index: 120; background: var(--ivory); }
+  body::after {
+    content: ""; position: fixed; inset: -50%; z-index: 200; pointer-events: none; opacity: 0.045;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/></filter><rect width='100%' height='100%' filter='url(%23n)' fill='%23000'/></svg>");
+    animation: grain 1.2s steps(4) infinite;
   }
-  h1 { font-size: clamp(48px, 7vw, 96px); }
-  h2 { font-size: clamp(36px, 5vw, 64px); }
-  h3 { font-size: clamp(24px, 3vw, 36px); }
+  @keyframes grain { 0%{transform:translate(0,0)} 25%{transform:translate(-3%,2%)} 50%{transform:translate(2%,-3%)} 75%{transform:translate(-2%,-1%)} 100%{transform:translate(0,0)} }
+  a { color: inherit; }
+  :focus-visible { outline: 2px solid var(--orange); outline-offset: 3px; border-radius: 2px; }
 
-  .eyebrow {
-    font-family: 'Inter', sans-serif;
-    font-size: 11px; font-weight: 500;
-    letter-spacing: 0.18em; text-transform: uppercase;
-    color: var(--ink-mute);
-  }
+  .container { max-width: 1240px; margin: 0 auto; padding-left: max(32px, env(safe-area-inset-left, 0px)); padding-right: max(32px, env(safe-area-inset-right, 0px)); }
 
-  .lede {
-    font-family: 'Fraunces', serif;
-    font-weight: 300;
-    font-size: clamp(20px, 2vw, 24px);
-    line-height: 1.4;
-    color: var(--ink-soft);
-  }
+  h1, h2, h3, h4 { font-family: var(--f-display); font-weight: 300; letter-spacing: -0.02em; line-height: 1.06; color: var(--ink); text-wrap: balance; }
+  h1 { font-size: clamp(44px, 6.4vw, 90px); }
+  h2 { font-size: clamp(36px, 4.6vw, 60px); }
+  h3 { font-size: clamp(24px, 2.4vw, 30px); font-weight: 400; line-height: 1.2; }
+  h4 { font-size: 23px; font-weight: 400; line-height: 1.25; letter-spacing: -0.01em; }
+  p { text-wrap: pretty; }
 
+  .eyebrow { font-size: var(--fs-label); font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; color: var(--ink-mute); display: inline-flex; align-items: center; gap: 10px; }
+  .lede { font-size: var(--fs-lede); line-height: 1.6; color: var(--ink-soft); }
   em.accent { font-style: italic; font-weight: 300; color: var(--blue); }
+  .on-dark em.accent { color: var(--orange); }
 
-  /* Nav */
-  nav.top {
-    position: sticky; top: 0; z-index: 100;
-    background: rgba(242, 237, 227, 0.92);
-    backdrop-filter: blur(12px);
-    border-bottom: 1px solid var(--line);
-  }
-  nav.top .inner {
-    max-width: 1240px; margin: 0 auto; padding: 16px 32px;
-    display: flex; align-items: center; justify-content: space-between;
-  }
-  /* Wordmark logo (image) — 50% larger than before */
-  .wordmark { display: flex; align-items: baseline; gap: 14px; line-height: 1; }
-  .wordmark .logo-text {
-    font-family: 'Fraunces', serif; font-weight: 400;
-    font-size: 38px; letter-spacing: 0.10em;
-    color: var(--ink); text-transform: uppercase;
-  }
-  .wordmark .loc {
-    color: var(--ink-mute); font-size: 10px;
-    letter-spacing: 0.18em; text-transform: uppercase;
-    font-family: 'Inter', sans-serif; font-weight: 500;
-  }
-  @media (max-width: 600px) {
-    .wordmark .logo-text { font-size: 28px; }
-    .wordmark .loc { display: none; }
-  }
+  .live-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--orange); animation: pulse 2s infinite; }
+  @keyframes pulse { 0%{box-shadow:0 0 0 0 rgba(255,85,0,.55)} 70%{box-shadow:0 0 0 10px rgba(255,85,0,0)} 100%{box-shadow:0 0 0 0 rgba(255,85,0,0)} }
+  @keyframes rise { from { opacity: 0; transform: translateY(26px); } to { opacity: 1; transform: none; } }
+  .reveal.in { animation: rise .9s cubic-bezier(.2,.7,.2,1) both; }
 
-  .nav-links { display: flex; gap: 30px; align-items: center; }
-  .nav-links a {
-    color: var(--ink-soft); text-decoration: none;
-    font-size: 14px; font-weight: 400;
-  }
-  .nav-links a:hover { color: var(--ink); }
-  .nav-links a.btn { color: #fff !important; }
-  .nav-links a.btn:hover { color: #fff !important; }
-
-  /* Buttons */
-  .btn {
-    display: inline-block; padding: 14px 28px;
-    background: var(--blue); color: #fff;
-    text-decoration: none; border-radius: 4px;
-    font-size: 14px; font-weight: 500; letter-spacing: 0.04em;
-    transition: background 0.2s ease;
-    cursor: pointer; border: none;
-    font-family: 'Inter', sans-serif;
-  }
-  a.btn:link, a.btn:visited, a.btn:hover, a.btn:active { color: #fff; text-decoration: none; }
-  .btn:hover { background: var(--blue-deep); }
-
-  .btn-ghost { background: transparent; color: var(--ink); border: 1px solid var(--ink); }
-  a.btn.btn-ghost:link, a.btn.btn-ghost:visited { color: var(--ink); }
-  .btn-ghost:hover { background: var(--ink); color: var(--ivory); }
-  a.btn.btn-ghost:hover { color: var(--ivory); }
-
+  .btn { display: inline-flex; align-items: center; gap: 10px; padding: 16px 30px; border-radius: 4px; border: 1px solid transparent; font-family: var(--f-body); font-size: 16px; font-weight: 600; letter-spacing: 0.02em; text-decoration: none; cursor: pointer; transition: background .2s, color .2s, box-shadow .2s; }
+  .btn .arrow { transition: transform .25s ease; }
+  .btn:hover .arrow { transform: translateX(4px); }
   .btn-orange { background: var(--orange); color: #fff; }
-  a.btn.btn-orange:link, a.btn.btn-orange:visited, a.btn.btn-orange:hover { color: #fff; }
-  .btn-orange:hover { background: var(--orange-deep); }
+  .btn-orange:hover { background: var(--orange-deep); box-shadow: 0 10px 30px -10px rgba(255,85,0,.6); }
+  .btn-ghost { background: transparent; color: var(--ink); border-color: var(--ink); }
+  .btn-ghost:hover { background: var(--ink); color: var(--ivory); }
 
-  /* Hero */
-  .hero { padding: 80px 0 100px; }
-  .hero .grid {
-    display: grid; grid-template-columns: 1.05fr 1fr;
-    gap: 80px; align-items: center;
-  }
-  .hero .copy { padding-right: 20px; }
-  .hero h1 { margin: 28px 0 32px; }
-  .hero .lede { margin-bottom: 40px; max-width: 480px; }
-  .hero .cta-row { display: flex; gap: 16px; align-items: center; margin-bottom: 24px; flex-wrap: wrap; }
-  .hero .price-note { font-size: 13px; color: var(--ink-mute); }
-  .hero .image {
-    position: relative; aspect-ratio: 4/5;
-    overflow: hidden; border-radius: 4px; background: var(--cream);
-  }
-  .hero .image img {
-    width: 100%; height: 100%; object-fit: cover;
-    filter: contrast(0.95) brightness(0.92);
-  }
-  .hero .image-caption {
-    position: absolute; bottom: 24px; left: 24px; right: 24px;
-    color: var(--ivory); font-family: 'Fraunces', serif;
-    font-size: 18px; font-style: italic; font-weight: 300;
-    text-shadow: 0 1px 12px rgba(0,0,0,0.5);
-  }
+  nav.top { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 100; background: rgba(242,237,227,.92); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border-bottom: 1px solid var(--line); }
+  nav.top .inner { max-width: 1240px; margin: 0 auto; padding-block: 14px; padding-left: max(32px, env(safe-area-inset-left, 0px)); padding-right: max(32px, env(safe-area-inset-right, 0px)); display: flex; align-items: center; justify-content: space-between; gap: 16px; }
+  .wordmark { display: flex; align-items: baseline; gap: 14px; text-decoration: none; }
+  .wordmark .logo-text { font-family: var(--f-display); font-size: 34px; letter-spacing: .1em; line-height: 1; }
+  .wordmark .loc { font-size: 11px; letter-spacing: .16em; text-transform: uppercase; color: var(--ink-mute); font-weight: 600; }
+  .nav-links { display: flex; gap: 28px; align-items: center; }
+  .nav-links a:not(.btn) { color: var(--ink-soft); text-decoration: none; font-size: 16px; position: relative; }
+  .nav-links a:not(.btn)::after { content: ""; position: absolute; left: 0; right: 0; bottom: -4px; height: 1px; background: var(--orange); transform: scaleX(0); transform-origin: left; transition: transform .3s; }
+  .nav-links a:not(.btn):hover::after { transform: scaleX(1); }
+  .nav-links .btn { padding: 12px 20px; font-size: 15px; }
 
-  /* Trust strip */
-  .trust {
-    border-top: 1px solid var(--line);
-    border-bottom: 1px solid var(--line);
-    padding: 28px 0; background: var(--cream);
-  }
-  .trust .row {
-    display: flex; justify-content: space-between;
-    align-items: center; flex-wrap: wrap; gap: 24px;
-  }
-  .trust .item {
-    font-family: 'Fraunces', serif; font-weight: 300;
-    font-size: 15px; color: var(--ink-soft); font-style: italic;
-  }
-  .trust .item strong {
-    font-style: normal; font-weight: 400;
-    color: var(--ink); margin-right: 6px;
-  }
+  .hero { padding-block: 72px 96px; }
+  .hero .grid { display: grid; grid-template-columns: 1.05fr 1fr; gap: 72px; align-items: center; }
+  .hero .copy { min-width: 0; }
+  .hero h1 { margin: 26px 0 30px; animation: rise 1s cubic-bezier(.2,.7,.2,1) both; }
+  .hero .lede { max-width: 540px; margin-bottom: 38px; animation: rise 1s .2s cubic-bezier(.2,.7,.2,1) both; }
+  .hero .cta-row { display: flex; gap: 14px; flex-wrap: wrap; margin-bottom: 22px; animation: rise 1s .35s cubic-bezier(.2,.7,.2,1) both; }
+  .hero .note { font-size: 15px; color: var(--ink-mute); display: flex; gap: 6px 18px; flex-wrap: wrap; }
+  .hero .note span::before { content: "·"; color: var(--orange); margin-right: 8px; font-weight: 700; }
+  .hero .note span:first-child::before { display: none; }
+  .sky-card { position: relative; aspect-ratio: 4/5; max-width: 100%; border-radius: 4px; overflow: hidden; background: var(--night); box-shadow: 0 40px 80px -40px rgba(7,10,36,.6); }
+  .sky-card canvas { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
+  .sky-card::after { content: ""; position: absolute; inset: auto 0 0 0; height: 36%; background: linear-gradient(180deg, transparent, rgba(5,7,28,.94)); pointer-events: none; }
+  .sky-card .clock { position: absolute; top: 22px; left: 22px; right: 22px; display: flex; justify-content: space-between; align-items: baseline; color: var(--on-dark); font-size: 11px; letter-spacing: .18em; text-transform: uppercase; font-weight: 600; z-index: 2; }
+  .sky-card .clock .time { display: block; font-family: var(--f-display); font-size: 32px; letter-spacing: 0; text-transform: none; font-weight: 300; font-variant-numeric: tabular-nums; margin-top: 4px; }
+  .sky-card .lit { color: var(--glow); }
+  .sky-card .caption { position: absolute; left: 22px; right: 22px; bottom: 22px; z-index: 2; color: var(--on-dark); font-family: var(--f-display); font-style: italic; font-weight: 300; font-size: 20px; line-height: 1.35; }
 
-  /* Countdown */
-  .countdown-band { background: var(--ink); color: var(--ivory); padding: 28px 0; }
-  .countdown-band .row {
-    display: flex; align-items: center; justify-content: space-between;
-    gap: 32px; flex-wrap: wrap;
-  }
-  .countdown-band .label { display: flex; flex-direction: column; gap: 4px; }
-  .countdown-band .label .top {
-    font-size: 11px; letter-spacing: 0.18em;
-    text-transform: uppercase; color: rgba(242,237,227,0.65);
-    font-weight: 500;
-  }
-  .countdown-band .label .when {
-    font-family: 'Fraunces', serif; font-size: 22px;
-    font-weight: 300; color: var(--ivory); letter-spacing: -0.01em;
-  }
-  .countdown-band .label .when em { color: var(--orange); font-style: italic; }
-  .countdown-band .timer { display: flex; gap: 14px; }
-  .countdown-band .unit {
-    display: flex; flex-direction: column; align-items: center; min-width: 64px;
-  }
-  .countdown-band .unit .num {
-    font-family: 'Fraunces', serif;
-    font-size: 36px; font-weight: 300;
-    color: var(--orange); line-height: 1;
-    font-variant-numeric: tabular-nums;
-  }
-  .countdown-band .unit .key {
-    font-size: 10px; letter-spacing: 0.18em;
-    text-transform: uppercase; color: rgba(242,237,227,0.6);
-    margin-top: 6px; font-weight: 500;
-  }
-  .countdown-band .cta-btn { white-space: nowrap; }
+  .marquee { background: var(--ink); color: var(--on-dark); overflow: hidden; padding-block: 18px; }
+  .marquee .track { display: flex; width: max-content; animation: scroll 40s linear infinite; }
+  .marquee .track span { font-family: var(--f-display); font-style: italic; font-weight: 300; font-size: 24px; padding: 0 22px; white-space: nowrap; display: inline-flex; align-items: center; gap: 44px; }
+  .marquee .track span::after { content: ""; width: 7px; height: 7px; border-radius: 50%; background: var(--orange); }
+  @keyframes scroll { to { transform: translateX(-50%); } }
 
-  section { padding: 120px 0; }
-  .section-head {
-    display: grid; grid-template-columns: 1fr 1.4fr;
-    gap: 80px; margin-bottom: 72px; align-items: start;
-  }
+  .trust { background: var(--cream); border-bottom: 1px solid var(--line); padding-block: 32px; }
+  .trust .row { display: grid; grid-template-columns: repeat(4, 1fr); gap: 28px; }
+  .trust .item { font-size: var(--fs-small); color: var(--ink-mute); line-height: 1.5; }
+  .trust .item strong { display: block; color: var(--ink); font-weight: 600; margin-bottom: 2px; }
+
+  .band { background: var(--ink); color: var(--on-dark); padding-block: 34px; }
+  .band .row { display: grid; grid-template-columns: auto 1fr auto; gap: 40px; align-items: center; }
+  .band .top { font-size: var(--fs-label); letter-spacing: .16em; text-transform: uppercase; color: var(--on-dark-mute); font-weight: 600; }
+  .band .when { font-family: var(--f-display); font-size: 25px; font-weight: 300; margin-top: 6px; }
+  .band .mid { display: flex; align-items: center; justify-content: center; gap: 22px; }
+  .band .mid .line { font-family: var(--f-display); font-style: italic; font-weight: 300; font-size: clamp(22px, 2.4vw, 32px); }
+  .band .mid .line em { color: var(--orange); }
+  .moon { flex: none; width: 46px; height: 46px; border-radius: 50%; background: var(--ivory); position: relative; overflow: hidden; box-shadow: 0 0 24px rgba(242,237,227,.35); }
+  .moon::after { content: ""; position: absolute; inset: -1px; border-radius: 50%; background: var(--ink); animation: phase 9s ease-in-out infinite; }
+  @keyframes phase { 0%{transform:translateX(-105%)} 50%{transform:translateX(0)} 100%{transform:translateX(105%)} }
+
+  section { padding-block: 120px; }
+  .section-head { display: grid; grid-template-columns: 1fr 1.2fr; gap: 72px; margin-bottom: 64px; align-items: end; }
+  .section-head > * { min-width: 0; }
   .section-head .title h2 { margin-top: 18px; }
-  .section-head .desc { padding-top: 18px; }
 
-  /* WHAT YOU GET — tabbed */
+  .idea { background: var(--ivory); }
+  .gap-grid { display: grid; grid-template-columns: 1fr 1.2fr; gap: 24px; }
+  .gap-card { border: 1px solid var(--line); border-radius: 4px; padding: 40px; background: var(--paper); min-width: 0; }
+  .gap-card.dark { background: var(--night); color: var(--on-dark); border-color: var(--night); position: relative; overflow: hidden; }
+  .gap-card .eyebrow { margin-bottom: 22px; }
+  .gap-card.dark .eyebrow { color: var(--on-dark-mute); }
+  .advice { list-style: none; }
+  .advice li { font-size: 20px; color: var(--ink-mute); padding: 12px 0; border-bottom: 1px dashed var(--line); }
+  .advice li span { position: relative; }
+  .advice li span::after { content: ""; position: absolute; left: -2px; right: -2px; top: 55%; height: 2px; background: var(--orange); transform: scaleX(0); transform-origin: left; animation: strike 7s ease-in-out infinite; }
+  .advice li:nth-child(2) span::after { animation-delay: .5s; } .advice li:nth-child(3) span::after { animation-delay: 1s; }
+  .advice li:nth-child(4) span::after { animation-delay: 1.5s; } .advice li:nth-child(5) span::after { animation-delay: 2s; }
+  @keyframes strike { 0%,8%{transform:scaleX(0)} 22%,80%{transform:scaleX(1)} 92%,100%{transform:scaleX(0)} }
+  .listening { list-style: none; position: relative; z-index: 1; }
+  .listening li { display: grid; grid-template-columns: 1fr auto; gap: 18px; align-items: baseline; padding: 15px 0; border-bottom: 1px solid rgba(242,237,227,.14); font-size: 19px; line-height: 1.45; color: var(--on-dark-soft); animation: glowline 10s ease-in-out infinite; }
+  .listening li:nth-child(2){animation-delay:2s} .listening li:nth-child(3){animation-delay:4s} .listening li:nth-child(4){animation-delay:6s} .listening li:nth-child(5){animation-delay:8s}
+  @keyframes glowline { 0%,100%{color:var(--on-dark-soft)} 8%,16%{color:#fff;text-shadow:0 0 18px rgba(255,178,122,.55)} 24%{color:var(--on-dark-soft);text-shadow:none} }
+  .tag { font-size: 11px; letter-spacing: .14em; text-transform: uppercase; font-weight: 600; padding: 5px 10px; border-radius: 999px; border: 1px solid; white-space: nowrap; }
+  .t-sleep { border-color: rgba(140,160,255,.6); color: #C2CBFF; }
+  .t-recharge { border-color: rgba(255,178,122,.6); color: var(--glow); }
+  .t-off { border-color: rgba(255,85,0,.7); color: #FFA070; }
+  .t-wake { border-color: rgba(255,226,160,.6); color: #FFE2A0; }
+  .fineprint { font-size: 14px; color: var(--on-dark-mute); margin-top: 20px; position: relative; z-index: 1; }
+  .halo { position: absolute; width: 380px; height: 380px; right: -140px; top: -160px; border-radius: 50%; background: radial-gradient(circle, rgba(0,47,224,.55), transparent 65%); animation: drift 14s ease-in-out infinite alternate; }
+  @keyframes drift { to { transform: translate(-60px, 80px) scale(1.15); } }
+
+  .hundred { background: #fff; }
+  .h-grid { display: grid; grid-template-columns: 0.85fr 1.15fr; gap: 56px; align-items: start; }
+  .h-grid > * { min-width: 0; }
+  .dots-wrap { background: var(--night); border-radius: 4px; padding: 40px; color: var(--on-dark); position: sticky; top: 110px; overflow: hidden; }
+  .dots-head { display: flex; justify-content: space-between; align-items: baseline; gap: 16px; flex-wrap: wrap; margin-bottom: 26px; }
+  .dots-head .big { font-family: var(--f-display); font-weight: 300; font-size: 72px; line-height: 1; }
+  .dots-head .small { font-size: var(--fs-label); letter-spacing: .16em; text-transform: uppercase; color: var(--on-dark-mute); font-weight: 600; }
+  .dots { display: grid; grid-template-columns: repeat(10, 1fr); gap: 11px; }
+  .dot { aspect-ratio: 1; border-radius: 50%; background: rgba(242,237,227,.12); transition: background .8s, box-shadow .8s, transform .8s; }
+  .dot.lit { background: #C2CBFF; box-shadow: 0 0 14px rgba(185,195,255,.8); transform: scale(1.1); }
+  .dot.hot { background: var(--orange); box-shadow: 0 0 18px rgba(255,85,0,.8); transform: scale(1.15); }
+  .dots-cap { margin-top: 24px; font-size: var(--fs-small); color: var(--on-dark-soft); }
+  .dots-cap strong { color: #fff; font-weight: 600; }
+  .seat { margin-top: 18px; padding-top: 18px; border-top: 1px solid rgba(242,237,227,.15); display: flex; justify-content: space-between; align-items: baseline; gap: 12px; font-size: var(--fs-small); }
+  .seat .n { color: var(--orange); font-variant-numeric: tabular-nums; font-weight: 600; }
+  .seat .r { font-family: var(--f-display); font-style: italic; font-size: 20px; transition: opacity .35s; }
+  .whys { border-top: 1px solid var(--line); }
+  .why { display: grid; grid-template-columns: 170px 1fr; gap: 32px; padding: 36px 0; border-bottom: 1px solid var(--line); }
+  .why .stat { font-family: var(--f-display); font-weight: 300; font-size: 56px; line-height: 1; color: var(--blue); letter-spacing: -0.02em; }
+  .why .stat small { display: block; font-family: var(--f-body); font-size: 14px; letter-spacing: 0; line-height: 1.45; color: var(--ink-mute); margin-top: 12px; }
+  .why .q { font-size: var(--fs-label); letter-spacing: .16em; text-transform: uppercase; color: var(--orange); font-weight: 600; margin-bottom: 10px; }
+  .why h3 { margin-bottom: 12px; }
+  .why p { color: var(--ink-soft); }
+  .roles { margin-top: 56px; overflow: hidden; mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent); -webkit-mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent); }
+  .roles .track { display: flex; gap: 12px; width: max-content; animation: scroll 50s linear infinite; }
+  .roles span { font-size: 16px; padding: 10px 18px; border: 1px solid var(--line); border-radius: 999px; color: var(--ink-soft); white-space: nowrap; background: var(--ivory); }
+
   .expect { background: var(--bone); }
-  .tabs { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-bottom: 32px; }
-  .tab {
-    display: flex; align-items: center; justify-content: space-between;
-    padding: 18px 24px; background: transparent;
-    border: 1px solid var(--ink); border-radius: 999px;
-    cursor: pointer; transition: all 0.2s ease;
-    color: var(--ink); font-family: 'Inter', sans-serif;
-    font-size: 15px; font-weight: 500; text-align: left;
-    letter-spacing: 0.01em;
-  }
-  .tab .tab-left { display: flex; align-items: center; gap: 16px; }
-  .tab .tab-num {
-    font-family: 'Fraunces', serif; font-weight: 400;
-    font-size: 14px; color: var(--ink-mute); letter-spacing: 0.04em;
-  }
-  .tab .tab-mark {
-    font-family: 'Fraunces', serif; font-size: 24px;
-    font-weight: 300; color: var(--ink-mute); line-height: 1;
-  }
+  .loopbar { margin-bottom: 26px; }
+  .loopbar .bar { display: grid; grid-template-columns: 3fr 8fr 3fr 10fr; gap: 4px; height: 14px; }
+  .loopbar .seg { border-radius: 3px; background: rgba(26,26,31,.12); cursor: pointer; position: relative; overflow: hidden; border: 0; transition: background .3s; }
+  .loopbar .seg.on { background: var(--orange); }
+  .loopbar .seg.on::after { content: ""; position: absolute; inset: 0; background: linear-gradient(90deg, transparent, rgba(255,255,255,.55), transparent); animation: sweep 2.4s linear infinite; }
+  @keyframes sweep { from { transform: translateX(-100%); } to { transform: translateX(100%); } }
+  .loopbar .ticks { display: grid; grid-template-columns: 3fr 8fr 3fr 10fr; gap: 4px; margin-top: 8px; font-size: 13px; color: var(--ink-mute); font-variant-numeric: tabular-nums; }
+  .tabs { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-bottom: 26px; }
+  .tab { display: flex; flex-direction: column; align-items: flex-start; gap: 4px; padding: 16px 22px; background: transparent; border: 1px solid var(--ink); border-radius: 18px; cursor: pointer; color: var(--ink); font-family: var(--f-body); text-align: left; transition: background .25s, color .25s, border-color .25s; }
+  .tab .tn { font-size: 13px; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; color: var(--ink-mute); }
+  .tab .tl { font-size: 19px; font-weight: 600; }
+  .tab .tt { font-size: 15px; color: var(--ink-mute); }
   .tab:hover { background: var(--cream); }
-  .tab.active { background: var(--orange); color: #fff; border-color: var(--orange); }
-  .tab.active .tab-num, .tab.active .tab-mark { color: rgba(255,255,255,0.85); }
+  .tab[aria-selected="true"] { background: var(--orange); border-color: var(--orange); color: #fff; }
+  .tab[aria-selected="true"] .tn, .tab[aria-selected="true"] .tt { color: rgba(255,255,255,.9); }
+  .tab-panel { display: grid; grid-template-columns: 1fr 1.15fr; border: 1px solid var(--line); border-radius: 4px; overflow: hidden; background: var(--ivory); }
+  .tab-panel.in .tab-content { animation: rise .6s cubic-bezier(.2,.7,.2,1) both; }
+  .tab-art { min-height: 560px; position: relative; overflow: hidden; }
+  .tab-art svg { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
+  .chip-time { position: absolute; top: 22px; left: 22px; z-index: 2; display: inline-flex; gap: 10px; align-items: center; padding: 8px 14px; border-radius: 999px; background: rgba(7,10,36,.65); color: var(--on-dark); font-size: 14px; font-weight: 500; backdrop-filter: blur(6px); }
+  .chip-time i { width: 7px; height: 7px; border-radius: 50%; background: var(--orange); animation: pulse 2s infinite; }
+  .tab-content { padding: 44px 52px; display: flex; flex-direction: column; min-width: 0; }
+  .tab-content h3 { font-size: clamp(28px, 2.8vw, 36px); margin: 12px 0; }
+  .tab-content .sub { color: var(--ink-soft); margin-bottom: 24px; }
+  .ask { background: var(--night); color: var(--on-dark); border-radius: 4px; padding: 22px 24px; margin-bottom: 22px; }
+  .ask .eyebrow { color: var(--glow); margin-bottom: 8px; }
+  .ask p { font-family: var(--f-display); font-style: italic; font-weight: 300; font-size: 23px; line-height: 1.35; }
+  .tab-content .row { display: grid; grid-template-columns: 130px 1fr; gap: 24px; padding: 16px 0; border-top: 1px dashed var(--line); }
+  .tab-content .label { font-size: var(--fs-label); letter-spacing: .14em; text-transform: uppercase; color: var(--ink-mute); font-weight: 600; padding-top: 4px; }
+  .tab-content .value { min-width: 0; color: var(--ink-soft); }
+  .tab-content ul { list-style: none; }
+  .tab-content ul li { position: relative; padding-left: 22px; margin-bottom: 6px; }
+  .tab-content ul li::before { content: ""; position: absolute; left: 0; top: 11px; width: 8px; height: 8px; background: var(--orange); border-radius: 50%; }
+  .tab-content .keep { font-weight: 600; color: var(--ink); }
+  .tab-content .tab-cta { margin-top: 24px; }
+  .tab-content .tab-cta .btn { width: 100%; justify-content: center; }
 
-  .tab-panel {
-    display: grid; grid-template-columns: 1fr 1.1fr;
-    border: 1px solid var(--line); border-radius: 4px;
-    overflow: hidden; background: var(--ivory);
-  }
-  .tab-image { background: var(--cream); overflow: hidden; min-height: 480px; }
-  .tab-image img { width: 100%; height: 100%; object-fit: cover; display: block; }
-  .tab-content { padding: 48px 56px; display: flex; flex-direction: column; }
-  .tab-content .row {
-    display: grid; grid-template-columns: 140px 1fr; gap: 24px;
-    padding: 20px 0; border-bottom: 1px dashed var(--line); align-items: start;
-  }
-  .tab-content .row:first-child { padding-top: 0; }
-  .tab-content .row .label {
-    font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase;
-    color: var(--ink-mute); font-weight: 500; padding-top: 4px;
-  }
-  .tab-content .row .value { font-size: 15px; color: var(--ink); line-height: 1.55; }
-  .tab-content .row .value.title-row {
-    font-family: 'Fraunces', serif; font-size: 22px; font-weight: 400;
-    letter-spacing: -0.01em; line-height: 1.25;
-  }
-  .tab-content .row .value ul { list-style: none; }
-  .tab-content .row .value ul li {
-    position: relative; padding-left: 20px; color: var(--ink-soft); margin-bottom: 6px;
-  }
-  .tab-content .row .value ul li:before {
-    content: ""; position: absolute; left: 0; top: 10px;
-    width: 8px; height: 8px; background: var(--orange); border-radius: 50%;
-  }
-  .tab-content .tab-cta { margin-top: 32px; }
-  .tab-content .tab-cta a { width: 100%; text-align: center; display: inline-block; }
+  .tw { animation: twinkle 3s ease-in-out infinite; }
+  .tw:nth-of-type(3n){animation-delay:.8s} .tw:nth-of-type(3n+1){animation-delay:1.7s}
+  @keyframes twinkle { 0%,100%{opacity:.25} 50%{opacity:1} }
+  .float { animation: floaty 7s ease-in-out infinite; }
+  @keyframes floaty { 50% { transform: translateY(-14px); } }
+  .wave { animation: wave 9s linear infinite; } .wave.w2 { animation-duration: 13s; } .wave.w3 { animation-duration: 18s; }
+  @keyframes wave { to { transform: translateX(-400px); } }
+  .zz { animation: zz 6s ease-in infinite; opacity: 0; } .zz.z2 { animation-delay: 2s; } .zz.z3 { animation-delay: 4s; }
+  @keyframes zz { 0%{opacity:0;transform:translate(0,0)} 20%{opacity:.9} 100%{opacity:0;transform:translate(40px,-150px)} }
+  .sunrise { animation: sunrise 8s ease-in-out infinite; }
+  @keyframes sunrise { 0%{transform:translateY(150px)} 55%,80%{transform:translateY(0)} 100%{transform:translateY(150px)} }
+  .ring-fill { stroke-dasharray: 565; stroke-dashoffset: 565; animation: fillring 8s ease-in-out infinite; }
+  @keyframes fillring { 0%{stroke-dashoffset:565} 55%,80%{stroke-dashoffset:0} 100%{stroke-dashoffset:565} }
+  .lampglow { animation: lamp 7s ease-in-out infinite; }
+  @keyframes lamp { 0%,52%{opacity:1} 56%,92%{opacity:0} 100%{opacity:1} }
+  .lampdark { animation: lampd 7s ease-in-out infinite; }
+  @keyframes lampd { 0%,52%{opacity:0} 58%,92%{opacity:.82} 100%{opacity:0} }
+  .knob { animation: knob 7s ease-in-out infinite; }
+  @keyframes knob { 0%,50%{transform:translateX(0)} 54%,92%{transform:translateX(-26px)} 96%,100%{transform:translateX(0)} }
+  .moonrise { animation: moonrise 7s ease-in-out infinite; }
+  @keyframes moonrise { 0%,55%{opacity:0} 70%,90%{opacity:1} 100%{opacity:0} }
+  .dawn-sun { animation: dawnsun 9s ease-in-out infinite; }
+  @keyframes dawnsun { 0%,60%{transform:translateY(0)} 78%{transform:translateY(120px)} 100%{transform:translateY(0)} }
+  .curtain-l { animation: curl 9s ease-in-out infinite; } .curtain-r { animation: curr 9s ease-in-out infinite; }
+  @keyframes curl { 0%,62%{transform:translateX(-118px)} 74%,82%{transform:translateX(0)} 100%{transform:translateX(-118px)} }
+  @keyframes curr { 0%,62%{transform:translateX(118px)} 74%,82%{transform:translateX(0)} 100%{transform:translateX(118px)} }
+  .steam { animation: steam 3.6s ease-in-out infinite; opacity: 0; } .steam.s2 { animation-delay: 1.2s; } .steam.s3 { animation-delay: 2.4s; }
+  @keyframes steam { 0%{opacity:0;transform:translateY(10px)} 40%{opacity:.8} 100%{opacity:0;transform:translateY(-34px)} }
 
-  /* INSIDE */
-  .inside-grid {
-    display: grid; grid-template-columns: repeat(2, 1fr); gap: 1px;
-    background: var(--line);
-    border-top: 1px solid var(--line); border-bottom: 1px solid var(--line);
-  }
-  .inside-card { background: var(--ivory); padding: 56px 48px; }
-  .inside-card .num {
-    font-family: 'Fraunces', serif; font-size: 14px;
-    color: var(--orange); letter-spacing: 0.04em;
-    margin-bottom: 24px; font-weight: 400;
-  }
-  .inside-card h3 { font-size: 28px; margin-bottom: 16px; font-weight: 400; }
-  .inside-card p { color: var(--ink-soft); font-size: 15px; line-height: 1.6; max-width: 460px; }
+  .also { margin-top: 56px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--line); border: 1px solid var(--line); border-radius: 4px; overflow: hidden; }
+  .also .cell { background: var(--ivory); padding: 34px 32px; min-width: 0; transition: background .3s; }
+  .also .cell:hover { background: var(--paper); }
+  .also .ico { width: 40px; height: 40px; margin-bottom: 18px; }
+  .also h4 { margin-bottom: 8px; }
+  .also p { font-size: var(--fs-small); color: var(--ink-soft); }
 
-  /* SENSORY — WHITE BACKGROUND */
-  .sensory { background: #ffffff; }
-  .sensory-grid {
-    display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px;
-  }
-  .sensory-card {
-    border: 1px solid var(--line); border-radius: 4px;
-    padding: 32px 28px 28px;
-    background: var(--cream);
-    display: flex; flex-direction: column; min-height: 240px;
-  }
-  .sensory-card .sense-header {
-    display: flex; align-items: baseline; justify-content: space-between;
-    padding-bottom: 14px; margin-bottom: 18px;
-    border-bottom: 1px dashed var(--line);
-  }
-  .sensory-card .sense-label {
-    font-family: 'Fraunces', serif; font-weight: 400;
-    font-size: 20px; color: var(--ink); letter-spacing: -0.01em;
-  }
-  .sensory-card .sense-num {
-    font-family: 'Inter', sans-serif; font-weight: 500;
-    font-size: 11px; letter-spacing: 0.18em; color: var(--ink-mute);
-  }
-  .sensory-card p { color: var(--ink-soft); font-size: 14px; line-height: 1.6; }
+  .anatomy { background: var(--ivory); }
+  .anat-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: start; }
+  .anat-grid > * { min-width: 0; }
+  .ritual-card { background: var(--paper); border: 1px solid var(--line); border-radius: 4px; padding: 36px; box-shadow: 0 30px 60px -40px rgba(26,26,31,.35); position: sticky; top: 110px; }
+  .rc-top { display: flex; justify-content: space-between; align-items: center; gap: 12px; margin-bottom: 20px; flex-wrap: wrap; }
+  .badge { font-size: 12px; letter-spacing: .12em; text-transform: uppercase; font-weight: 600; color: var(--orange); border: 1px solid var(--orange); padding: 5px 10px; border-radius: 999px; }
+  .rc-name { font-family: var(--f-display); font-size: clamp(34px, 3.6vw, 46px); font-weight: 300; line-height: 1; margin-bottom: 8px; }
+  .rc-who { font-size: 15px; color: var(--ink-mute); margin-bottom: 22px; }
+  .rc-field { padding: 14px 16px; margin: 0 -16px; border-radius: 4px; transition: background .5s, box-shadow .5s; display: grid; grid-template-columns: 130px 1fr; gap: 16px; }
+  .rc-field + .rc-field { border-top: 1px dashed var(--line); }
+  .rc-field .k { font-size: var(--fs-label); letter-spacing: .12em; text-transform: uppercase; color: var(--ink-mute); font-weight: 600; padding-top: 4px; }
+  .rc-field .v { font-size: 17px; color: var(--ink-soft); }
+  .rc-field.active { background: rgba(255,85,0,.08); box-shadow: inset 3px 0 0 var(--orange); }
+  .rc-field.active .k { color: var(--orange); }
+  .parts { list-style: none; border-top: 1px solid var(--line); }
+  .parts li { padding: 22px 0; border-bottom: 1px solid var(--line); display: grid; grid-template-columns: 64px 1fr; gap: 16px; cursor: pointer; }
+  .parts .n { font-size: 14px; font-weight: 600; letter-spacing: .1em; color: var(--ink-mute); padding-top: 6px; }
+  .parts h4 { margin-bottom: 6px; transition: color .4s; }
+  .parts p { color: var(--ink-soft); font-size: 17px; }
+  .parts li.active h4, .parts li.active .n { color: var(--orange); }
+  .parts .bar { height: 2px; background: var(--line); margin-top: 14px; overflow: hidden; }
+  .parts .bar i { display: block; height: 100%; width: 0; background: var(--orange); }
+  .parts li.active .bar i { animation: barfill 3.4s linear forwards; }
+  @keyframes barfill { to { width: 100%; } }
 
-  /* COMPARE — table */
+  .levers { background: #fff; }
+  .lever-grid { display: grid; grid-template-columns: 1fr 1.5fr; gap: 24px; }
+  .lever-grid > * { min-width: 0; }
+  .breathe { background: var(--night); color: var(--on-dark); border-radius: 4px; padding: 36px; display: flex; flex-direction: column; justify-content: space-between; gap: 24px; min-height: 540px; overflow: hidden; }
+  .breathe .eyebrow { color: var(--on-dark-mute); }
+  .breathe h3 { color: var(--on-dark); margin-top: 12px; }
+  .breath-stage { display: grid; place-items: center; flex: 1; }
+  .breath-ring { width: 230px; height: 230px; max-width: 100%; border-radius: 50%; border: 1px dashed rgba(242,237,227,.25); display: grid; place-items: center; position: relative; }
+  .breath-orb { width: 92px; height: 92px; border-radius: 50%; background: radial-gradient(circle at 35% 35%, #FFD1AE, var(--orange) 55%, #B33A00); box-shadow: 0 0 60px rgba(255,85,0,.55); animation: breathe 16s ease-in-out infinite; }
+  @keyframes breathe { 0%{transform:scale(1)} 25%,50%{transform:scale(2.3)} 75%,100%{transform:scale(1)} }
+  .breath-word { position: absolute; font-family: var(--f-display); font-style: italic; font-size: 24px; color: #fff; text-shadow: 0 1px 10px rgba(0,0,0,.4); }
+  .breathe .hint { font-size: var(--fs-small); color: var(--on-dark-soft); }
+  .sense-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+  .sense { border: 1px solid var(--line); border-radius: 4px; padding: 26px 24px; background: var(--cream); transition: transform .3s, background .3s; min-width: 0; }
+  .sense:hover { transform: translateY(-4px); background: var(--ivory); }
+  .sense .ico { width: 44px; height: 44px; margin-bottom: 16px; }
+  .sense h4 { margin-bottom: 8px; }
+  .sense p { font-size: var(--fs-small); color: var(--ink-soft); }
+  .spin-slow { animation: spin 14s linear infinite; transform-box: fill-box; transform-origin: center; }
+  @keyframes spin { to { transform: rotate(360deg); } }
+  .bob { animation: bob 3s ease-in-out infinite; } @keyframes bob { 50% { transform: translateY(-3px); } }
+  .blink { animation: twinkle 2.4s ease-in-out infinite; }
+  .draw { stroke-dasharray: 60; animation: draw 4s ease-in-out infinite; }
+  @keyframes draw { 0%{stroke-dashoffset:60} 50%,80%{stroke-dashoffset:0} 100%{stroke-dashoffset:-60} }
+
   .compare { background: var(--cream); }
-  .compare-table-wrap {
-    background: var(--ivory); border-radius: 4px;
-    padding: 48px 40px 40px;
-    border: 1px solid var(--line);
-    position: relative; overflow-x: auto;
-  }
-  .compare-table {
-    width: 100%; border-collapse: separate; border-spacing: 0; min-width: 760px;
-  }
-  .compare-table th, .compare-table td {
-    text-align: center; padding: 18px 14px; vertical-align: middle;
-    border-bottom: 1px dashed var(--line);
-  }
-  .compare-table thead th {
-    font-family: 'Fraunces', serif; font-weight: 400;
-    font-size: 18px; color: var(--ink); letter-spacing: -0.01em;
-    border-bottom: 1px solid var(--ink); padding-bottom: 20px;
-  }
-  .compare-table tbody td:first-child,
-  .compare-table thead th:first-child { text-align: left; }
-  .compare-table .row-label {
-    font-family: 'Inter', sans-serif; font-weight: 600;
-    font-size: 15px; color: var(--ink); display: block; margin-bottom: 4px;
-  }
-  .compare-table .row-desc {
-    font-size: 12px; color: var(--ink-mute);
-    font-weight: 400; letter-spacing: 0.02em;
-  }
-  .compare-table thead th.ours,
-  .compare-table tbody td.ours {
-    background: rgba(255,85,0,0.05); position: relative;
-  }
-  .compare-table thead th.ours {
-    background: rgba(255,85,0,0.1); color: var(--ink);
-    border-radius: 6px 6px 0 0;
-  }
-  .compare-table tbody tr:last-child td.ours { border-radius: 0 0 6px 6px; }
+  .compare-wrap { background: var(--ivory); border: 1px solid var(--line); border-radius: 4px; padding: 44px 40px 36px; overflow-x: auto; }
+  .compare-table { width: 100%; border-collapse: separate; border-spacing: 0; min-width: 780px; }
+  .compare-table th, .compare-table td { text-align: center; padding: 18px 14px; vertical-align: middle; border-bottom: 1px dashed var(--line); }
+  .compare-table thead th { font-size: 16px; font-weight: 600; border-bottom: 1px solid var(--ink); padding-bottom: 20px; }
+  .compare-table td:first-child, .compare-table th:first-child { text-align: left; }
+  .compare-table .rl { font-weight: 600; font-size: 17px; display: block; margin-bottom: 3px; }
+  .compare-table .rd { font-size: 15px; color: var(--ink-mute); }
+  .compare-table .ours { background: rgba(255,85,0,.05); }
+  .compare-table thead th.ours { background: rgba(255,85,0,.12); border-radius: 6px 6px 0 0; }
+  .mk { display: inline-flex; align-items: center; justify-content: center; width: 36px; height: 36px; border-radius: 6px; font-weight: 600; font-size: 16px; }
+  .mk.y { background: rgba(0,47,224,.1); color: var(--blue); }
+  .ours .mk.y { background: var(--orange); color: #fff; }
+  .mk.n, .mk.p { background: rgba(0,0,0,.05); color: var(--ink-mute); }
 
-  .mark-yes, .mark-no, .mark-partial {
-    display: inline-flex; align-items: center; justify-content: center;
-    width: 36px; height: 36px; border-radius: 6px;
-    font-weight: 600; font-size: 15px;
-  }
-  .mark-yes { background: rgba(0,47,224,0.1); color: var(--blue); }
-  .ours .mark-yes { background: var(--orange); color: #fff; }
-  .mark-no { background: rgba(0,0,0,0.05); color: var(--ink-mute); }
-  .mark-partial { background: rgba(0,0,0,0.05); color: var(--ink-mute); }
-
-  /* MANIFESTO */
-  .manifesto { position: relative; padding: 160px 0; background: var(--ink); overflow: hidden; }
-  .manifesto .bg {
-    position: absolute; inset: 0;
-    background-size: cover; background-position: center;
-    opacity: 0.4;
-  }
-  .manifesto .overlay {
-    position: absolute; inset: 0;
-    background: linear-gradient(180deg, rgba(26,26,31,0.65), rgba(26,26,31,0.85));
-  }
+  .manifesto { position: relative; background: var(--night); padding-block: 160px; overflow: hidden; color: var(--on-dark); }
+  .manifesto canvas { position: absolute; inset: 0; width: 100%; height: 100%; }
   .manifesto .container { position: relative; z-index: 2; text-align: center; }
-  .manifesto h2 {
-    color: var(--ivory);
-    font-size: clamp(40px, 6vw, 72px);
-    max-width: 960px; margin: 0 auto 28px;
-  }
-  .manifesto h2 em.accent { color: var(--orange); }
-  .manifesto .sub {
-    font-family: 'Fraunces', serif; font-weight: 300;
-    font-size: clamp(18px, 2vw, 22px);
-    color: rgba(242,237,227,0.78);
-    max-width: 620px; margin: 0 auto 48px;
-    font-style: italic; line-height: 1.5;
-  }
-  .manifesto .pills {
-    display: flex; flex-wrap: wrap; justify-content: center; gap: 12px;
-  }
-  .manifesto .pill {
-    padding: 10px 22px;
-    border: 1px solid rgba(242,237,227,0.5);
-    border-radius: 999px;
-    color: var(--ivory);
-    font-size: 13px; font-weight: 500;
-    letter-spacing: 0.04em;
-  }
+  .manifesto .eyebrow { color: var(--glow); justify-content: center; }
+  .manifesto h2 { color: var(--on-dark); font-size: clamp(40px, 6vw, 80px); max-width: 1040px; margin: 22px auto 30px; }
+  .manifesto .sub { font-size: var(--fs-lede); color: var(--on-dark-soft); max-width: 660px; margin: 0 auto 60px; line-height: 1.6; }
+  .mstats { display: grid; grid-template-columns: repeat(4, 1fr); max-width: 960px; margin: 0 auto; border-top: 1px solid rgba(242,237,227,.2); }
+  .mstats div { padding: 26px 12px 0; }
+  .mstats b { display: block; font-family: var(--f-display); font-weight: 300; font-size: 54px; line-height: 1; color: var(--on-dark); }
+  .mstats span { display: block; margin-top: 10px; font-size: 15px; color: var(--on-dark-mute); }
 
-  /* WHY */
-  .why { background: var(--cream); }
-  .why-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 48px; margin-top: 60px; }
-  .why-item { border-top: 1px solid var(--line); padding-top: 28px; }
-  .why-item .num {
-    font-family: 'Fraunces', serif; font-size: 13px;
-    color: var(--ink-mute); margin-bottom: 16px; letter-spacing: 0.06em;
-  }
-  .why-item h4 {
-    font-family: 'Fraunces', serif; font-size: 22px; font-weight: 400;
-    margin-bottom: 14px; letter-spacing: -0.01em;
-  }
-  .why-item p { font-size: 14px; color: var(--ink-soft); line-height: 1.6; }
+  .method { background: var(--cream); }
+  .steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+  .step { background: var(--ivory); border: 1px solid var(--line); border-radius: 4px; padding: 30px 28px 32px; position: relative; overflow: hidden; min-width: 0; }
+  .step .num { font-size: var(--fs-label); letter-spacing: .16em; text-transform: uppercase; color: var(--orange); font-weight: 600; margin-bottom: 18px; display: flex; align-items: center; gap: 10px; }
+  .step .num::after { content: ""; flex: 1; height: 1px; background: var(--line); }
+  .step h4 { margin-bottom: 10px; }
+  .step p { color: var(--ink-soft); font-size: 17px; }
+  .step::before { content: ""; position: absolute; left: 0; top: 0; height: 3px; width: 0; background: var(--orange); }
+  .step.active::before { animation: barfill 2s linear forwards; }
 
-  /* BUILT FOR */
-  .builtfor-grid {
-    display: grid; grid-template-columns: 1fr 1fr;
-    gap: 80px; align-items: center;
-  }
-  .builtfor-list { list-style: none; }
-  .builtfor-list li {
-    padding: 24px 0; border-bottom: 1px solid var(--line);
-    display: grid; grid-template-columns: 120px 1fr; gap: 24px; align-items: baseline;
-  }
-  .builtfor-list li:last-child { border-bottom: none; }
-  .builtfor-list .who {
-    font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase;
-    color: var(--ink-mute); padding-top: 4px;
-  }
-  .builtfor-list .what {
-    font-family: 'Fraunces', serif; font-weight: 300;
-    font-size: 21px; line-height: 1.35; color: var(--ink);
-  }
-  .builtfor-image { aspect-ratio: 1/1; overflow: hidden; border-radius: 4px; }
-  .builtfor-image img {
-    width: 100%; height: 100%; object-fit: cover;
-    filter: contrast(0.96) brightness(0.94);
-  }
+  .builtfor { background: var(--ivory); }
+  .bf-head { display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 56px; align-items: center; margin-bottom: 56px; }
+  .bf-head > * { min-width: 0; }
+  .bf-head h2 { margin: 18px 0 22px; }
+  .bf-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--line); border: 1px solid var(--line); border-radius: 4px; overflow: hidden; }
+  .bf-item { background: var(--ivory); padding: 28px 28px 30px; min-width: 0; transition: background .3s; }
+  .bf-item:hover { background: var(--paper); }
+  .bf-item .who { font-size: var(--fs-label); letter-spacing: .14em; text-transform: uppercase; color: var(--orange); font-weight: 600; margin-bottom: 10px; }
+  .bf-item p { color: var(--ink-soft); font-size: 17px; }
+  .loop-card { aspect-ratio: 5/4; max-width: 100%; background: var(--night); border-radius: 4px; position: relative; overflow: hidden; display: grid; place-items: center; color: var(--on-dark); }
+  .loop-card .glow { position: absolute; width: 70%; height: 70%; border-radius: 50%; background: radial-gradient(circle, rgba(0,47,224,.5), transparent 65%); animation: drift 10s ease-in-out infinite alternate; }
+  .loop-card .inner { position: relative; padding: 24px; text-align: center; }
+  .loop-card .digits { font-family: var(--f-display); font-weight: 300; font-size: clamp(60px, 7vw, 100px); line-height: 1; font-variant-numeric: tabular-nums; }
+  .loop-card .colon { animation: twinkle 1s steps(1) infinite; color: var(--orange); }
+  .loop-card .thought { margin-top: 16px; font-family: var(--f-display); font-style: italic; font-size: 21px; color: var(--on-dark-soft); min-height: 1.4em; transition: opacity .4s; }
+  .loop-card .meta { position: absolute; bottom: 18px; left: 22px; right: 22px; display: flex; justify-content: space-between; font-size: 12px; letter-spacing: .16em; text-transform: uppercase; color: var(--on-dark-mute); font-weight: 600; }
 
-  /* FOUNDER — dark variant */
-  .founder { background: #000; color: var(--ivory); }
-  .founder .eyebrow { color: rgba(242,237,227,0.6); }
-  .founder h2 { color: var(--ivory); }
-  .founder h2 em.accent { color: var(--orange); }
-  .founder-grid {
-    display: grid; grid-template-columns: 0.9fr 1.2fr;
-    gap: 72px; align-items: start;
-  }
-  .founder-image-wrap { position: sticky; top: 100px; }
-  .founder-image {
-    aspect-ratio: 4/5; overflow: hidden; border-radius: 4px;
-    background: rgba(255,255,255,0.04);
-    border: 1px solid rgba(255,255,255,0.1);
-  }
-  .founder-image img { width: 100%; height: 100%; object-fit: cover; display: block; }
-  .founder-image .placeholder {
-    width: 100%; height: 100%;
-    display: flex; align-items: center; justify-content: center;
-    flex-direction: column; padding: 32px; text-align: center;
-    color: rgba(242,237,227,0.6); font-size: 13px;
-    background: rgba(255,255,255,0.04);
-  }
-  .founder-image .placeholder strong { display: block; margin-bottom: 8px; color: var(--ivory); }
-  .founder-meta { margin-top: 20px; }
-  .founder-meta .name {
-    font-family: 'Fraunces', serif; font-weight: 400;
-    font-size: 22px; color: var(--ivory); letter-spacing: -0.01em;
-  }
-  .founder-meta .role {
-    font-size: 13px; color: rgba(242,237,227,0.55); margin-top: 4px;
-    letter-spacing: 0.02em;
-  }
-  .founder-text h2 { margin-bottom: 36px; }
-  .founder-text p {
-    font-family: 'Fraunces', serif; font-weight: 300;
-    font-size: 18px; line-height: 1.55; color: rgba(242,237,227,0.82);
-    margin-bottom: 20px;
-  }
-  .pull-quote {
-    margin-top: 40px; padding: 32px 36px;
-    border-left: 4px solid var(--orange);
-    background: rgba(255,255,255,0.05);
-    font-family: 'Fraunces', serif;
-    font-size: 22px; font-style: italic; font-weight: 300;
-    color: var(--ivory); line-height: 1.4;
-    border-radius: 0 4px 4px 0;
-  }
+  .founder { background: #000; color: var(--on-dark); }
+  .founder .eyebrow { color: var(--on-dark-mute); }
+  .founder-grid { display: grid; grid-template-columns: 0.8fr 1.2fr; gap: 80px; align-items: start; }
+  .founder-grid > * { min-width: 0; }
+  .f-photo { position: sticky; top: 110px; }
+  .f-img { aspect-ratio: 4/5; max-width: 100%; border-radius: 4px; overflow: hidden; background: #0d0d14; border: 1px solid rgba(255,255,255,.12); position: relative; }
+  .f-img .mono { position: absolute; inset: 0; display: grid; place-items: center; font-family: var(--f-display); font-size: 96px; font-weight: 300; letter-spacing: .08em; background: radial-gradient(circle at 30% 20%, #1c2370, #000 70%); }
+  .f-img img { position: relative; width: 100%; height: 100%; object-fit: cover; display: block; }
+  .f-meta { margin-top: 20px; display: flex; justify-content: space-between; align-items: baseline; gap: 12px; flex-wrap: wrap; }
+  .f-meta .name { font-family: var(--f-display); font-size: 26px; }
+  .f-meta .role { font-size: 15px; color: var(--on-dark-mute); }
+  .founder h2 { color: var(--on-dark); margin: 18px 0 44px; }
+  .chapter { display: grid; grid-template-columns: 140px 1fr; gap: 28px; padding: 30px 0; border-top: 1px solid rgba(242,237,227,.16); }
+  .chapter .k { font-size: var(--fs-label); letter-spacing: .14em; text-transform: uppercase; color: var(--orange); font-weight: 600; padding-top: 5px; }
+  .chapter p { color: var(--on-dark-soft); font-size: 18px; line-height: 1.7; }
+  .chapter .drop::first-letter { float: left; font-family: var(--f-display); font-size: 74px; line-height: .82; padding: 6px 12px 0 0; color: var(--on-dark); }
+  .interlude { font-family: var(--f-display); font-style: italic; font-weight: 300; font-size: clamp(26px, 2.8vw, 36px); line-height: 1.25; color: #fff; padding: 34px 0; border-top: 1px solid rgba(242,237,227,.16); }
+  .interlude em { color: var(--orange); }
+  .sig { padding-top: 30px; border-top: 1px solid rgba(242,237,227,.16); display: flex; align-items: center; gap: 18px; }
+  .sig .line { width: 46px; height: 1px; background: var(--orange); }
+  .sig span { font-size: 15px; color: var(--on-dark-mute); letter-spacing: .04em; }
 
-  /* PRICING */
-  .pricing { background: var(--bone); }
-  .pricing-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; margin-top: 60px; }
-  .plan {
-    background: var(--ivory); border: 1px solid var(--line);
-    padding: 48px 40px; border-radius: 4px;
-    display: flex; flex-direction: column; position: relative;
-  }
-  .plan.featured {
-    background: var(--blue); color: var(--ivory); border-color: var(--blue);
-  }
-  .plan.featured .plan-name,
-  .plan.featured .plan-price,
-  .plan.featured h3 { color: var(--ivory); }
-  .plan.featured .plan-desc { color: rgba(242,237,227,0.8); }
-  .plan.featured .includes li {
-    color: rgba(242,237,227,0.9); border-color: rgba(242,237,227,0.18);
-  }
-  .plan.featured .includes li:before { color: var(--orange); }
-  .plan .badge {
-    position: absolute; top: -12px; right: 24px;
-    background: var(--orange); color: #fff;
-    padding: 6px 14px; font-size: 10px;
-    letter-spacing: 0.14em; text-transform: uppercase;
-    border-radius: 100px; font-weight: 500;
-  }
-  .plan-name { font-family: 'Fraunces', serif; font-size: 28px; font-weight: 400; margin-bottom: 8px; }
-  .plan-desc { font-size: 14px; color: var(--ink-mute); margin-bottom: 32px; }
-  .plan-price { display: flex; align-items: baseline; gap: 8px; margin-bottom: 32px; }
-  .plan-price .amount {
-    font-family: 'Fraunces', serif; font-size: 56px;
-    font-weight: 300; letter-spacing: -0.02em;
-  }
-  .plan-price .currency {
-    font-family: 'Fraunces', serif; font-size: 22px;
-    font-weight: 300; color: var(--ink-mute);
-  }
-  .plan.featured .plan-price .currency { color: rgba(242,237,227,0.65); }
-  .includes { list-style: none; margin-bottom: 32px; }
-  .includes li {
-    padding: 12px 0 12px 28px; border-bottom: 1px solid var(--line);
-    font-size: 14px; color: var(--ink-soft); position: relative;
-  }
-  .includes li:before {
-    content: "·"; position: absolute; left: 8px; top: 8px;
-    font-size: 24px; color: var(--orange); line-height: 1;
-  }
-  .includes li:last-child { border-bottom: none; }
-  .plan .btn { width: 100%; text-align: center; margin-top: auto; }
-  .plan.featured .btn { background: var(--orange); color: #fff; }
-  .plan.featured .btn:hover { background: var(--orange-deep); }
-
-  /* TESTIMONIALS — WHITE BACKGROUND */
-  .testimonials-section { background: #ffffff; }
-  .testimonials-grid {
-    display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; margin-top: 60px;
-  }
-  .testimonial {
-    padding: 40px 32px; border: 1px solid var(--line);
-    background: var(--ivory); border-radius: 4px;
-    display: flex; flex-direction: column;
-  }
-  .testimonial p.quote {
-    font-family: 'Fraunces', serif; font-weight: 300;
-    font-size: 19px; line-height: 1.5; color: var(--ink);
-    margin-bottom: 32px; flex: 1;
-  }
-  .testimonial .attribution { padding-top: 24px; border-top: 1px solid var(--line); }
-  .testimonial .name { font-size: 14px; color: var(--ink); font-weight: 500; margin-bottom: 4px; }
-  .testimonial .role { font-size: 12px; color: var(--ink-mute); letter-spacing: 0.04em; }
-
-  /* FAQ */
   .faq { background: var(--cream); }
-  .faq-list { margin-top: 60px; }
-  details.faq-item { border-bottom: 1px solid var(--line); padding: 28px 0; }
-  details.faq-item:first-of-type { border-top: 1px solid var(--line); }
-  details.faq-item summary {
-    list-style: none; cursor: pointer;
-    font-family: 'Fraunces', serif; font-weight: 400;
-    font-size: 22px; color: var(--ink);
-    display: flex; justify-content: space-between;
-    align-items: center; letter-spacing: -0.01em;
-  }
-  details.faq-item summary::-webkit-details-marker { display: none; }
-  details.faq-item summary::after {
-    content: "+"; font-family: 'Fraunces', serif;
-    font-size: 32px; font-weight: 300;
-    color: var(--ink-mute); transition: transform 0.2s;
-  }
-  details.faq-item[open] summary::after { content: "−"; color: var(--orange); }
-  details.faq-item p {
-    margin-top: 18px; color: var(--ink-soft);
-    font-size: 15px; line-height: 1.65; max-width: 760px;
-  }
-  .faq-cta {
-    margin-top: 48px; padding: 36px 40px;
-    background: var(--ivory); border: 1px solid var(--line);
-    border-radius: 4px;
-    display: flex; align-items: center; justify-content: space-between;
-    flex-wrap: wrap; gap: 24px;
-  }
-  .faq-cta .note {
-    font-family: 'Fraunces', serif; font-weight: 300;
-    font-size: 20px; color: var(--ink); font-style: italic;
-    max-width: 560px;
-  }
+  .faq-list { border-top: 1px solid var(--line); max-width: 960px; }
+  details.fq { border-bottom: 1px solid var(--line); }
+  details.fq summary { list-style: none; cursor: pointer; padding: 26px 0; font-family: var(--f-display); font-size: 24px; display: flex; justify-content: space-between; align-items: center; gap: 20px; line-height: 1.3; }
+  details.fq summary::-webkit-details-marker { display: none; }
+  details.fq summary::after { content: "+"; font-size: 34px; font-weight: 300; color: var(--ink-mute); transition: transform .3s, color .3s; flex: none; }
+  details.fq[open] summary::after { transform: rotate(45deg); color: var(--orange); }
+  details.fq summary:hover { color: var(--blue); }
+  details.fq .ans { padding: 0 48px 28px 0; }
+  details.fq .ans p { font-size: var(--fs-body); color: var(--ink-soft); line-height: 1.7; max-width: 760px; }
+  details.fq .ans p + p { margin-top: 12px; }
+  details.fq[open] .ans { animation: rise .45s ease both; }
 
-  /* FINAL CTA — WHITE BACKGROUND */
-  .final-cta {
-    background: #ffffff; color: var(--ink);
-    text-align: center; padding: 140px 0;
-  }
-  .final-cta .eyebrow { color: var(--orange); }
-  .final-cta h2 { color: var(--ink); margin: 24px auto 32px; max-width: 800px; }
-  .final-cta h2 em.accent { color: var(--orange); }
-  .final-cta p.lede { color: var(--ink-soft); margin: 0 auto 48px; max-width: 560px; }
-  .final-cta .btn { background: var(--orange); color: #fff; padding: 18px 40px; font-size: 15px; }
-  .final-cta .btn:hover { background: var(--orange-deep); }
+  .final { background: #fff; text-align: center; padding-block: 150px; position: relative; overflow: hidden; }
+  .final .eyebrow { color: var(--orange); justify-content: center; }
+  .final h2 { margin: 24px auto 28px; max-width: 900px; }
+  .final h2 em.accent { color: var(--orange); }
+  .final .lede { max-width: 600px; margin: 0 auto 44px; }
+  .final .btn { padding: 19px 40px; font-size: 17px; }
+  .final .container { position: relative; z-index: 1; }
+  .orbit { position: absolute; width: 640px; height: 640px; left: 50%; top: 50%; margin: -320px 0 0 -320px; border-radius: 50%; border: 1px dashed var(--line); animation: spin 60s linear infinite; pointer-events: none; }
+  .orbit::after { content: ""; position: absolute; top: -7px; left: 50%; width: 14px; height: 14px; border-radius: 50%; background: var(--orange); box-shadow: 0 0 18px rgba(255,85,0,.6); }
+  .orbit.o2 { width: 920px; height: 920px; margin: -460px 0 0 -460px; animation-duration: 90s; animation-direction: reverse; }
+  .orbit.o2::after { background: var(--blue); }
 
-  /* ENROL FORM */
-  .enrol { background: var(--blue); color: var(--ivory); padding: 120px 0; }
-  .enrol-wrap { max-width: 880px; margin: 0 auto; }
-  .enrol .eyebrow { color: rgba(255,255,255,0.7); }
-  .enrol h2 { color: var(--ivory); margin: 18px 0 24px; }
-  .enrol h2 em.accent { color: var(--orange); }
-  .enrol .desc-top {
-    font-family: 'Fraunces', serif; font-weight: 300;
-    font-size: 19px; color: rgba(242,237,227,0.85);
-    line-height: 1.5; margin-bottom: 56px; max-width: 720px;
-  }
-  .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
-  .form-field { display: flex; flex-direction: column; }
-  .form-field.full { grid-column: 1 / -1; }
-  .form-field label {
-    font-size: 12px; letter-spacing: 0.12em;
-    text-transform: uppercase; color: rgba(242,237,227,0.85);
-    font-weight: 500; margin-bottom: 10px;
-  }
-  .form-field label .req { color: var(--orange); margin-left: 4px; }
-  .form-field input,
-  .form-field select {
-    background: rgba(255,255,255,0.06);
-    border: 1px solid rgba(255,255,255,0.18);
-    color: var(--ivory);
-    padding: 14px 16px;
-    border-radius: 4px;
-    font-family: 'Inter', sans-serif;
-    font-size: 15px;
-    transition: border-color 0.2s, background 0.2s;
-  }
-  .form-field input::placeholder { color: rgba(242,237,227,0.45); }
-  .form-field input:focus,
-  .form-field select:focus {
-    outline: none; border-color: var(--orange);
-    background: rgba(255,255,255,0.1);
-  }
-  .form-field select {
-    appearance: none;
-    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'><path d='M1 1l5 5 5-5' stroke='%23F2EDE3' stroke-width='1.5' fill='none' stroke-linecap='round' stroke-linejoin='round'/></svg>");
-    background-repeat: no-repeat; background-position: right 16px center;
-    padding-right: 40px;
-  }
-  .form-field select option { background: var(--blue); color: var(--ivory); }
+  .waitlist { background: var(--blue); color: var(--on-dark); position: relative; overflow: hidden; }
+  .waitlist .eyebrow { color: rgba(255,255,255,.78); }
+  .waitlist h2 { color: var(--on-dark); margin: 18px 0 22px; }
+  .wl-grid { display: grid; grid-template-columns: .9fr 1.1fr; gap: 72px; align-items: start; position: relative; z-index: 1; }
+  .wl-grid > * { min-width: 0; }
+  .wl-intro > p { font-size: var(--fs-lede); color: rgba(242,237,227,.9); margin-bottom: 34px; }
+  .perks { list-style: none; border-top: 1px solid rgba(255,255,255,.22); }
+  .perks li { display: grid; grid-template-columns: 40px 1fr; gap: 12px; padding: 18px 0; border-bottom: 1px solid rgba(255,255,255,.22); }
+  .perks .pn { color: var(--orange); font-weight: 600; font-size: 15px; padding-top: 2px; }
+  .perks strong { display: block; font-weight: 600; color: #fff; }
+  .perks span { font-size: var(--fs-small); color: rgba(242,237,227,.8); }
+  .wl-bg { position: absolute; right: -200px; top: -200px; width: 700px; height: 700px; border-radius: 50%; background: radial-gradient(circle, rgba(255,85,0,.35), transparent 60%); animation: drift 16s ease-in-out infinite alternate; }
+  .form-card { background: rgba(7,10,36,.3); border: 1px solid rgba(255,255,255,.2); border-radius: 6px; padding: 36px; }
+  .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 22px; }
+  .field { display: flex; flex-direction: column; min-width: 0; }
+  .field.full { grid-column: 1 / -1; }
+  .field > label, .field .lbl { font-size: 13px; letter-spacing: .1em; text-transform: uppercase; color: #fff; font-weight: 600; margin-bottom: 10px; }
+  .req { color: var(--orange); margin-left: 4px; }
+  .field input, .field select, .field textarea { background: rgba(255,255,255,.08); border: 1px solid rgba(255,255,255,.28); color: #fff; padding: 15px 16px; border-radius: 4px; font-family: var(--f-body); font-size: 17px; width: 100%; transition: border-color .2s, background .2s; }
+  .field textarea { resize: vertical; min-height: 90px; }
+  .field input::placeholder, .field textarea::placeholder { color: rgba(242,237,227,.55); }
+  .field input:focus, .field select:focus, .field textarea:focus { outline: none; border-color: var(--orange); background: rgba(255,255,255,.13); }
+  .field select { appearance: none; -webkit-appearance: none; background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'><path d='M1 1l5 5 5-5' stroke='%23F2EDE3' stroke-width='1.5' fill='none' stroke-linecap='round'/></svg>"); background-repeat: no-repeat; background-position: right 16px center; padding-right: 40px; }
+  .field select option { background: var(--blue-deep); color: #fff; }
+  .hint { font-size: 15px; color: rgba(242,237,227,.75); margin: -4px 0 12px; }
+  .hint b { color: var(--orange); }
+  .chips { display: flex; flex-wrap: wrap; gap: 10px; }
+  .chip { background: rgba(255,255,255,.08); border: 1px solid rgba(255,255,255,.3); color: #fff; padding: 11px 17px; border-radius: 999px; cursor: pointer; font-size: 16px; font-family: var(--f-body); transition: all .18s; }
+  .chip:hover { background: rgba(255,255,255,.15); }
+  .chip[aria-pressed="true"] { background: var(--orange); border-color: var(--orange); }
+  .checks { display: grid; gap: 14px; }
+  .check { display: flex; gap: 12px; align-items: flex-start; font-size: 17px; color: #fff; cursor: pointer; }
+  .check input { width: 20px; height: 20px; margin-top: 3px; accent-color: var(--orange); flex: none; }
+  .check small { display: block; color: rgba(242,237,227,.72); font-size: 15px; }
+  .submit { width: 100%; margin-top: 28px; background: var(--orange); color: #fff; border: none; padding: 20px; border-radius: 4px; font-family: var(--f-body); font-size: 18px; font-weight: 600; cursor: pointer; transition: background .2s; display: flex; justify-content: center; gap: 10px; }
+  .submit:hover { background: var(--orange-deep); }
+  .assure { margin-top: 16px; text-align: center; font-size: 15px; color: rgba(242,237,227,.78); }
+  .assure .sep { margin: 0 8px; opacity: .5; }
+  .form-error { margin-top: 14px; padding: 12px 16px; background: rgba(255,85,0,.22); border: 1px solid var(--orange); border-radius: 4px; color: #FFE2D1; font-size: 16px; }
+  .success { text-align: center; padding: 20px 6px; }
+  .success .tick { width: 74px; height: 74px; margin: 0 auto 22px; }
+  .success .tick circle { stroke-dasharray: 220; stroke-dashoffset: 220; animation: dash 1s ease forwards; }
+  .success .tick path { stroke-dasharray: 60; stroke-dashoffset: 60; animation: dash .6s .8s ease forwards; }
+  @keyframes dash { to { stroke-dashoffset: 0; } }
+  .success h3 { color: #fff; font-size: 34px; margin-bottom: 14px; }
+  .success p { color: rgba(242,237,227,.88); margin-bottom: 22px; }
+  .share-row { margin-top: 18px; }
+  .share-row button { background: transparent; border: 1px solid rgba(255,255,255,.4); color: #fff; padding: 11px 18px; border-radius: 999px; cursor: pointer; font-family: var(--f-body); font-size: 15px; }
 
-  .challenge-hint { font-size: 13px; color: rgba(242,237,227,0.65); margin-bottom: 14px; }
-  .challenge-counter { font-size: 13px; color: var(--orange); margin-left: 8px; font-weight: 500; }
-  .challenge-cloud { display: flex; flex-wrap: wrap; gap: 10px; }
-  .chip {
-    background: rgba(255,255,255,0.06);
-    border: 1px solid rgba(255,255,255,0.22);
-    color: var(--ivory);
-    padding: 11px 18px; border-radius: 999px;
-    cursor: pointer; font-size: 14px; font-weight: 400;
-    transition: all 0.18s ease; user-select: none;
-  }
-  .chip:hover { background: rgba(255,255,255,0.12); border-color: rgba(255,255,255,0.4); }
-  .chip.selected { background: var(--orange); border-color: var(--orange); color: #fff; }
-  .chip.disabled { opacity: 0.4; cursor: not-allowed; }
-
-  .submit-area { margin-top: 40px; }
-  .submit-btn {
-    width: 100%; background: var(--orange); color: #fff;
-    border: none; padding: 20px; border-radius: 4px;
-    font-family: 'Inter', sans-serif;
-    font-size: 16px; font-weight: 600;
-    letter-spacing: 0.04em; cursor: pointer;
-    transition: background 0.2s ease;
-  }
-  .submit-btn:hover { background: var(--orange-deep); }
-
-  .nudges {
-    margin-top: 20px; text-align: center;
-    font-size: 13px; color: rgba(242,237,227,0.7);
-    line-height: 1.8;
-  }
-  .nudges .dot { margin: 0 10px; color: rgba(242,237,227,0.4); }
-
-  .form-error {
-    margin-top: 14px; padding: 12px 16px;
-    background: rgba(255,85,0,0.18);
-    border: 1px solid var(--orange);
-    border-radius: 4px;
-    color: #FFD9C2; font-size: 14px;
-    display: none;
-  }
-  .form-error.show { display: block; }
-
-  /* Footer */
-  footer { background: var(--ink); color: rgba(242,237,227,0.7); padding: 64px 0 32px; }
-  footer .grid {
-    display: grid; grid-template-columns: 2fr 1fr 1fr 1fr;
-    gap: 60px; margin-bottom: 60px;
-  }
-  footer h5 {
-    font-family: 'Inter', sans-serif; font-size: 11px;
-    letter-spacing: 0.18em; text-transform: uppercase;
-    color: var(--ivory); margin-bottom: 20px; font-weight: 500;
-  }
-  /* Footer logo — 50% larger than before */
-  footer .footer-wordmark { margin-bottom: 16px; }
-  footer .footer-wordmark .fw-name {
-    font-family: 'Fraunces', serif; font-weight: 400;
-    font-size: 52px; letter-spacing: 0.10em;
-    color: var(--ivory); text-transform: uppercase; line-height: 1;
-    margin-bottom: 10px;
-  }
-  footer .footer-wordmark .fw-tag {
-    font-family: 'Inter', sans-serif; font-weight: 500;
-    font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase;
-    color: var(--orange);
-  }
-  footer .brand p {
-    margin-top: 16px; font-size: 14px; line-height: 1.6;
-    max-width: 360px; color: rgba(242,237,227,0.6);
-  }
+  footer { background: var(--ink); color: var(--on-dark-soft); padding-block: 64px 32px; }
+  footer .grid { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 60px; margin-bottom: 56px; }
+  footer .fw { font-family: var(--f-display); font-size: 52px; letter-spacing: .1em; color: var(--on-dark); line-height: 1; margin-bottom: 10px; }
+  footer .ft { font-size: 12px; letter-spacing: .16em; text-transform: uppercase; color: var(--orange); font-weight: 600; }
+  footer .brand p { margin-top: 16px; font-size: var(--fs-small); max-width: 400px; color: var(--on-dark-mute); }
+  footer h5 { font-size: 12px; letter-spacing: .16em; text-transform: uppercase; color: var(--on-dark); margin-bottom: 18px; font-weight: 600; }
   footer ul { list-style: none; }
-  footer ul li { margin-bottom: 12px; }
-  footer ul li a {
-    color: rgba(242,237,227,0.7); text-decoration: none; font-size: 14px;
-  }
-  footer ul li a:hover { color: var(--ivory); }
-  footer .bottom {
-    border-top: 1px solid rgba(242,237,227,0.15);
-    padding-top: 32px; display: flex; justify-content: space-between;
-    font-size: 12px; color: rgba(242,237,227,0.5); flex-wrap: wrap; gap: 16px;
-  }
+  footer li { margin-bottom: 12px; }
+  footer li a { color: var(--on-dark-soft); text-decoration: none; font-size: var(--fs-small); }
+  footer li a:hover { color: #fff; }
+  footer .bottom { border-top: 1px solid rgba(242,237,227,.15); padding-top: 28px; display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; font-size: 14px; color: var(--on-dark-mute); }
 
-  .load-error {
-    padding: 40px; margin: 40px auto; max-width: 720px;
-    background: #fff5e6; border-left: 4px solid var(--orange);
-    font-family: 'Inter', sans-serif; font-size: 15px; color: var(--ink);
-  }
+  .sticky-cta { position: fixed; left: 0; right: 0; bottom: 0; z-index: 110; padding: 12px max(16px, env(safe-area-inset-right, 0px)) calc(12px + env(safe-area-inset-bottom, 0px)) max(16px, env(safe-area-inset-left, 0px)); background: rgba(26,26,31,.95); backdrop-filter: blur(10px); display: none; align-items: center; justify-content: space-between; gap: 12px; transform: translateY(110%); transition: transform .4s; }
+  .sticky-cta.show { transform: none; }
+  .sticky-cta .t { font-family: var(--f-display); font-style: italic; color: var(--on-dark); font-size: 17px; }
+  .sticky-cta .btn { padding: 12px 18px; font-size: 15px; }
 
+  @media (max-width: 1080px) {
+    .tabs { grid-template-columns: repeat(2, 1fr); }
+    .sense-grid, .bf-grid { grid-template-columns: repeat(2, 1fr); }
+    .why { grid-template-columns: 1fr; gap: 14px; }
+  }
   @media (max-width: 960px) {
-    .hero .grid, .section-head, .builtfor-grid, .inside-grid,
-    .pricing-grid, .testimonials-grid, .why-grid, footer .grid,
-    .form-grid, .tab-panel, .founder-grid, .sensory-grid {
-      grid-template-columns: 1fr; gap: 32px;
-    }
-    .tabs { grid-template-columns: 1fr; }
-    .tab-image { min-height: 280px; }
+    .container, nav.top .inner { padding-left: max(20px, env(safe-area-inset-left, 0px)); padding-right: max(20px, env(safe-area-inset-right, 0px)); }
+    .hero .grid, .section-head, .gap-grid, .h-grid, .tab-panel, .anat-grid, .lever-grid, .bf-head, .founder-grid, .wl-grid, footer .grid { grid-template-columns: 1fr; gap: 32px; }
+    .trust .row { grid-template-columns: 1fr 1fr; gap: 20px; }
+    .section-head { margin-bottom: 44px; }
+    section { padding-block: 84px; }
+    .hero { padding-block: 44px 64px; }
+    .nav-links a:not(.btn) { display: none; }
+    .band .row { grid-template-columns: 1fr; gap: 20px; }
+    .band .mid { justify-content: flex-start; }
+    .tab-art { min-height: 340px; }
     .tab-content { padding: 32px 24px; }
     .tab-content .row { grid-template-columns: 1fr; gap: 6px; }
-    section { padding: 80px 0; }
-    .hero { padding: 48px 0 64px; }
-    .container { padding: 0 20px; }
-    nav.top .inner { padding: 14px 20px; }
-    .nav-links { display: flex; gap: 12px; }
-    .nav-links a:not(.btn) { display: none; }
-    .faq-cta { flex-direction: column; align-items: flex-start; }
-    .countdown-band .row { justify-content: flex-start; }
-    .founder-image-wrap { position: static; }
-    .manifesto { padding: 100px 0; }
+    .also, .steps { grid-template-columns: 1fr; }
+    .ritual-card, .f-photo, .dots-wrap { position: static; }
+    .sticky-cta { display: flex; }
+    .manifesto { padding-block: 110px; }
+    .mstats { grid-template-columns: 1fr 1fr; row-gap: 28px; }
+    .orbit { display: none; }
+    .f-photo { max-width: 420px; }
+  }
+  @media (max-width: 600px) {
+    .wordmark .logo-text { font-size: 26px; }
+    .wordmark .loc { display: none; }
+    .nav-links .btn { padding: 10px 14px; font-size: 14px; }
+    .trust .row, .tabs, .bf-grid, .sense-grid, .form-grid { grid-template-columns: 1fr; }
+    .loopbar .ticks { font-size: 11px; }
+    .form-card, .gap-card, .dots-wrap, .ritual-card, .breathe { padding: 26px 22px; }
+    .rc-field, .chapter, .parts li { grid-template-columns: 1fr; gap: 6px; }
+    .listening li { grid-template-columns: 1fr; gap: 8px; }
+    .listening .tag { justify-self: start; }
+    .dots { gap: 7px; }
+    .compare-wrap { padding: 28px 18px; }
+    details.fq summary { font-size: 21px; }
+    details.fq .ans { padding-right: 0; }
+    footer .fw { font-size: 40px; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after { animation-duration: .001ms !important; animation-iteration-count: 1 !important; transition-duration: .001ms !important; }
+    html { scroll-behavior: auto; }
+    body::after { display: none; }
   }
 </style>
 </head>
 <body>
+<nav class="top" aria-label="Main">
+  <div class="inner">
+    <a class="wordmark" href="#top" aria-label="SLEAP home"><span class="logo-text">SLEAP</span><span class="loc">sleap.in · Bengaluru</span></a>
+    <div class="nav-links">
+      <a href="#hundred">The 100</a>
+      <a href="#playbook">The Playbook</a>
+      <a href="#for">Who it is for</a>
+      <a href="#faq">FAQ</a>
+      <a class="btn btn-orange js-cta" href="#waitlist">Join the waitlist</a>
+    </div>
+  </div>
+</nav>
 
-<div id="app"></div>
+<main id="top">
 
-<!-- ============================================================================
-     CONTENT — every word, price, image and number on the page.
-     To make a change: edit the value below, save the file, refresh the browser.
-     Formatting:
-       - Use [em]text[/em] to italicise a phrase (matches headline accent style)
-       - Keep the quotes (" or ') around every value
-       - Do not change the field names on the left side of the colon
-     ============================================================================ -->
-<script>
-const CONTENT = {
-
-  brand: {
-    name: "SLEAP",
-    tagline: "Your Leap Into Deep Sleep",
-    locator: "sleap.in",
-    navLinks: [
-      { label: "What You Get",   href: "#expect"  },
-      { label: "Why This Works", href: "#compare" },
-      { label: "Method",         href: "#why"     },
-      { label: "Pricing",        href: "#pricing" },
-      { label: "FAQ",            href: "#faq"     }
-    ],
-    navCta: { label: "Begin Now", href: "#enrol" }
-  },
-
-  hero: {
-    eyebrow: "SLEAP · 5-Day Guided Shutdown Ritual · Delivered on your WhatsApp",
-    headline: "Sleep that [em]finds you.[/em] Not the other way around.",
-    lede: "SLEAP is a guided shutdown ritual for exhausted minds that can’t switch off. No theory. No fluff. Just a few powerful nudges over the next 5 evenings to help your nervous system finally slow down, so you wake up saying, “I finally slept like a baby today.”",
-    primaryCta:   { label: "Start your reset",  href: "#enrol"  },
-    secondaryCta: { label: "See what you get",  href: "#expect" },
-    priceNote: "From ₹1,499 · No app to download · Begins 8PM IST · 1st November 2026 (Sunday).",
-    imageUrl: "https://images.unsplash.com/photo-1510632233616-88025944e960?auto=format&fit=crop&w=1200&q=80",
-    imageAlt: "Deep sleep is not a luxury; it’s a return to ourselves.",
-    imageCaption: "\"Deep sleep is not a luxury; it’s a return to ourselves.\""
-  },
-
-  trust: [
-    { strong: "15 minutes for next 5 Nights.",   text: "That’s all we ask." },
-    { strong: "WhatsApp-based accountability.",  text: "No app login. Just tiny nudges. Real change." },
-    { strong: "100% refund if it doesn’t help.", text: "That’s how confident we are." },
-    { strong: "Backed by sleep science.",        text: "Built for exhausted urban minds." }
-  ],
-
-  countdown: {
-    label: "Your SLEAP begins",
-    when: "1st November 2026 · 8:00 PM IST",
-    targetISO: "2026-09-01T20:00:00+05:30",
-    livePrefix: "Live now —",
-    liveSuffix: "join the next batch",
-    cta: { label: "Reserve my spot", href: "#enrol" }
-  },
-
-  expect: {
-    eyebrow: "What To Expect",
-    title: "Five nights. [em]A mix of nudges, not a course.[/em]",
-    desc: "SLEAP is not a sleep course. It is a five-evening rebuild of the small habits that have quietly broken our sleep. Each night arrives on WhatsApp at 8:00pm IST. You read/listen/view, you do one short practice, you put your phone down. The next morning, you tell us how it went.",
-    tabs: [
-      {
-        num: "01",
-        label: "Evening Wind-Down",
-        title: "Guided shutdown rituals",
-        oneLiner: "Pre-sleep nudges delivered the moment your body actually needs them.",
-        whatYouGet: [
-          "Guided shutdown voice note (English)",
-          "One calming audio per evening",
-          "A 90-second breathing tool",
-          "A one-line journaling prompt"
-        ],
-        time: "10 to 15 minutes per evening",
-        frequency: "Daily across all 5 evenings",
-        image: "https://images.unsplash.com/photo-1520809227329-2f94844a9635?auto=format&fit=crop&w=1200&q=80",
-        imageAlt: "A warm bedside lamp at dusk"
-      },
-      {
-        num: "02",
-        label: "Daytime Nudges",
-        title: "The night begins before sundown",
-        oneLiner: "Small WhatsApp cues across the day that quietly shape how the night unfolds.",
-        whatYouGet: [
-          "Circadian-Caffeine Protocol",
-          "Bedroom reset checklist",
-          "Wind-down ping at 9:30pm",
-          "Sunset light-exposure cue"
-        ],
-        time: "Under 2 minutes per nudge",
-        frequency: "Two to three nudges per day",
-        image: "https://images.unsplash.com/photo-1611934180042-da791b4091e7?auto=format&fit=crop&w=1200&q=80",
-        imageAlt: "Soft afternoon light through curtains"
-      },
-      {
-        num: "03",
-        label: "Accountability & Tracking",
-        title: "A check-in so the work compounds",
-        oneLiner: "A thoughtful morning question that turns five evenings into a real shift.",
-        whatYouGet: [
-          "8am morning check-in (one-tap reply)",
-          "Personal sleep tracker across 5 nights",
-          "Day-5 progress summary",
-          "Direct WhatsApp line for questions"
-        ],
-        time: "300 seconds per morning",
-        frequency: "Every morning of the program",
-        image: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?auto=format&fit=crop&w=1200&q=80",
-        imageAlt: "Soft morning light over a mountain landscape"
-      }
-    ]
-  },
-
-  inside: {
-    eyebrow: "What Arrives",
-    title: "What lands on your WhatsApp [em]each evening.[/em]",
-    desc: "No app. No login. No daily streaks to chase. Every SLEAP evening is just a few carefully built nudges, sent the same way a thoughtful friend would send them.",
-    items: [
-      {
-        num: "01 / Audio",
-        heading: "A guided practice, 7 minutes or less voice note",
-        text: "Voice note (English), designed to be listened to in bed, lights low, headphones optional. Slow pace. No music swell. Nothing performative."
-      },
-      {
-        num: "02 / Reading",
-        heading: "A one-page note on tonight’s reset ritual",
-        text: "No long PDFs. No homework. Just enough understanding to help you trust the process and let your body slow down naturally."
-      },
-      {
-        num: "03 / Ritual",
-        heading: "One small action to help you unwind tonight",
-        text: "The smallest possible behavioural change. Warm water feet soak, breath count, written reflection, thermal cue. Each one chosen for the lowest possible friction."
-      },
-      {
-        num: "04 / Morning",
-        heading: "A single question at 8am the next morning",
-        text: "One reply, one tap. We track what worked for you last night, what didn't. By night five, your personal ritual is built from your own data, not generic advice."
-      }
-    ]
-  },
-
-  sensory: {
-    eyebrow: "Multi-Sensory Method",
-    title: "Six inputs. [em]One body that learns to rest.[/em]",
-    desc: "Deep sleep is not built through one channel. SLEAP cues multiple senses across the evening, each one chosen for its proven effect on the nervous system.",
-    items: [
-      { num: "01", label: "Sound",       text: "Slow voice notes designed for low-light bedrooms. Headphones optional. No music swell. Nothing performative." },
-      { num: "02", label: "Light",       text: "A sunset cue, a 9:30pm screen-dim ping, and one warm-light suggestion for the last 45 minutes." },
-      { num: "03", label: "Temperature", text: "Warm feet, cool head. A simple thermal cue your body already knows, pulled from sleep medicine, not folklore." },
-      { num: "04", label: "Breath",      text: "Guided breath sequences that down-shift your nervous system in under two minutes. Four-count rhythms." },
-      { num: "05", label: "Touch",       text: "A four-minute body scan that closes the day in the muscles, not just the mind. Weighted blanket optional." },
-      { num: "06", label: "Story",       text: "A one-line written prompt that gives the day an ending, so the night does not have to negotiate one." }
-    ]
-  },
-
-  compare: {
-    eyebrow: "Why This Works",
-    title: "Five days. WhatsApp. [em]A real outcome.[/em]",
-    desc: "Most sleep tools borrow from one tradition. We spent two years experimenting, most rituals failed, and built SLEAP around the ones that held, picked the parts that actually work, removed the rest, and put it on the surface you already use.",
-    columns: [
-      "SLEAP · Guided Shutdown Ritual",
-      "Meditation Apps",
-      "Traditional Yog Nidra",
-      "Spotify Sleep Playlist"
-    ],
-    rows: [
-      { label: "Built for the Indian evening",  desc: "Late dinners, family rhythms, summer heat",  values: ["yes", "partial", "yes", "no"] },
-      { label: "Delivered on WhatsApp",         desc: "No app, no login, no streaks",               values: ["yes", "no", "no", "no"] },
-      { label: "Personal accountability",       desc: "A real morning check-in",                    values: ["yes", "no", "no", "no"] },
-      { label: "Behavioural change focus",      desc: "CBT-I principles, not just relaxation",      values: ["yes", "partial", "no", "no"] },
-      { label: "Compounds across days",         desc: "Five nights that build on each other",       values: ["yes", "partial", "no", "no"] },
-      { label: "Money-back guarantee",          desc: "14 days, no questions asked",                values: ["yes", "no", "no", "no"] },
-      { label: "One-on-one option available",   desc: "Private call before the program starts",     values: ["yes", "no", "partial", "no"] }
-    ]
-  },
-
-  manifesto: {
-    imageUrl: "https://images.unsplash.com/photo-1419242902214-272b3f66ee7a?auto=format&fit=crop&w=2000&q=80",
-    imageAlt: "Mountain dusk, calm light",
-    punchline: "Five evenings. A nervous system [em]that learns to rest again.[/em]",
-    subtext: "What if the off-switch you have been looking for was just five WhatsApp messages away. That leap is SLEAP.",
-    highlights: ["Guided shutdown ritual", "Evidence-based", "Built in Bengaluru", "14-day refund"]
-  },
-
-  why: {
-    eyebrow: "The Method",
-    title: "Why this works when [em]apps have not.[/em]",
-    desc: "Most sleep apps ask for behaviour change you have already tried and failed at. We assume you have. So SLEAP was built differently, smaller, and around the way an urban Indian evening actually unfolds.",
-    items: [
-      { num: "01", heading: "Smallest viable change, every night",                text: "Behavioural science is clear: tiny actions, daily, beat big resolutions, occasionally. We design for the minimum behaviour change that produces the maximum sleep shift. No 30-day overhauls." },
-      { num: "02", heading: "Where your attention already is",                    text: "You already check WhatsApp before sleeping. We meet you on the surface you actually use, instead of asking you to download something new and remember to open it." },
-      { num: "03", heading: "Built for the Indian night",                         text: "Late dinners, joint family wake-times, summer heat, monsoon humidity, the 11pm work call. SLEAP accounts for the specifics of an Indian evening. Not a translated Western product." },
-      { num: "04", heading: "Pulled from sleep medicine, not wellness culture",   text: "The core methods are drawn from cognitive behavioural therapy for insomnia (CBT-I), the gold-standard non-pharmaceutical treatment for sleep difficulty. Stripped of jargon, kept honest." },
-      { num: "05", heading: "Designed by someone who could not sleep",            text: "Built by a founder who spent two years rebuilding his own sleep from a broken state. Refined across 200+ private clients before being offered publicly. Lived, then taught." },
-      { num: "06", heading: "What you keep, lasts",                               text: "By night five, you have a one-page SleepOS ritual built from your own week. Not a habit list. A rhythm. The kind your body learns to expect, the way it expects food at 8pm." }
-    ]
-  },
-
-  builtFor: {
-    eyebrow: "Built For",
-    title: "If your nights look [em]like this.[/em]",
-    imageUrl: "https://images.unsplash.com/photo-1626856909794-6edb639cb8ed?auto=format&fit=crop&w=1000&q=80",
-    imageAlt: "Quiet bedroom scene at dusk",
-    items: [
-      { who: "Founders",     what: "The mind that ran the company all day still runs it at 1AM. You need the off-switch you have not been given." },
-      { who: "Parents",      what: "You finally have the house quiet at 11pm and now cannot fall asleep. Tomorrow starts at 6:30am regardless." },
-      { who: "Professionals",what: "The 9:30pm laptop close. The 10:45pm bed. The 12:18am still-awake with Claude Code. The 6am alarm. You know this loop." },
-      { who: "Caregivers",   what: "You sleep on a single thread of vigilance. We will not break it. We will help the rest of you rest." },
-      { who: "Students",     what: "Exam season has scrambled your rhythm and you cannot afford a foggy week ahead. Five nights is what you have." }
-    ]
-  },
-
-  founder: {
-    eyebrow: "Built By Someone Who Needed It",
-    title: "Why I built [em]SLEAP?[/em]",
-    name: "SBD - Your Recovery Coach",
-    role: "Previously worked at a defence deep-tech startup",
-    imageUrl: "https://lh3.googleusercontent.com/a/ACg8ocLmaate-9J0g00TA3s3jbC8Pvl9HLACh6jQoKtJHcCvdABjQNAZQQ=s576-c-no",
-    imageAlt: "SBD, founder of SLEAP",
-    paragraphs: [
-      "Two years ago, I began noticing something deeply unsettling at home. My spouse struggled to sleep night after night. My father would wake up repeatedly in the middle of the night. My mother-in-law silently battled chronic insomnia that slowly affected her energy, mood, and quality of life.",
-      "Over time, I realized sleep deprivation had quietly become the background noise of modern life. Everyone looked functional on the outside. Very few were truly rested.",
-      "That realization turned into an obsession.",
-      "Over the last two years, I studied sleep behaviour, nervous system regulation, evening rituals, environmental cues, breathing patterns, digital overstimulation, and the psychology of modern exhaustion. More importantly, I tested small, practical interventions at home, tiny changes that could help the body feel safe enough to slow down again. Some worked. Many didn’t. Slowly, patterns began to emerge.",
-      "Recently, things became more real when my wife underwent a Level 1 Sleep Study at a hospital. What shocked me wasn’t just the findings, it was discovering that most hospital sleep labs had waiting periods stretching close to two months. That’s when it hit me. We are in the middle of a silent sleep crisis. People are exhausted, overstimulated, anxious, and mentally “on” all the time. Yet most solutions available are either clinical, intimidating, expensive, or impossible to sustain consistently in everyday life.",
-      "That is why I created SLEAP. Not as a medical solution. Not as another wellness trend. But as a simple, human, guided shutdown ritual designed to help exhausted minds finally slow down. The name says the whole idea: a leap into deep sleep, taken five small steps at a time. Everything in this program has been inspired by real struggles, tested in real homes, and shaped by one belief."
-    ],
-    pullQuote: "Sometimes the body already knows how to sleep. The mind just needs help finding the doorway back to rest."
-  },
-
-  pricing: {
-    eyebrow: "Begin Now",
-    title: "Two ways in. [em]Same five nights.[/em]",
-    desc: "Choose self-paced if you want the full SLEAP ritual on WhatsApp. Choose guided if you also want a 45-minute private call to walk through your sleep history and tailor the week to you.",
-    plans: [
-      {
-        featured: false, badge: "",
-        name: "Self-Paced",
-        subtitle: "The full five-night program on WhatsApp.",
-        currency: "₹", amount: "1,499",
-        includes: [
-          "5 evening sessions on WhatsApp at 8:00pm",
-          "Audio/Visual notes in English",
-          "Daily morning check-in question",
-          "Your personal one-page SleepOS at night five",
-          "Program yours forever, replay anytime",
-          "You enroll today, SLEAP begins 1st November at 8PM"
-        ],
-        cta: { label: "Begin self-paced", href: "#enrol" }
-      },
-      {
-        featured: true, badge: "Recommended",
-        name: "Guided",
-        subtitle: "Self-paced Program + a 45-minute private call before night one.",
-        currency: "₹", amount: "3,499",
-        includes: [
-          "Everything in Self-Paced",
-          "45-minute 1:1 sleep history call before start",
-          "Program tailored to your specific sleep pattern",
-          "Direct WhatsApp access for questions across the week",
-          "15-minute closing call after night five",
-          "Most chosen by founders and caregivers"
-        ],
-        cta: { label: "Begin guided", href: "#enrol" }
-      }
-    ]
-  },
-
-  testimonials: {
-    eyebrow: "From the First 200",
-    title: "What people said [em]after night five.[/em]",
-    desc: "A small sample from the private cohort SLEAP was built with. Names abbreviated for privacy. Full reviews available on request.",
-    items: [
-      { quote: "I went into this not believing five nights could move anything. By night three I was asleep before 11. By night five I had stopped checking my phone in bed. I have not paid for sleep advice that worked before.", name: "A.M.", role: "Founder, B2B SaaS · Bengaluru" },
-      { quote: "The morning check-in was the thing. Knowing someone would ask me how the night went made me actually do the practice. By the third evening it was the part of the day I looked forward to.", name: "R.K.", role: "Product Lead · Gurugram" },
-      { quote: "I have tried Calm, Headspace and three Indian sleep apps. The reason this worked is the small size of the ask. Ten minutes. WhatsApp. Done. No streak guilt, no app open.", name: "P.S.", role: "Investment Associate · Mumbai" }
-    ]
-  },
-
-  faq: {
-    eyebrow: "Honest Answers",
-    title: "What you may be [em]wondering.[/em]",
-    desc: "If you have a question that is not answered here, write to us before you enroll for SLEAP. We would rather talk you out of it than disappoint you.",
-    items: [
-      { q: "Do I need to download an app?",                       a: "No. All of SLEAP runs on WhatsApp. The audio notes play inline. The reading is in the chat. The morning check-in is a single reply. We chose WhatsApp specifically so there is nothing between you and beginning tonight." },
-      { q: "What if I miss a night?",                             a: "Pick up the next evening. The five nights work as a sequence but the gaps do not undo the work. You also keep the messages forever, so you can replay any night, anytime." },
-      { q: "Is this a substitute for treating insomnia?",         a: "No. If you have been diagnosed with clinical insomnia, sleep apnoea, or another sleep disorder, this is a complement to your treatment, not a replacement. We say so in plain language in the welcome message." },
-      { q: "What language is it in?",                             a: "Audio notes and visual cues are available in English only. The written content is in English. We are working on other languages for the next cohort. Tell us your preference at enrollment." },
-      { q: "What if it does not work for me?",                    a: "Full refund within 14 days of starting if the program has not measurably moved your sleep. No questions, no friction, no form. One WhatsApp message and the money is back." },
-      { q: "Why charge so low?",                                  a: "Deep rest should not feel like a luxury available only to a few people paying premium wellness prices. The ₹1,499 is not the value of the transformation. It is the commitment fee to help you actually show up for the next 5 nights. And honestly, if SLEAP genuinely helps you wake up calmer, lighter, and deeply rested again, you can pay it forward for someone who you think needs it." },
-      { q: "Why the name SLEAP?",                                 a: "Sleep, with a leap in the middle. It is what the five nights actually are: not a slow grind toward better habits, but a short, deliberate jump from the way you sleep now to the way your body already knows how to. Five evenings, one leap." }
-    ],
-    closingNote: "We would rather talk you out of it than disappoint you.",
-    cta: { label: "Send us your query", href: "#enrol" }
-  },
-
-  finalCta: {
-    eyebrow: "Begin tonight",
-    title: "Your next deep sleep night is [em]five evenings away.[/em]",
-    lede: "Enroll for the next upcoming batch. Your first SLEAP message lands on your WhatsApp at 8:00pm on 1st November 2026.",
-    cta: { label: "Start your reset", href: "#enrol" }
-  },
-
-  enrol: {
-    eyebrow: "Reserve Your Spot",
-    title: "Help us help you [em]sleep.[/em]",
-    desc: "Share a few details and take the leap. We respond on WhatsApp within 24 hours with a starter plan and the payment link for your chosen SLEAP batch. You only pay after the spot is confirmed.",
-    whatsappNumber: "917406226789",
-    messagePrefix: "*New Query: SLEAP · 5-Day Guided Shutdown Ritual*",
-    submitLabel: "Help me Reset my Sleep",
-    fields: {
-      nameLabel: "Full Name",
-      namePlaceholder: "Your name",
-      whatsappLabel: "WhatsApp Number",
-      whatsappPlaceholder: "+91 98XXX XXXXX",
-      emailLabel: "Email (optional)",
-      emailPlaceholder: "you@email.com",
-      cityLabel: "City",
-      cityPlaceholder: "Bengaluru, Mumbai, Delhi…",
-      occupationLabel: "What do you do?",
-      occupations: ["Salaried Professional","Founder / Entrepreneur","Business Owner","Consultant / Freelancer","Homemaker","Student","Retired","Other"],
-      planLabel: "Choose your plan",
-      plans: [
-        { value: "Self-Paced (₹1,499)", label: "Self-Paced · ₹1,499" },
-        { value: "Guided (₹3,499)",   label: "Guided · ₹3,499 (Recommended)" }
-      ],
-      batchLabel: "Choose your batch",
-      batches: [
-        "1st November (Sunday) – 7th November (Saturday) 2026",
-        "9th November (Monday) – 14th November (Saturday) 2026",
-        "16th November (Monday) – 21st November (Saturday) 2026",
-        "23rd November (Monday) – 28th November (Saturday) 2026"
-      ],
-      challengeLabel: "Your current sleep challenge",
-      challengeHint: "Select up to 3 that describe you most",
-      challenges: ["Racing thoughts at night","Waking at 3am","Can’t fall asleep","Wake up exhausted","Phone-before-bed loop","Late-night anxiety"]
-    },
-    nudges: [
-      "You will receive a payment link over WhatsApp to join your SLEAP batch",
-      "Limited spots available","Filling fast","No signup required",
-      "100% money-back guarantee","No questions asked"
-    ]
-  },
-
-  footer: {
-    blurb: "SLEAP is a guided shutdown ritual built to help you rest better. Delivered on WhatsApp. Five nights to your deepest sleep, or your money back. sleap.in",
-    columns: [
-      { heading: "Program", links: [
-        { label: "What you get",   href: "#expect" },
-        { label: "Why this works", href: "#compare" },
-        { label: "Method",         href: "#why" },
-        { label: "Pricing",        href: "#pricing" },
-        { label: "FAQ",            href: "#faq" }
-      ]},
-      { heading: "Company", links: [
-        { label: "About",          href: "#founder" },
-        { label: "Research notes", href: "#" },
-        { label: "Contact",        href: "#enrol" }
-      ]},
-      { heading: "Legal", links: [
-        { label: "Terms",          href: "#" },
-        { label: "Privacy",        href: "#" },
-        { label: "Refund policy",  href: "#" }
-      ]}
-    ],
-    copyright: "© SLEAP · sleap.in · 2026",
-    locator: "Made with ❤ in Bengaluru"
-  }
-};
-</script>
-
-<!-- ============================================================================
-     RENDERER — reads CONTENT above and builds the page.
-     ============================================================================ -->
-<script>
-(function () {
-  if (typeof CONTENT === 'undefined') {
-    document.getElementById('app').innerHTML =
-      '<div class="load-error"><strong>Could not find CONTENT block.</strong></div>';
-    return;
-  }
-
-  const esc = (s) => String(s == null ? '' : s)
-    .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
-
-  const richText = (s) => {
-    if (s == null) return '';
-    const parts = String(s).split(/(\[em\][\s\S]*?\[\/em\])/g);
-    return parts.map(p => {
-      const m = p.match(/^\[em\]([\s\S]*?)\[\/em\]$/);
-      return m ? `<em class="accent">${esc(m[1])}</em>` : esc(p);
-    }).join('');
-  };
-
-  const pad = (n) => String(n).padStart(2, '0');
-
-  const renderNav = (b) => `
-    <nav class="top">
-      <div class="inner">
-        <a href="#" class="wordmark" style="text-decoration:none;">
-          <span class="logo-text">${esc(b.name)}</span>
-          <span class="loc">${esc(b.tagline)}</span>
-        </a>
-        <div class="nav-links">
-          ${b.navLinks.map(l => `<a href="${esc(l.href)}">${esc(l.label)}</a>`).join('')}
-          <a href="${esc(b.navCta.href)}" class="btn">${esc(b.navCta.label)}</a>
-        </div>
+<header class="hero">
+  <div class="container grid">
+    <div class="copy">
+      <span class="eyebrow"><span class="live-dot" aria-hidden="true"></span>The SLEAP Playbook · Now being written</span>
+      <h1>The calmest people you know have a ritual <em class="accent">they never talk about.</em></h1>
+      <p class="lede">One hundred of Bengaluru's most accomplished people. The private ways they switch off, sleep, wake and recharge. Decoded into one playbook you can borrow from.</p>
+      <div class="cta-row">
+        <a class="btn btn-orange js-cta" href="#waitlist">Join the waitlist <span class="arrow" aria-hidden="true">→</span></a>
+        <a class="btn btn-ghost" href="#playbook">See inside the playbook</a>
       </div>
-    </nav>`;
-
-  const renderHero = (h) => `
-    <section class="hero">
-      <div class="container">
-        <div class="grid">
-          <div class="copy">
-            <div class="eyebrow">${esc(h.eyebrow)}</div>
-            <h1>${richText(h.headline)}</h1>
-            <p class="lede">${esc(h.lede)}</p>
-            <div class="cta-row">
-              <a href="${esc(h.primaryCta.href)}" class="btn btn-orange">${esc(h.primaryCta.label)}</a>
-              <a href="${esc(h.secondaryCta.href)}" class="btn btn-ghost">${esc(h.secondaryCta.label)}</a>
-            </div>
-            <p class="price-note">${esc(h.priceNote)}</p>
-          </div>
-          <div class="image">
-            <img src="${esc(h.imageUrl)}" alt="${esc(h.imageAlt)}">
-            <div class="image-caption">${esc(h.imageCaption)}</div>
-          </div>
-        </div>
+      <p class="note"><span>Free to join</span><span>First access on launch day</span><span>No spam, ever</span></p>
+    </div>
+    <div class="sky-card" role="img" aria-label="Animated Bengaluru skyline at night, with windows switching off one by one as the clock moves past midnight.">
+      <canvas id="sky"></canvas>
+      <div class="clock" aria-hidden="true">
+        <span>Bengaluru<span class="time" id="skyTime">10:00 PM</span></span>
+        <span style="text-align:right">Windows still lit<span class="time lit" id="skyLit">100%</span></span>
       </div>
-    </section>`;
+      <p class="caption">Every lit window is a mind that has not switched off yet.</p>
+    </div>
+  </div>
+</header>
 
-  const renderTrust = (items) => `
-    <div class="trust">
-      <div class="container">
-        <div class="row">
-          ${items.map(i => `<div class="item"><strong>${esc(i.strong)}</strong>${esc(i.text)}</div>`).join('')}
-        </div>
-      </div>
-    </div>`;
+<div class="marquee" aria-hidden="true">
+  <div class="track">
+    <span>Switch off</span><span>Sleep</span><span>Wake</span><span>Recharge</span><span>100 people</span><span>One city</span><span>One 24-hour loop</span>
+    <span>Switch off</span><span>Sleep</span><span>Wake</span><span>Recharge</span><span>100 people</span><span>One city</span><span>One 24-hour loop</span>
+  </div>
+</div>
 
-  const renderCountdown = (c) => `
-    <div class="countdown-band" id="countdownBand">
-      <div class="container">
-        <div class="row">
-          <div class="label">
-            <div class="top">${esc(c.label)}</div>
-            <div class="when">${esc(c.when)}</div>
-          </div>
-          <div class="timer" id="cdTimer">
-            <div class="unit"><div class="num" id="cdDays">--</div><div class="key">Days</div></div>
-            <div class="unit"><div class="num" id="cdHours">--</div><div class="key">Hours</div></div>
-            <div class="unit"><div class="num" id="cdMins">--</div><div class="key">Mins</div></div>
-            <div class="unit"><div class="num" id="cdSecs">--</div><div class="key">Secs</div></div>
-          </div>
-          <a href="${esc(c.cta.href)}" class="btn btn-orange cta-btn">${esc(c.cta.label)}</a>
-        </div>
-      </div>
-    </div>`;
+<div class="trust">
+  <div class="container row">
+    <div class="item"><strong>100 people.</strong>Chosen for the weight they carry.</div>
+    <div class="item"><strong>4 rituals. One loop.</strong>Switch off, sleep, wake, recharge.</div>
+    <div class="item"><strong>Every ritual decoded.</strong>The science, in plain words.</div>
+    <div class="item"><strong>Built in Bengaluru.</strong>For the way this city really lives.</div>
+  </div>
+</div>
 
-  const sectionHead = (eyebrow, title, desc) => `
+<div class="band on-dark">
+  <div class="container row">
+    <div><div class="top">The playbook is being written</div><div class="when">Wind-down rituals that actually work</div></div>
+    <div class="mid"><span class="moon" aria-hidden="true"></span><span class="line">Read it first, <em>the day it goes live.</em></span></div>
+    <a class="btn btn-orange js-cta" href="#waitlist">Join the waitlist <span class="arrow" aria-hidden="true">→</span></a>
+  </div>
+</div>
+
+<section class="idea" id="idea">
+  <div class="container">
     <div class="section-head">
-      <div class="title">
-        <div class="eyebrow">${esc(eyebrow)}</div>
-        <h2>${richText(title)}</h2>
+      <div class="title reveal"><span class="eyebrow">The gap</span><h2>Everyone has sleep advice. <em class="accent">Few have a ritual that works.</em></h2></div>
+      <div class="reveal"><p class="lede">Every article repeats the same five tips. Yet the people who carry the most in this city, and still wake up clear, are doing something else. Small, specific, often odd habits they rarely mention, because to them it is simply how the day ends.</p></div>
+    </div>
+    <div class="gap-grid">
+      <div class="gap-card reveal">
+        <span class="eyebrow">What everyone tells you</span>
+        <ul class="advice">
+          <li><span>No screens after 9 PM.</span></li>
+          <li><span>Get eight hours, every night.</span></li>
+          <li><span>Try chamomile tea.</span></li>
+          <li><span>Meditate for twenty minutes.</span></li>
+          <li><span>Keep the room cold and dark.</span></li>
+        </ul>
       </div>
-      <div class="desc"><p class="lede">${esc(desc)}</p></div>
-    </div>`;
+      <div class="gap-card dark reveal">
+        <span class="halo" aria-hidden="true"></span>
+        <span class="eyebrow" style="position:relative;z-index:1">What we are listening for</span>
+        <ul class="listening">
+          <li>The drive home with no audio, used as a decompression chamber.<span class="tag t-off">Switch off</span></li>
+          <li>One sentence written for tomorrow, so tonight's mind can let go.<span class="tag t-off">Switch off</span></li>
+          <li>A hot shower that works as a hard stop for the day.<span class="tag t-sleep">Sleep</span></li>
+          <li>Ten minutes of sunlight before the phone is touched.<span class="tag t-wake">Wake</span></li>
+          <li>A twelve-minute lie-down that resets the whole afternoon.<span class="tag t-recharge">Recharge</span></li>
+        </ul>
+        <p class="fineprint">Examples of the kind of ritual we are looking for. The real ones arrive with the playbook.</p>
+      </div>
+    </div>
+  </div>
+</section>
 
-  const renderExpectPanel = (t) => `
-    <div class="tab-image"><img src="${esc(t.image)}" alt="${esc(t.imageAlt)}"></div>
-    <div class="tab-content">
-      <div class="row">
-        <div class="label">${esc(t.label.toLowerCase())}</div>
-        <div class="value title-row">${esc(t.title)}<div style="font-family:'Inter',sans-serif;font-size:14px;color:var(--ink-mute);margin-top:8px;font-weight:400;line-height:1.5;">${esc(t.oneLiner)}</div></div>
+<section class="hundred" id="hundred">
+  <div class="container">
+    <div class="section-head">
+      <div class="title reveal"><span class="eyebrow">The 100 people of Bengaluru</span><h2>Why sleep. Why them. Why here. <em class="accent">Why a hundred.</em></h2></div>
+      <div class="reveal"><p class="lede">Four questions sit behind this playbook. Each answer is a reason the rituals inside it will be worth more than anything you have read about sleep before.</p></div>
+    </div>
+    <div class="h-grid">
+      <div class="dots-wrap reveal" aria-label="A grid of 100 dots, one for each seat at the table.">
+        <div class="dots-head"><span class="big">100</span><span class="small">Seats at the table</span></div>
+        <div class="dots" id="dots"></div>
+        <p class="dots-cap"><strong>Each dot is one person</strong> and the ritual that keeps them sharp. Together they become a map of how this city really rests.</p>
+        <div class="seat" aria-hidden="true"><span class="n" id="seatN">Seat 01</span><span class="r" id="seatR">A founder</span></div>
       </div>
-      <div class="row">
-        <div class="label">what you get</div>
-        <div class="value"><ul>${t.whatYouGet.map(b => `<li>${esc(b)}</li>`).join('')}</ul></div>
+      <div class="whys">
+        <article class="why reveal">
+          <div class="stat">59%<small>of Indians get under six hours of uninterrupted sleep. LocalCircles survey, 43,000+ responses.</small></div>
+          <div><div class="q">Why sleep</div><h3>It is the multiplier on everything else.</h3><p>Judgement, memory, mood, patience, health. Every one of them runs on the night before. Yet sleep is the first thing a demanding life quietly gives away, and the last thing anyone teaches you to protect.</p></div>
+        </article>
+        <article class="why reveal">
+          <div class="stat">Zero<small>margin for a bad night. Leaders, surgeons, investors, public servants.</small></div>
+          <div><div class="q">Why them</div><h3>Their rituals are stress-tested.</h3><p>When your decisions move companies, patients, markets or policy, rest stops being a luxury and becomes part of the job. The people who last at that level have solved recovery under maximum pressure. That is exactly what makes their rituals worth borrowing.</p></div>
+        </article>
+        <article class="why reveal">
+          <div class="stat">7 days<small>a year lost in traffic per commuter, in the world's second most congested city. TomTom Traffic Index 2025.</small></div>
+          <div><div class="q">Why Bengaluru</div><h3>The hardest city to switch off in.</h3><p>Calls with California at night and London by morning. Long commutes. A startup clock that never stops. More than half of Bengalureans already sleep under six hours. If a ritual survives a Bengaluru day, it will survive yours.</p></div>
+        </article>
+        <article class="why reveal">
+          <div class="stat">100<small>conversations. Enough to see the pattern, few enough to sit with every person.</small></div>
+          <div><div class="q">Why a hundred</div><h3>One story is an anecdote. A hundred are evidence.</h3><p>A single routine tells you about one person. A hundred, side by side, show what actually holds across ages, professions and homes. That pattern is the real playbook.</p></div>
+        </article>
       </div>
-      <div class="row"><div class="label">time</div><div class="value">${esc(t.time)}</div></div>
-      <div class="row"><div class="label">frequency</div><div class="value">${esc(t.frequency)}</div></div>
-      <div class="tab-cta">
-        <a href="#enrol" class="btn btn-orange">Reserve my spot</a>
+    </div>
+    <div class="roles" aria-hidden="true">
+      <div class="track">
+        <span>Founders and CEOs</span><span>Surgeons and doctors</span><span>Civil servants</span><span>Politicians</span><span>Investors and traders</span><span>Scientists</span><span>Judges and lawyers</span><span>Athletes</span><span>Artists and musicians</span><span>Pilots</span><span>Frequent fliers</span><span>Defence leaders</span><span>Chefs</span><span>Parents</span>
+        <span>Founders and CEOs</span><span>Surgeons and doctors</span><span>Civil servants</span><span>Politicians</span><span>Investors and traders</span><span>Scientists</span><span>Judges and lawyers</span><span>Athletes</span><span>Artists and musicians</span><span>Pilots</span><span>Frequent fliers</span><span>Defence leaders</span><span>Chefs</span><span>Parents</span>
       </div>
-    </div>`;
+    </div>
+  </div>
+</section>
 
-  const renderExpect = (e) => `
-    <section class="expect" id="expect">
-      <div class="container">
-        ${sectionHead(e.eyebrow, e.title, e.desc)}
-        <div class="tabs" id="expectTabs">
-          ${e.tabs.map((t, i) => `
-            <button class="tab${i === 0 ? ' active' : ''}" data-tab="${i}">
-              <span class="tab-left">
-                <span class="tab-num">${esc(t.num)}</span>
-                <span>${esc(t.label)}</span>
-              </span>
-              <span class="tab-mark">+</span>
-            </button>`).join('')}
-        </div>
-        <div class="tab-panel" id="expectPanel">${renderExpectPanel(e.tabs[0])}</div>
-      </div>
-    </section>`;
+<section class="expect" id="playbook">
+  <div class="container">
+    <div class="section-head">
+      <div class="title reveal"><span class="eyebrow">What to expect in the playbook</span><h2>Four rituals. <em class="accent">One unbroken 24-hour loop.</em></h2></div>
+      <div class="reveal"><p class="lede">A great night is not made at bedtime. It is set up the evening before and protected the morning after. The playbook follows the full loop, one ritual at a time, through the lives of the 100.</p></div>
+    </div>
 
-  const renderInside = (i) => `
-    <section>
-      <div class="container">
-        ${sectionHead(i.eyebrow, i.title, i.desc)}
-        <div class="inside-grid">
-          ${i.items.map(item => `
-            <div class="inside-card">
-              <div class="num">${esc(item.num)}</div>
-              <h3>${esc(item.heading)}</h3>
-              <p>${esc(item.text)}</p>
-            </div>`).join('')}
-        </div>
-      </div>
-    </section>`;
+    <div class="loopbar" aria-hidden="true">
+      <div class="bar"><button class="seg on" tabindex="-1"></button><button class="seg" tabindex="-1"></button><button class="seg" tabindex="-1"></button><button class="seg" tabindex="-1"></button></div>
+      <div class="ticks"><span>7 PM</span><span>10 PM</span><span>6 AM</span><span>9 AM to 7 PM</span></div>
+    </div>
 
-  const renderSensory = (s) => `
-    <section class="sensory">
-      <div class="container">
-        ${sectionHead(s.eyebrow, s.title, s.desc)}
-        <div class="sensory-grid">
-          ${s.items.map(item => `
-            <div class="sensory-card">
-              <div class="sense-header">
-                <div class="sense-label">${esc(item.label)}</div>
-                <div class="sense-num">${esc(item.num)}</div>
-              </div>
-              <p>${esc(item.text)}</p>
-            </div>`).join('')}
-        </div>
-      </div>
-    </section>`;
+    <div class="tabs" role="tablist" aria-label="The four rituals">
+      <button class="tab" role="tab" id="tab-1" aria-controls="panel-1" aria-selected="true"><span class="tn">01 · Evening</span><span class="tl">Switch Off</span><span class="tt">Close the day</span></button>
+      <button class="tab" role="tab" id="tab-2" aria-controls="panel-2" aria-selected="false" tabindex="-1"><span class="tn">02 · Night</span><span class="tl">Sleep</span><span class="tt">The descent</span></button>
+      <button class="tab" role="tab" id="tab-3" aria-controls="panel-3" aria-selected="false" tabindex="-1"><span class="tn">03 · Morning</span><span class="tl">Wake</span><span class="tt">The first hour</span></button>
+      <button class="tab" role="tab" id="tab-4" aria-controls="panel-4" aria-selected="false" tabindex="-1"><span class="tn">04 · Day</span><span class="tl">Recharge</span><span class="tt">The refill</span></button>
+    </div>
 
-  const renderCompare = (c) => {
-    const markFor = (v) => {
-      if (v === 'yes') return '<span class="mark-yes">&#10003;</span>';
-      if (v === 'no')  return '<span class="mark-no">&#10007;</span>';
-      return '<span class="mark-partial">&mdash;</span>';
-    };
-    return `
-    <section class="compare" id="compare">
-      <div class="container">
-        ${sectionHead(c.eyebrow, c.title, c.desc)}
-        <div class="compare-table-wrap">
-          <table class="compare-table">
-            <thead>
-              <tr>
-                <th></th>
-                ${c.columns.map((col, i) => `<th${i === 0 ? ' class="ours"' : ''}>${esc(col)}</th>`).join('')}
-              </tr>
-            </thead>
-            <tbody>
-              ${c.rows.map(r => `
-                <tr>
-                  <td>
-                    <span class="row-label">${esc(r.label)}</span>
-                    <span class="row-desc">${esc(r.desc)}</span>
-                  </td>
-                  ${r.values.map((v, i) => `<td${i === 0 ? ' class="ours"' : ''}>${markFor(v)}</td>`).join('')}
-                </tr>`).join('')}
-            </tbody>
-          </table>
-        </div>
+    <div class="tab-panel in" role="tabpanel" id="panel-1" aria-labelledby="tab-1">
+      <div class="tab-art" aria-hidden="true">
+        <span class="chip-time"><i></i>7 PM to 10 PM · Close the day</span>
+        <svg viewBox="0 0 400 560" preserveAspectRatio="xMidYMid slice">
+          <rect width="400" height="560" fill="#1A1A1F"/>
+          <g class="lampglow"><polygon points="150,245 250,245 350,560 50,560" fill="#FFB27A" opacity=".22"/><circle cx="200" cy="255" r="70" fill="#FFB27A" opacity=".18"/></g>
+          <line x1="200" y1="0" x2="200" y2="190" stroke="#6B6B70" stroke-width="2"/>
+          <path d="M150 245 L170 190 H230 L250 245Z" fill="#F2EDE3"/>
+          <circle class="lampglow" cx="200" cy="252" r="12" fill="#FFE3C9"/>
+          <rect class="lampdark" width="400" height="560" fill="#070A24"/>
+          <g class="moonrise"><circle cx="320" cy="130" r="20" fill="#F2EDE3"/><circle cx="330" cy="124" r="18" fill="#070A24"/></g>
+          <g transform="translate(150 470)"><rect width="100" height="46" rx="23" fill="none" stroke="#F2EDE3" stroke-width="1.5"/><g class="knob"><circle cx="74" cy="23" r="17" fill="#FF5500"/></g></g>
+        </svg>
       </div>
-    </section>`;
-  };
-
-  const renderManifesto = (m) => `
-    <section class="manifesto">
-      <div class="bg" style="background-image:url('${esc(m.imageUrl)}');"></div>
-      <div class="overlay"></div>
-      <div class="container">
-        <h2>${richText(m.punchline)}</h2>
-        <p class="sub">${esc(m.subtext)}</p>
-        <div class="pills">
-          ${m.highlights.map(h => `<div class="pill">${esc(h)}</div>`).join('')}
-        </div>
+      <div class="tab-content">
+        <span class="eyebrow">Ritual 01 · Switch Off</span>
+        <h3>The moment work stops being work.</h3>
+        <p class="sub">How the 100 draw a hard line under the day, so the night does not inherit it.</p>
+        <div class="ask"><div class="eyebrow">The question we ask the 100</div><p>What is the very last thing you do before work stops being work?</p></div>
+        <div class="row"><div class="label">Inside</div><div class="value"><ul><li>The commute, walk or shower that marks the end</li><li>How they park unfinished work before bed</li><li>Phone boundaries that actually hold</li><li>Home rhythms that protect the evening</li></ul></div></div>
+        <div class="row"><div class="label">You keep</div><div class="value keep">Your personal shutdown line, in one sentence.</div></div>
+        <div class="row"><div class="label">The science</div><div class="value">Cognitive offloading, transition rituals, stress recovery.</div></div>
+        <div class="tab-cta"><a class="btn btn-orange js-cta" href="#waitlist">Join the waitlist <span class="arrow" aria-hidden="true">→</span></a></div>
       </div>
-    </section>`;
+    </div>
 
-  const renderWhy = (w) => `
-    <section class="why" id="why">
-      <div class="container">
-        ${sectionHead(w.eyebrow, w.title, w.desc)}
-        <div class="why-grid">
-          ${w.items.map(item => `
-            <div class="why-item">
-              <div class="num">${esc(item.num)}</div>
-              <h4>${esc(item.heading)}</h4>
-              <p>${esc(item.text)}</p>
-            </div>`).join('')}
-        </div>
+    <div class="tab-panel" role="tabpanel" id="panel-2" aria-labelledby="tab-2" hidden>
+      <div class="tab-art" aria-hidden="true">
+        <span class="chip-time"><i></i>10 PM to 6 AM · The descent</span>
+        <svg viewBox="0 0 400 560" preserveAspectRatio="xMidYMid slice">
+          <defs><linearGradient id="g-night" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#070A24"/><stop offset="1" stop-color="#1A2580"/></linearGradient><radialGradient id="g-mg"><stop offset="0" stop-color="#F2EDE3" stop-opacity=".45"/><stop offset="1" stop-color="#F2EDE3" stop-opacity="0"/></radialGradient></defs>
+          <rect width="400" height="560" fill="url(#g-night)"/>
+          <g fill="#F2EDE3"><circle class="tw" cx="40" cy="90" r="1.6"/><circle class="tw" cx="90" cy="150" r="1.2"/><circle class="tw" cx="150" cy="80" r="1.8"/><circle class="tw" cx="220" cy="120" r="1.2"/><circle class="tw" cx="360" cy="160" r="1.3"/><circle class="tw" cx="60" cy="230" r="1.1"/><circle class="tw" cx="330" cy="240" r="1.6"/><circle class="tw" cx="190" cy="200" r="1"/><circle class="tw" cx="120" cy="290" r="1.4"/></g>
+          <g class="float"><circle cx="270" cy="190" r="90" fill="url(#g-mg)"/><circle cx="270" cy="190" r="42" fill="#F2EDE3"/><circle cx="290" cy="178" r="38" fill="#0C1240"/></g>
+          <g font-family="Fraunces, Georgia, serif" font-style="italic" fill="#F2EDE3"><text class="zz" x="110" y="370" font-size="26">z</text><text class="zz z2" x="140" y="380" font-size="20">z</text><text class="zz z3" x="95" y="390" font-size="16">z</text></g>
+          <g class="wave w3"><path d="M0 420 Q50 405 100 420 T200 420 T300 420 T400 420 T500 420 T600 420 T700 420 T800 420 V560 H0Z" fill="#002FE0" opacity=".35"/></g>
+          <g class="wave w2"><path d="M0 450 Q50 435 100 450 T200 450 T300 450 T400 450 T500 450 T600 450 T700 450 T800 450 V560 H0Z" fill="#001FAB" opacity=".6"/></g>
+          <g class="wave"><path d="M0 485 Q50 472 100 485 T200 485 T300 485 T400 485 T500 485 T600 485 T700 485 T800 485 V560 H0Z" fill="#070A24" opacity=".9"/></g>
+        </svg>
       </div>
-    </section>`;
+      <div class="tab-content">
+        <span class="eyebrow">Ritual 02 · Sleep</span>
+        <h3>The last sixty minutes, decoded.</h3>
+        <p class="sub">How people who cannot afford a bad night actually fall asleep, and stay there.</p>
+        <div class="ask"><div class="eyebrow">The question we ask the 100</div><p>Walk us through the hour before you fall asleep. What never changes?</p></div>
+        <div class="row"><div class="label">Inside</div><div class="value"><ul><li>The final hour, minute by minute</li><li>The cues their body now expects, and waits for</li><li>What they do when the mind refuses to stop</li><li>How they handle the 3 AM wake-up</li></ul></div></div>
+        <div class="row"><div class="label">You keep</div><div class="value keep">A wind-down sequence you can borrow tonight.</div></div>
+        <div class="row"><div class="label">The science</div><div class="value">Circadian rhythm, sleep pressure, pre-sleep arousal.</div></div>
+        <div class="tab-cta"><a class="btn btn-orange js-cta" href="#waitlist">Join the waitlist <span class="arrow" aria-hidden="true">→</span></a></div>
+      </div>
+    </div>
 
-  const renderBuiltFor = (b) => `
-    <section>
-      <div class="container">
-        <div class="builtfor-grid">
-          <div>
-            <div class="eyebrow">${esc(b.eyebrow)}</div>
-            <h2 style="margin-top: 18px; margin-bottom: 40px;">${richText(b.title)}</h2>
-            <ul class="builtfor-list">
-              ${b.items.map(item => `
-                <li>
-                  <div class="who">${esc(item.who)}</div>
-                  <div class="what">${esc(item.what)}</div>
-                </li>`).join('')}
-            </ul>
+    <div class="tab-panel" role="tabpanel" id="panel-3" aria-labelledby="tab-3" hidden>
+      <div class="tab-art" aria-hidden="true">
+        <span class="chip-time"><i></i>6 AM to 9 AM · The first hour</span>
+        <svg viewBox="0 0 400 560" preserveAspectRatio="xMidYMid slice">
+          <defs><linearGradient id="g-dawn2" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#3B4BC8"/><stop offset=".55" stop-color="#F7B88E"/><stop offset="1" stop-color="#FFE2C4"/></linearGradient></defs>
+          <rect width="400" height="560" fill="#E8DFCB"/>
+          <rect x="70" y="100" width="260" height="290" fill="url(#g-dawn2)"/>
+          <g class="dawn-sun"><circle cx="200" cy="310" r="46" fill="#FF5500"/><circle cx="200" cy="310" r="70" fill="#FF5500" opacity=".2"/></g>
+          <path d="M70 340 Q130 310 200 335 T330 325 V390 H70Z" fill="#1A2580" opacity=".55"/>
+          <rect x="70" y="100" width="260" height="290" fill="none" stroke="#1A1A1F" stroke-width="6"/>
+          <line x1="200" y1="100" x2="200" y2="390" stroke="#1A1A1F" stroke-width="3"/>
+          <g class="curtain-l"><path d="M50 80 H200 V410 Q150 390 125 410 Q90 390 50 410Z" fill="#B7A88E" stroke="#8E7F66"/></g>
+          <g class="curtain-r"><path d="M200 80 H350 V410 Q310 390 275 410 Q250 390 200 410Z" fill="#B7A88E" stroke="#8E7F66"/></g>
+          <rect x="40" y="72" width="320" height="10" rx="5" fill="#6B6B70"/>
+          <rect x="0" y="440" width="400" height="120" fill="#D3C9B4"/>
+          <g transform="translate(170 455)">
+            <path class="steam" d="M18 0 q-8 -10 0 -20 q8 -10 0 -20" stroke="#6B6B70" stroke-width="2" fill="none"/>
+            <path class="steam s2" d="M30 0 q-8 -10 0 -20 q8 -10 0 -20" stroke="#6B6B70" stroke-width="2" fill="none"/>
+            <path class="steam s3" d="M42 0 q-8 -10 0 -20 q8 -10 0 -20" stroke="#6B6B70" stroke-width="2" fill="none"/>
+            <rect x="6" y="6" width="50" height="46" rx="6" fill="#F2EDE3" stroke="#1A1A1F" stroke-width="2"/>
+            <path d="M56 16 q16 0 16 12 q0 12 -16 12" fill="none" stroke="#1A1A1F" stroke-width="2"/>
+          </g>
+        </svg>
+      </div>
+      <div class="tab-content">
+        <span class="eyebrow">Ritual 03 · Wake</span>
+        <h3>Tonight's sleep starts this morning.</h3>
+        <p class="sub">The first hour sets the body clock for the night ahead. How the 100 protect it before the world gets in.</p>
+        <div class="ask"><div class="eyebrow">The question we ask the 100</div><p>What do you do in the first thirty minutes, before anyone else gets to you?</p></div>
+        <div class="row"><div class="label">Inside</div><div class="value"><ul><li>The first thirty minutes, before the phone</li><li>Light, water and movement that set tonight's sleep clock</li><li>How they recover the morning after a bad night</li><li>The one morning habit they never skip</li></ul></div></div>
+        <div class="row"><div class="label">You keep</div><div class="value keep">A first-hour ritual that sets up tonight's sleep.</div></div>
+        <div class="row"><div class="label">The science</div><div class="value">Morning light and the circadian clock, sleep inertia, the cortisol awakening response.</div></div>
+        <div class="tab-cta"><a class="btn btn-orange js-cta" href="#waitlist">Join the waitlist <span class="arrow" aria-hidden="true">→</span></a></div>
+      </div>
+    </div>
+
+    <div class="tab-panel" role="tabpanel" id="panel-4" aria-labelledby="tab-4" hidden>
+      <div class="tab-art" aria-hidden="true">
+        <span class="chip-time"><i></i>9 AM to 7 PM · The refill</span>
+        <svg viewBox="0 0 400 560" preserveAspectRatio="xMidYMid slice">
+          <defs><linearGradient id="g-day" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#F2EDE3"/><stop offset="1" stop-color="#F7C9A6"/></linearGradient></defs>
+          <rect width="400" height="560" fill="url(#g-day)"/>
+          <circle cx="200" cy="260" r="90" fill="none" stroke="#D3C9B4" stroke-width="10"/>
+          <circle class="ring-fill" cx="200" cy="260" r="90" fill="none" stroke="#FF5500" stroke-width="10" stroke-linecap="round" transform="rotate(-90 200 260)"/>
+          <g class="sunrise"><circle cx="200" cy="260" r="46" fill="#FF5500"/></g>
+          <rect x="0" y="380" width="400" height="180" fill="#E8DFCB"/>
+          <path d="M0 380 H400" stroke="#1A1A1F"/>
+          <g font-family="Inter, sans-serif" font-size="13" font-weight="600" fill="#1A1A1F" text-anchor="middle" letter-spacing="2"><text x="100" y="440">2 MIN</text><text x="200" y="440">10 MIN</text><text x="300" y="440">60 MIN</text></g>
+        </svg>
+      </div>
+      <div class="tab-content">
+        <span class="eyebrow">Ritual 04 · Recharge</span>
+        <h3>Refill before you run dry.</h3>
+        <p class="sub">The small resets that keep the 100 sharp from the first meeting to the last, so the evening is not spent recovering.</p>
+        <div class="ask"><div class="eyebrow">The question we ask the 100</div><p>When the day is at its heaviest, what brings you back?</p></div>
+        <div class="row"><div class="label">Inside</div><div class="value"><ul><li>Micro-recovery between back-to-back calls</li><li>The ten-minute resets they swear by</li><li>Weekends that restore, instead of distract</li><li>The energy rules they never break</li></ul></div></div>
+        <div class="row"><div class="label">You keep</div><div class="value keep">A recharge menu sized to 2, 10 and 60 minutes.</div></div>
+        <div class="row"><div class="label">The science</div><div class="value">Ultradian rhythms, attention restoration, the physiology of rest.</div></div>
+        <div class="tab-cta"><a class="btn btn-orange js-cta" href="#waitlist">Join the waitlist <span class="arrow" aria-hidden="true">→</span></a></div>
+      </div>
+    </div>
+
+    <div class="also">
+      <div class="cell reveal"><svg class="ico" viewBox="0 0 40 40" aria-hidden="true"><rect x="6" y="8" width="12" height="26" rx="1" fill="none" stroke="#1A1A1F"/><rect x="20" y="8" width="12" height="26" rx="1" fill="none" stroke="#1A1A1F"/><rect class="bob" x="22" y="4" width="12" height="26" rx="1" fill="#FF5500" opacity=".85"/></svg><h4>The Ritual Library</h4><p>Every ritual from the 100, sorted by the four parts of the loop, so you can find yours in seconds.</p></div>
+      <div class="cell reveal"><svg class="ico" viewBox="0 0 40 40" aria-hidden="true"><circle cx="20" cy="20" r="15" fill="none" stroke="#1A1A1F"/><path class="spin-slow" d="M20 20 L20 8" stroke="#FF5500" stroke-width="2" stroke-linecap="round"/><circle cx="20" cy="20" r="2" fill="#1A1A1F"/></svg><h4>The 24-Hour Map</h4><p>Where each ritual sits in the day, and why its timing matters as much as the ritual itself.</p></div>
+      <div class="cell reveal"><svg class="ico" viewBox="0 0 40 40" aria-hidden="true"><path d="M8 32 V12 M8 32 H34" stroke="#1A1A1F" fill="none"/><path class="draw" d="M10 28 L17 20 L23 24 L32 12" stroke="#002FE0" stroke-width="2" fill="none" stroke-linecap="round"/></svg><h4>The Science Notes</h4><p>A plain-language note behind each ritual: what it does to your body and why it holds up.</p></div>
+      <div class="cell reveal"><svg class="ico" viewBox="0 0 40 40" aria-hidden="true"><g fill="#1A1A1F"><circle cx="10" cy="10" r="2"/><circle cx="20" cy="10" r="2"/><circle cx="30" cy="10" r="2"/><circle cx="10" cy="20" r="2"/><circle cx="30" cy="20" r="2"/><circle cx="10" cy="30" r="2"/><circle cx="20" cy="30" r="2"/><circle cx="30" cy="30" r="2"/></g><circle class="blink" cx="20" cy="20" r="4" fill="#FF5500"/></svg><h4>The Pattern Report</h4><p>What a hundred very different people turn out to have in common, once their days sit side by side.</p></div>
+      <div class="cell reveal"><svg class="ico" viewBox="0 0 40 40" aria-hidden="true"><rect x="9" y="5" width="22" height="30" rx="2" fill="none" stroke="#1A1A1F"/><path class="draw" d="M14 14 H26 M14 20 H26 M14 26 H21" stroke="#FF5500" stroke-width="2" stroke-linecap="round"/></svg><h4>Your Ritual Builder</h4><p>A one-page template to assemble your own loop from the pieces that fit your life.</p></div>
+      <div class="cell reveal"><svg class="ico" viewBox="0 0 40 40" aria-hidden="true"><circle cx="20" cy="15" r="7" fill="none" stroke="#1A1A1F"/><path d="M7 35 C9 26 31 26 33 35" fill="none" stroke="#1A1A1F"/><circle class="blink" cx="31" cy="9" r="3" fill="#002FE0"/></svg><h4>Contributor Portraits</h4><p>Short portraits of the people behind the rituals, named or anonymous, always with their approval.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="anatomy" id="anatomy">
+  <div class="container">
+    <div class="section-head">
+      <div class="title reveal"><span class="eyebrow">Inside every entry</span><h2>Every ritual arrives <em class="accent">decoded and ready to borrow.</em></h2></div>
+      <div class="reveal"><p class="lede">A ritual on its own is an anecdote. The playbook breaks each one into the parts you need to use it: what they do, what sets it off, why it works, and how to make it yours.</p></div>
+    </div>
+    <div class="anat-grid">
+      <article class="ritual-card reveal" aria-label="Sample ritual entry">
+        <div class="rc-top"><span class="eyebrow">Ritual entry</span><span class="badge">Sample format</span></div>
+        <div class="rc-name">The Parking Note</div>
+        <div class="rc-who">Switch Off · Example entry, not a real contributor</div>
+        <div class="rc-field"><span class="k">The ritual</span><span class="v">Three lines on paper before leaving the desk: what got done, what is still open, what starts tomorrow.</span></div>
+        <div class="rc-field"><span class="k">The trigger</span><span class="v">The laptop lid closes. The pen comes out.</span></div>
+        <div class="rc-field"><span class="k">Why it works</span><span class="v">Writing down unfinished tasks offloads them from working memory. In a 2018 Baylor University study, people who wrote a to-do list before bed fell asleep faster than those who wrote about tasks already done.</span></div>
+        <div class="rc-field"><span class="k">How to steal it</span><span class="v">Keep a notebook at the edge of your desk. Write the three lines before the last tab closes. Four minutes.</span></div>
+        <div class="rc-field"><span class="k">Who it suits</span><span class="v">Racing-mind sleepers. Anyone who replays the day at 1 AM.</span></div>
+      </article>
+      <ol class="parts" id="parts">
+        <li><span class="n">01</span><div><h4>The ritual</h4><p>Exactly what they do, in their own words.</p><div class="bar"><i></i></div></div></li>
+        <li><span class="n">02</span><div><h4>The trigger</h4><p>The cue that starts it, so it happens without willpower.</p><div class="bar"><i></i></div></div></li>
+        <li><span class="n">03</span><div><h4>Why it works</h4><p>The science behind it, minus the jargon.</p><div class="bar"><i></i></div></div></li>
+        <li><span class="n">04</span><div><h4>How to steal it</h4><p>The smallest version you can try tonight.</p><div class="bar"><i></i></div></div></li>
+        <li><span class="n">05</span><div><h4>Who it suits</h4><p>The kind of day and mind it fits best.</p><div class="bar"><i></i></div></div></li>
+      </ol>
+    </div>
+  </div>
+</section>
+
+<section class="levers" id="levers">
+  <div class="container">
+    <div class="section-head">
+      <div class="title reveal"><span class="eyebrow">Six levers</span><h2>Every ritual pulls <em class="accent">one of six levers.</em></h2></div>
+      <div class="reveal"><p class="lede">Sleep science points to a handful of inputs the nervous system responds to. The playbook sorts every ritual by the lever it pulls, so you can find the one that fits your day instead of copying someone else's whole routine.</p></div>
+    </div>
+    <div class="lever-grid">
+      <div class="breathe reveal">
+        <div><span class="eyebrow">Try one lever now</span><h3>Breathe with the circle for one minute.</h3></div>
+        <div class="breath-stage"><div class="breath-ring"><div class="breath-orb"></div><span class="breath-word" id="breathWord">Breathe in</span></div></div>
+        <p class="hint">Box breathing: four counts in, hold four, four out, hold four. One of the oldest wind-down tools there is.</p>
+      </div>
+      <div class="sense-grid">
+        <div class="sense reveal"><svg class="ico" viewBox="0 0 44 44" aria-hidden="true"><circle cx="22" cy="22" r="8" fill="#FF5500"/><g class="spin-slow" stroke="#1A1A1F" stroke-linecap="round"><path d="M22 4v6M22 34v6M4 22h6M34 22h6M9 9l4 4M31 31l4 4M9 35l4-4M31 13l4-4"/></g></svg><h4>Light</h4><p>Morning sun, evening amber and dimmed screens that set the body clock.</p></div>
+        <div class="sense reveal"><svg class="ico" viewBox="0 0 44 44" aria-hidden="true"><rect x="18" y="6" width="8" height="26" rx="4" fill="none" stroke="#1A1A1F"/><circle cx="22" cy="34" r="6" fill="#FF5500"/><rect class="bob" x="20.5" y="16" width="3" height="16" fill="#FF5500"/></svg><h4>Temperature</h4><p>Warm skin, cool core. The thermal cues that open the door to deep sleep.</p></div>
+        <div class="sense reveal"><svg class="ico" viewBox="0 0 44 44" aria-hidden="true"><path class="draw" d="M6 22 C12 10 18 34 24 22 S36 10 40 22" fill="none" stroke="#002FE0" stroke-width="2" stroke-linecap="round"/></svg><h4>Breath</h4><p>Short, repeatable patterns that calm the nervous system in under two minutes.</p></div>
+        <div class="sense reveal"><svg class="ico" viewBox="0 0 44 44" aria-hidden="true"><circle class="bob" cx="22" cy="11" r="5" fill="none" stroke="#1A1A1F"/><path d="M22 16 V28 M14 22 H30 M22 28 L16 38 M22 28 L28 38" stroke="#1A1A1F" stroke-linecap="round" fill="none"/></svg><h4>Body</h4><p>Walks, stretches and body scans that close the day in the muscles, not only the mind.</p></div>
+        <div class="sense reveal"><svg class="ico" viewBox="0 0 44 44" aria-hidden="true"><g stroke="#1A1A1F" stroke-linecap="round"><path class="bob" d="M10 18v8"/><path d="M16 12v20"/><path class="bob" d="M22 16v12"/><path d="M28 10v24"/><path class="bob" d="M34 18v8"/></g></svg><h4>Sound</h4><p>The playlists, silences and voices people use to tell themselves the day is done.</p></div>
+        <div class="sense reveal"><svg class="ico" viewBox="0 0 44 44" aria-hidden="true"><rect x="10" y="6" width="24" height="32" rx="2" fill="none" stroke="#1A1A1F"/><path class="draw" d="M15 16 H29 M15 22 H29 M15 28 H24" stroke="#FF5500" stroke-width="2" stroke-linecap="round"/></svg><h4>Closure</h4><p>A line written, a list parked, a door closed. A clear ending for the day.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="compare" id="compare">
+  <div class="container">
+    <div class="section-head">
+      <div class="title reveal"><span class="eyebrow">Why this is different</span><h2>Real lives. Real evenings. <em class="accent">Rituals that hold.</em></h2></div>
+      <div class="reveal"><p class="lede">Most sleep advice is written for an imagined person with an imagined day. This playbook starts from real people in one real city, with late calls, long commutes, family dinners and humid nights.</p></div>
+    </div>
+    <div class="compare-wrap reveal">
+      <table class="compare-table">
+        <thead><tr><th scope="col"></th><th scope="col" class="ours">The SLEAP Playbook</th><th scope="col">Generic sleep tips</th><th scope="col">Sleep and meditation apps</th><th scope="col">Celebrity routines</th></tr></thead>
+        <tbody>
+          <tr><td><span class="rl">Sourced from real, high-load lives</span><span class="rd">People carrying serious responsibility</span></td><td class="ours"><span class="mk y" aria-label="Yes">✓</span></td><td><span class="mk n" aria-label="No">–</span></td><td><span class="mk n" aria-label="No">–</span></td><td><span class="mk p" aria-label="Partly">~</span></td></tr>
+          <tr><td><span class="rl">Built for the Bengaluru day</span><span class="rd">Traffic, late dinners, global calls, family</span></td><td class="ours"><span class="mk y" aria-label="Yes">✓</span></td><td><span class="mk n" aria-label="No">–</span></td><td><span class="mk p" aria-label="Partly">~</span></td><td><span class="mk n" aria-label="No">–</span></td></tr>
+          <tr><td><span class="rl">Covers the full 24-hour loop</span><span class="rd">Evening, night, morning and day</span></td><td class="ours"><span class="mk y" aria-label="Yes">✓</span></td><td><span class="mk n" aria-label="No">–</span></td><td><span class="mk p" aria-label="Partly">~</span></td><td><span class="mk n" aria-label="No">–</span></td></tr>
+          <tr><td><span class="rl">Private rituals, not public hacks</span><span class="rd">What people do, not what they post</span></td><td class="ours"><span class="mk y" aria-label="Yes">✓</span></td><td><span class="mk n" aria-label="No">–</span></td><td><span class="mk n" aria-label="No">–</span></td><td><span class="mk n" aria-label="No">–</span></td></tr>
+          <tr><td><span class="rl">Explains why it works</span><span class="rd">Grounded in sleep and behavioural science</span></td><td class="ours"><span class="mk y" aria-label="Yes">✓</span></td><td><span class="mk p" aria-label="Partly">~</span></td><td><span class="mk p" aria-label="Partly">~</span></td><td><span class="mk n" aria-label="No">–</span></td></tr>
+          <tr><td><span class="rl">Borrowable in minutes</span><span class="rd">Small enough to try tonight</span></td><td class="ours"><span class="mk y" aria-label="Yes">✓</span></td><td><span class="mk y" aria-label="Yes">✓</span></td><td><span class="mk p" aria-label="Partly">~</span></td><td><span class="mk n" aria-label="No">–</span></td></tr>
+          <tr><td><span class="rl">No app, no streaks</span><span class="rd">Nothing new to download or maintain</span></td><td class="ours"><span class="mk y" aria-label="Yes">✓</span></td><td><span class="mk y" aria-label="Yes">✓</span></td><td><span class="mk n" aria-label="No">–</span></td><td><span class="mk y" aria-label="Yes">✓</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<section class="manifesto on-dark" aria-label="Manifesto">
+  <canvas id="stars" aria-hidden="true"></canvas>
+  <div class="container reveal">
+    <span class="eyebrow">The belief behind SLEAP</span>
+    <h2>Rest is the last unfair advantage. <em class="accent">The best in this city have quietly claimed it.</em></h2>
+    <p class="sub">Behind every sharp decision, steady hand and clear-headed morning is an evening no one sees. This playbook opens that door, and hands you the key.</p>
+    <div class="mstats">
+      <div><b>100</b><span>people worth learning from</span></div>
+      <div><b>1</b><span>city that never switches off</span></div>
+      <div><b>4</b><span>rituals across 24 hours</span></div>
+      <div><b>0</b><span>generic sleep tips</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="method" id="method">
+  <div class="container">
+    <div class="section-head">
+      <div class="title reveal"><span class="eyebrow">How the playbook is being built</span><h2>From one conversation <em class="accent">to a playbook.</em></h2></div>
+      <div class="reveal"><p class="lede">Six steps, the same for every one of the 100. Slow by design, because the details that make a ritual work are the ones people only share when they feel heard.</p></div>
+    </div>
+    <div class="steps" id="steps">
+      <div class="step reveal"><div class="num">Step 01</div><h4>We sit down</h4><p>A relaxed, unhurried conversation, wherever suits them.</p></div>
+      <div class="step reveal"><div class="num">Step 02</div><h4>We listen for the private</h4><p>Not the advice they would give. What they actually do, day after day.</p></div>
+      <div class="step reveal"><div class="num">Step 03</div><h4>They approve it</h4><p>Nothing is published without their yes. Anonymity whenever they want it.</p></div>
+      <div class="step reveal"><div class="num">Step 04</div><h4>We decode it</h4><p>Each ritual is mapped to the sleep and behavioural science behind it.</p></div>
+      <div class="step reveal"><div class="num">Step 05</div><h4>We find the pattern</h4><p>A hundred days, side by side, reveal what truly works.</p></div>
+      <div class="step reveal"><div class="num">Step 06</div><h4>It goes live</h4><p>Contributors read it first. The waitlist reads it next.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="builtfor" id="for">
+  <div class="container">
+    <div class="bf-head">
+      <div class="reveal">
+        <span class="eyebrow">Who the playbook is for</span>
+        <h2>If your mind is still at work <em class="accent">after you are not.</em></h2>
+        <p class="lede">Different lives, the same 1 AM. If you see yourself in any of these, the playbook was written with you in mind.</p>
+      </div>
+      <div class="loop-card reveal" aria-label="Animated bedside clock cycling through late-night times and the thoughts that keep people awake.">
+        <span class="glow" aria-hidden="true"></span>
+        <div class="inner"><div class="digits" id="loopTime">12<span class="colon">:</span>41</div><div class="thought" id="loopThought">still replaying the meeting</div></div>
+        <div class="meta" aria-hidden="true"><span>Bedside · Bengaluru</span><span id="loopAmpm">AM</span></div>
+      </div>
+    </div>
+    <div class="bf-grid">
+      <div class="bf-item reveal"><div class="who">Founders</div><p>The mind that ran the company all day still runs it at 1 AM. You need the off-switch nobody gave you.</p></div>
+      <div class="bf-item reveal"><div class="who">CXOs and leaders</div><p>The last call ends at 10:30 PM with New York. Your body did not get the memo.</p></div>
+      <div class="bf-item reveal"><div class="who">Doctors and surgeons</div><p>You make life-and-death calls all day, and need a steady hand again by 7 AM.</p></div>
+      <div class="bf-item reveal"><div class="who">Investors and traders</div><p>The market closes. Your mind keeps trading the position until 2 AM.</p></div>
+      <div class="bf-item reveal"><div class="who">Politicians and public servants</div><p>Your phone never truly goes silent. Your sleep has learned to work around it.</p></div>
+      <div class="bf-item reveal"><div class="who">Frequent travellers</div><p>Three time zones in one week. Your body clock has stopped guessing.</p></div>
+      <div class="bf-item reveal"><div class="who">Professionals</div><p>The 9:30 PM laptop close. The 10:45 PM bed. The 12:18 AM still awake. The 6 AM alarm. You know this loop.</p></div>
+      <div class="bf-item reveal"><div class="who">Creators and artists</div><p>Your best ideas arrive at midnight. So does your worst sleep.</p></div>
+      <div class="bf-item reveal"><div class="who">Athletes and performers</div><p>Recovery is part of the job. The night after the big day is the hardest to switch off.</p></div>
+      <div class="bf-item reveal"><div class="who">Parents</div><p>The house is finally quiet at 11 PM, and now you cannot fall asleep. Tomorrow starts at 6:30 AM regardless.</p></div>
+      <div class="bf-item reveal"><div class="who">Caregivers</div><p>You sleep on a single thread of vigilance. The playbook will not break it. It will help the rest of you rest.</p></div>
+      <div class="bf-item reveal"><div class="who">Students</div><p>Exam season has scrambled your rhythm, and you cannot afford a foggy week.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="founder on-dark" id="founder">
+  <div class="container founder-grid">
+    <div class="f-photo reveal">
+      <div class="f-img">
+        <div class="mono" aria-hidden="true">SBD</div>
+        <img src="https://lh3.googleusercontent.com/a/ACg8ocLmaate-9J0g00TA3s3jbC8Pvl9HLACh6jQoKtJHcCvdABjQNAZQQ=s576-c-no" alt="SBD, founder of SLEAP" referrerpolicy="no-referrer" onerror="this.remove()">
+      </div>
+      <div class="f-meta"><span class="name">SBD</span><span class="role">Founder, SLEAP</span></div>
+    </div>
+    <div>
+      <span class="eyebrow reveal">Why this exists</span>
+      <h2 class="reveal">It started at home, <em class="accent">at 3 AM.</em></h2>
+      <div class="chapter reveal"><div class="k">At home</div><div><p class="drop">Two years ago, I began noticing something unsettling. My spouse struggled to sleep night after night. My father woke repeatedly through the night. My mother-in-law silently battled chronic insomnia that slowly drained her energy and mood.</p></div></div>
+      <p class="interlude reveal">Everyone looked functional. <em>Very few were truly rested.</em></p>
+      <div class="chapter reveal"><div class="k">Two years of testing</div><div><p>That realisation became an obsession. I studied sleep behaviour, nervous system regulation, light, breath and the psychology of modern exhaustion. I tested small, practical changes at home. Some worked. Many did not. Slowly, patterns emerged.</p></div></div>
+      <div class="chapter reveal"><div class="k">The sleep lab</div><div><p>When my wife needed a hospital sleep study, the waiting list stretched close to two months. That is when it hit me: we are living through a silent sleep crisis, and most of the help on offer is clinical, expensive or impossible to sustain.</p></div></div>
+      <p class="interlude reveal">The rituals that work are rarely in articles. <em>They live inside other people's evenings.</em></p>
+      <div class="chapter reveal"><div class="k">The playbook</div><div><p>So I am going to the people who have figured it out. One hundred of them, across Bengaluru. Not a medical solution, not another wellness trend. A playbook of what actually works, from the people it works for.</p></div></div>
+      <div class="sig reveal"><span class="line"></span><span>SBD · Founder, SLEAP</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="faq" id="faq">
+  <div class="container">
+    <div class="section-head">
+      <div class="title reveal"><span class="eyebrow">Honest answers</span><h2>What you may be <em class="accent">wondering.</em></h2></div>
+      <div class="reveal"><p class="lede">This is a work in progress, and we would rather be clear about that than oversell it.</p></div>
+    </div>
+    <div class="faq-list">
+      <details class="fq" name="faq"><summary>What exactly is the SLEAP Playbook?</summary><div class="ans"><p>A collection of the real, private rituals that 100 accomplished people in Bengaluru use to switch off, sleep, wake and recharge. Each ritual is decoded with the science behind it and broken down so you can borrow the parts that fit your life.</p></div></details>
+      <details class="fq" name="faq"><summary>When does it go live?</summary><div class="ans"><p>Conversations are under way now. The playbook goes live once enough of them are decoded to be genuinely useful. Waitlist members hear first, the day it is ready.</p></div></details>
+      <details class="fq" name="faq"><summary>What format will it take?</summary><div class="ans"><p>The final format is still taking shape. Whatever form best captures the collective wisdom of these conversations, the waitlist receives it right after the contributors.</p></div></details>
+      <details class="fq" name="faq"><summary>Who are the 100?</summary><div class="ans"><p>People across Bengaluru who carry serious responsibility and still find a way to rest well. Founders and CEOs. Surgeons and doctors. Civil servants and politicians. Investors and traders. Scientists, judges, pilots, athletes, artists, and the parents and caregivers who hold everything together. Different lives, one shared question: how do you switch off?</p></div></details>
+      <details class="fq" name="faq"><summary>Can I share my own ritual, or nominate someone?</summary><div class="ans"><p>Yes. Tick the boxes in the waitlist form. If you know someone whose calm seems almost unfair, we would love an introduction.</p></div></details>
+      <details class="fq" name="faq"><summary>Is this medical advice?</summary><div class="ans"><p>No. The playbook documents lived rituals and explains the science behind them. If you have a diagnosed sleep disorder such as insomnia or sleep apnoea, please keep working with your doctor. These rituals can complement treatment, not replace it.</p></div></details>
+      <details class="fq" name="faq"><summary>What happens to my details?</summary><div class="ans"><p>They are used only to tell you about the playbook. Never sold, never shared. One click and you are off the list.</p></div></details>
+      <details class="fq" name="faq"><summary>Why the name SLEAP?</summary><div class="ans">
+        <p>Sleep, with a leap in the middle. The rituals in this playbook are small, but borrowing the right one can be a short, deliberate jump from the way you sleep now to the way your body already knows how to.</p>
+        <p>There is a quieter meaning too. A group of leopards is called a leap: still and deeply at rest, then fully alert when it matters. That is the kind of rest this playbook is about.</p>
+        <p>And practically, sleap.in was the shortest domain we could find that sounds closest to the thing it stands for: sleep.</p>
+      </div></details>
+    </div>
+  </div>
+</section>
+
+<section class="final">
+  <span class="orbit" aria-hidden="true"></span><span class="orbit o2" aria-hidden="true"></span>
+  <div class="container reveal">
+    <span class="eyebrow">Be first to read it</span>
+    <h2>The rituals exist. <em class="accent">They just have not been written down yet.</em></h2>
+    <p class="lede">Join the waitlist and read the SLEAP Playbook the day it goes live.</p>
+    <a class="btn btn-orange js-cta" href="#waitlist">Join the waitlist <span class="arrow" aria-hidden="true">→</span></a>
+  </div>
+</section>
+
+<section class="waitlist on-dark" id="waitlist">
+  <span class="wl-bg" aria-hidden="true"></span>
+  <div class="container wl-grid">
+    <div class="wl-intro reveal">
+      <span class="eyebrow">Join the waitlist</span>
+      <h2>Get the playbook <em class="accent">before everyone else.</em></h2>
+      <p>Two minutes. Tell us a little about you and what you need most from your day and night. It shapes what we ask the 100.</p>
+      <ul class="perks">
+        <li><span class="pn">01</span><div><strong>First access</strong><span>Read the playbook the day it goes live.</span></div></li>
+        <li><span class="pn">02</span><div><strong>Early ritual notes</strong><span>A ritual or two as they are decoded. Never more than one a fortnight.</span></div></li>
+        <li><span class="pn">03</span><div><strong>A say in the questions</strong><span>Tell us what you struggle with, and we will ask the 100 about it.</span></div></li>
+        <li><span class="pn">04</span><div><strong>A seat at the table</strong><span>Share your own ritual, or introduce someone who belongs in it.</span></div></li>
+      </ul>
+    </div>
+    <div class="form-card reveal">
+      <div id="extMode" hidden>
+        <h3 style="color:#fff;font-size:30px;margin-bottom:14px">One short form.</h3>
+        <p style="color:rgba(242,237,227,.88);margin-bottom:24px">It opens in a new tab and takes under two minutes.</p>
+        <a class="btn btn-orange js-cta" href="#waitlist" style="width:100%;justify-content:center">Join the waitlist <span class="arrow" aria-hidden="true">→</span></a>
+      </div>
+      <form id="wlForm" novalidate>
+        <div class="form-grid">
+          <div class="field"><label for="f-name">Full name<span class="req">*</span></label><input id="f-name" autocomplete="name" placeholder="Your name"></div>
+          <div class="field"><label for="f-email">Email<span class="req">*</span></label><input id="f-email" type="email" autocomplete="email" placeholder="you@email.com"></div>
+          <div class="field"><label for="f-city">City</label><input id="f-city" value="Bengaluru"></div>
+          <div class="field"><label for="f-role">What do you do?</label>
+            <select id="f-role"><option>Founder / CEO</option><option>Senior leader / CXO</option><option>Doctor / Surgeon</option><option>Investor / Trader</option><option>Civil servant / Public life</option><option>Engineer / Scientist</option><option>Creative / Artist</option><option>Athlete / Performer</option><option>Professional / Consultant</option><option>Parent / Caregiver</option><option>Student</option><option>Other</option></select>
           </div>
-          <div class="builtfor-image">
-            <img src="${esc(b.imageUrl)}" alt="${esc(b.imageAlt)}">
-          </div>
-        </div>
-      </div>
-    </section>`;
-
-  const renderFounder = (f) => `
-    <section class="founder" id="founder">
-      <div class="container">
-        <div class="founder-grid">
-          <div class="founder-image-wrap">
-            <div class="founder-image">
-              <img src="${esc(f.imageUrl)}" alt="${esc(f.imageAlt)}"
-                onerror="this.style.display='none';this.parentNode.innerHTML='<div class=&quot;placeholder&quot;><strong>Add your photo</strong>Replace founder.imageUrl in the CONTENT block above with your photo URL.</div>'">
-            </div>
-            <div class="founder-meta">
-              <div class="name">${esc(f.name)}</div>
-              <div class="role">${esc(f.role)}</div>
+          <div class="field full">
+            <span class="lbl" id="need-lbl">What do you need most?</span>
+            <p class="hint">Pick up to two <b id="needCount"></b></p>
+            <div class="chips" role="group" aria-labelledby="need-lbl" id="needChips">
+              <button type="button" class="chip" aria-pressed="false">Switch off from work</button>
+              <button type="button" class="chip" aria-pressed="false">Fall asleep faster</button>
+              <button type="button" class="chip" aria-pressed="false">Stay asleep</button>
+              <button type="button" class="chip" aria-pressed="false">Wake up fresh</button>
+              <button type="button" class="chip" aria-pressed="false">Recharge during the day</button>
+              <button type="button" class="chip" aria-pressed="false">Quiet a racing mind</button>
             </div>
           </div>
-          <div class="founder-text">
-            <div class="eyebrow">${esc(f.eyebrow)}</div>
-            <h2 style="margin-top: 18px;">${richText(f.title)}</h2>
-            ${f.paragraphs.map(p => `<p>${esc(p)}</p>`).join('')}
-            <div class="pull-quote">${esc(f.pullQuote)}</div>
+          <div class="field full">
+            <span class="lbl">I would also like to</span>
+            <div class="checks">
+              <label class="check" for="f-share"><input type="checkbox" id="f-share"><span>Share my own ritual<small>We may invite you to be one of the 100.</small></span></label>
+              <label class="check" for="f-nom"><input type="checkbox" id="f-nom"><span>Nominate someone exceptional<small>Someone whose calm seems almost unfair.</small></span></label>
+            </div>
           </div>
+          <div class="field full" id="nomField" hidden><label for="f-nominee">Who should we speak to, and why?</label><textarea id="f-nominee" placeholder="Name, what they do, and how to reach them (with their permission)"></textarea></div>
         </div>
+        <button class="submit" type="submit">Join the waitlist <span aria-hidden="true">→</span></button>
+        <div class="form-error" id="formError" hidden></div>
+        <p class="assure">Free<span class="sep">·</span>No spam, ever<span class="sep">·</span>Leave anytime with one click</p>
+      </form>
+      <div class="success" id="wlSuccess" hidden>
+        <svg class="tick" viewBox="0 0 74 74" aria-hidden="true"><circle cx="37" cy="37" r="34" fill="none" stroke="#FF5500" stroke-width="2"/><path d="M23 38l10 10 19-21" fill="none" stroke="#FF5500" stroke-width="3" stroke-linecap="round"/></svg>
+        <h3 id="successTitle">One last tap.</h3>
+        <p>Send your details to us on WhatsApp to lock in your place on the waitlist.</p>
+        <a class="btn btn-orange" id="successLink" href="#" target="_blank" rel="noopener">Confirm on WhatsApp <span class="arrow" aria-hidden="true">→</span></a>
+        <div class="share-row"><button type="button" id="copyLink">Copy link for a friend who sleeps badly</button></div>
       </div>
-    </section>`;
+    </div>
+  </div>
+</section>
 
-  const renderPricing = (p) => `
-    <section class="pricing" id="pricing">
-      <div class="container">
-        ${sectionHead(p.eyebrow, p.title, p.desc)}
-        <div class="pricing-grid">
-          ${p.plans.map(plan => `
-            <div class="plan${plan.featured ? ' featured' : ''}">
-              ${plan.badge ? `<div class="badge">${esc(plan.badge)}</div>` : ''}
-              <div class="plan-name">${esc(plan.name)}</div>
-              <div class="plan-desc">${esc(plan.subtitle)}</div>
-              <div class="plan-price">
-                <span class="currency">${esc(plan.currency)}</span>
-                <span class="amount">${esc(plan.amount)}</span>
-              </div>
-              <ul class="includes">
-                ${plan.includes.map(line => `<li>${esc(line)}</li>`).join('')}
-              </ul>
-              <a href="${esc(plan.cta.href)}" class="btn">${esc(plan.cta.label)}</a>
-            </div>`).join('')}
-        </div>
-      </div>
-    </section>`;
+</main>
 
-  const renderTestimonials = (t) => `
-    <section class="testimonials-section">
-      <div class="container">
-        ${sectionHead(t.eyebrow, t.title, t.desc)}
-        <div class="testimonials-grid">
-          ${t.items.map(item => `
-            <div class="testimonial">
-              <p class="quote">"${esc(item.quote)}"</p>
-              <div class="attribution">
-                <div class="name">${esc(item.name)}</div>
-                <div class="role">${esc(item.role)}</div>
-              </div>
-            </div>`).join('')}
-        </div>
-      </div>
-    </section>`;
+<footer>
+  <div class="container">
+    <div class="grid">
+      <div class="brand"><div class="fw">SLEAP</div><div class="ft">Your leap into deep sleep</div><p>The SLEAP Playbook: how 100 of Bengaluru's most accomplished people switch off, sleep, wake and recharge. sleap.in</p></div>
+      <div><h5>The Playbook</h5><ul><li><a href="#hundred">The 100</a></li><li><a href="#playbook">What to expect</a></li><li><a href="#anatomy">Inside every entry</a></li><li><a href="#method">How it is built</a></li><li><a href="#faq">FAQ</a></li></ul></div>
+      <div><h5>Take part</h5><ul><li><a class="js-cta" href="#waitlist">Join the waitlist</a></li><li><a class="js-cta" href="#waitlist">Share your ritual</a></li><li><a class="js-cta" href="#waitlist">Nominate someone</a></li><li><a href="#founder">About the founder</a></li></ul></div>
+    </div>
+    <div class="bottom"><span>© SLEAP · sleap.in · 2026</span><span>Made with care in Bengaluru</span></div>
+  </div>
+</footer>
 
-  const renderFaq = (f) => `
-    <section class="faq" id="faq">
-      <div class="container">
-        ${sectionHead(f.eyebrow, f.title, f.desc)}
-        <div class="faq-list">
-          ${f.items.map(item => `
-            <details class="faq-item">
-              <summary>${esc(item.q)}</summary>
-              <p>${esc(item.a)}</p>
-            </details>`).join('')}
-        </div>
-        <div class="faq-cta">
-          <div class="note">${esc(f.closingNote)}</div>
-          <a href="${esc(f.cta.href)}" class="btn btn-orange">${esc(f.cta.label)}</a>
-        </div>
-      </div>
-    </section>`;
+<div class="sticky-cta" id="stickyCta"><span class="t">The playbook is being written.</span><a class="btn btn-orange js-cta" href="#waitlist">Join the waitlist</a></div>
 
-  const renderFinalCta = (c) => `
-    <section class="final-cta">
-      <div class="container">
-        <div class="eyebrow">${esc(c.eyebrow)}</div>
-        <h2>${richText(c.title)}</h2>
-        <p class="lede">${esc(c.lede)}</p>
-        <a href="${esc(c.cta.href)}" class="btn btn-orange">${esc(c.cta.label)}</a>
-      </div>
-    </section>`;
+<script>
+/* =====================================================================
+   SETTINGS. Edit these two lines.
+   WAITLIST_FORM_URL: paste your Google Form / Typeform / Tally link here.
+     When set, every "Join the waitlist" button opens that form.
+     When empty, the on-page form is used and sends details via WhatsApp.
+   ===================================================================== */
+const WAITLIST_FORM_URL = "";
+const WHATSAPP_NUMBER   = "917406226789";
 
-  const renderEnrol = (e) => {
-    const f = e.fields;
-    return `
-    <section class="enrol" id="enrol">
-      <div class="container">
-        <div class="enrol-wrap">
-          <div class="eyebrow">${esc(e.eyebrow)}</div>
-          <h2>${richText(e.title)}</h2>
-          <p class="desc-top">${esc(e.desc)}</p>
-          <form id="enrolForm" novalidate>
-            <div class="form-grid">
-              <div class="form-field">
-                <label>${esc(f.nameLabel)}<span class="req">*</span></label>
-                <input type="text" name="fullName" placeholder="${esc(f.namePlaceholder)}" required>
-              </div>
-              <div class="form-field">
-                <label>${esc(f.whatsappLabel)}<span class="req">*</span></label>
-                <input type="tel" name="whatsapp" placeholder="${esc(f.whatsappPlaceholder)}" required>
-              </div>
-              <div class="form-field">
-                <label>${esc(f.emailLabel)}</label>
-                <input type="email" name="email" placeholder="${esc(f.emailPlaceholder)}">
-              </div>
-              <div class="form-field">
-                <label>${esc(f.cityLabel)}<span class="req">*</span></label>
-                <input type="text" name="city" placeholder="${esc(f.cityPlaceholder)}" required>
-              </div>
-              <div class="form-field">
-                <label>${esc(f.occupationLabel)}<span class="req">*</span></label>
-                <select name="occupation" required>
-                  <option value="">Select&hellip;</option>
-                  ${f.occupations.map(o => `<option value="${esc(o)}">${esc(o)}</option>`).join('')}
-                </select>
-              </div>
-              <div class="form-field">
-                <label>${esc(f.planLabel)}<span class="req">*</span></label>
-                <select name="plan" required>
-                  <option value="">Select&hellip;</option>
-                  ${f.plans.map(p => `<option value="${esc(p.value)}">${esc(p.label)}</option>`).join('')}
-                </select>
-              </div>
-              <div class="form-field full">
-                <label>${esc(f.batchLabel)}<span class="req">*</span></label>
-                <select name="batch" required>
-                  <option value="">Select&hellip;</option>
-                  ${f.batches.map(b => `<option value="${esc(b)}">${esc(b)}</option>`).join('')}
-                </select>
-              </div>
-              <div class="form-field full">
-                <label>${esc(f.challengeLabel)}<span class="req">*</span><span class="challenge-counter" id="chCounter">(0 / 3)</span></label>
-                <div class="challenge-hint">${esc(f.challengeHint)}</div>
-                <div class="challenge-cloud" id="chCloud">
-                  ${f.challenges.map(c => `<span class="chip" data-value="${esc(c)}">${esc(c)}</span>`).join('')}
-                </div>
-              </div>
-            </div>
-            <div class="submit-area">
-              <button type="submit" class="submit-btn">${esc(e.submitLabel)}</button>
-              <div class="form-error" id="formError">Please complete all required fields and select at least one current challenge.</div>
-              <div class="nudges">
-                ${e.nudges.map((n, i) => `<span>${esc(n)}</span>${i < e.nudges.length - 1 ? '<span class="dot">&middot;</span>' : ''}`).join('')}
-              </div>
-            </div>
-          </form>
-        </div>
-      </div>
-    </section>`;
-  };
-
-  const renderFooter = (f, brand) => `
-    <footer>
-      <div class="container">
-        <div class="grid">
-          <div class="brand">
-            <div class="footer-wordmark">
-              <div class="fw-name">${esc(brand.name)}</div>
-              <div class="fw-tag">${esc(brand.tagline)}</div>
-            </div>
-            <p>${esc(f.blurb)}</p>
-          </div>
-          ${f.columns.map(col => `
-            <div>
-              <h5>${esc(col.heading)}</h5>
-              <ul>
-                ${col.links.map(l => `<li><a href="${esc(l.href)}">${esc(l.label)}</a></li>`).join('')}
-              </ul>
-            </div>`).join('')}
-        </div>
-        <div class="bottom">
-          <div>${esc(f.copyright)}</div>
-          <div>${esc(f.locator)}</div>
-        </div>
-      </div>
-    </footer>`;
-
-  document.getElementById('app').innerHTML = [
-    renderNav(CONTENT.brand),
-    renderHero(CONTENT.hero),
-    renderTrust(CONTENT.trust),
-    renderCountdown(CONTENT.countdown),
-    renderExpect(CONTENT.expect),
-    renderInside(CONTENT.inside),
-    renderSensory(CONTENT.sensory),
-    renderCompare(CONTENT.compare),
-    renderManifesto(CONTENT.manifesto),
-    renderWhy(CONTENT.why),
-    renderBuiltFor(CONTENT.builtFor),
-    renderFounder(CONTENT.founder),
-    renderPricing(CONTENT.pricing),
-    renderTestimonials(CONTENT.testimonials),
-    renderFaq(CONTENT.faq),
-    renderFinalCta(CONTENT.finalCta),
-    renderEnrol(CONTENT.enrol),
-    renderFooter(CONTENT.footer, CONTENT.brand)
-  ].join('');
-
-  document.title = CONTENT.brand.name + ' — ' + CONTENT.brand.tagline + ' · 5-Day Guided Shutdown Ritual';
-
-  // Tabs
-  const tabs = document.querySelectorAll('#expectTabs .tab');
-  const panel = document.getElementById('expectPanel');
-  tabs.forEach(t => {
-    t.addEventListener('click', () => {
-      tabs.forEach(x => x.classList.remove('active'));
-      t.classList.add('active');
-      const idx = parseInt(t.dataset.tab, 10);
-      panel.innerHTML = renderExpectPanel(CONTENT.expect.tabs[idx]);
-    });
-  });
-
-  // Countdown
-  const target = new Date(CONTENT.countdown.targetISO).getTime();
-  const elDays = document.getElementById('cdDays');
-  const elHours = document.getElementById('cdHours');
-  const elMins = document.getElementById('cdMins');
-  const elSecs = document.getElementById('cdSecs');
-  const timerEl = document.getElementById('cdTimer');
-  function tickCountdown() {
-    const diff = target - Date.now();
-    if (diff <= 0) {
-      timerEl.innerHTML = `<div style="font-family:'Fraunces',serif;font-size:22px;color:var(--orange);font-style:italic;">${esc(CONTENT.countdown.livePrefix)} <span style="color:var(--ivory);">${esc(CONTENT.countdown.liveSuffix)}</span></div>`;
-      return false;
-    }
-    elDays.textContent  = pad(Math.floor(diff / 86400000));
-    elHours.textContent = pad(Math.floor((diff % 86400000) / 3600000));
-    elMins.textContent  = pad(Math.floor((diff % 3600000) / 60000));
-    elSecs.textContent  = pad(Math.floor((diff % 60000) / 1000));
-    return true;
+(function () {
+  const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  function whenVisible(el, start, stop) {
+    if (!el) return;
+    if (!('IntersectionObserver' in window)) { start(); return; }
+    new IntersectionObserver(es => es.forEach(e => e.isIntersecting ? start() : stop()), { threshold: 0.01 }).observe(el);
   }
-  if (tickCountdown()) { setInterval(tickCountdown, 1000); }
 
-  // Challenge chips
-  const MAX_CHALLENGES = 3;
-  const cloud = document.getElementById('chCloud');
-  const counter = document.getElementById('chCounter');
-  const selected = new Set();
-  const refreshChips = () => {
-    counter.textContent = `(${selected.size} / ${MAX_CHALLENGES})`;
-    cloud.querySelectorAll('.chip').forEach(c => {
-      const isSel = selected.has(c.dataset.value);
-      c.classList.toggle('selected', isSel);
-      c.classList.toggle('disabled', !isSel && selected.size >= MAX_CHALLENGES);
+  if (WAITLIST_FORM_URL) {
+    document.querySelectorAll('.js-cta').forEach(a => { a.href = WAITLIST_FORM_URL; a.target = '_blank'; a.rel = 'noopener'; });
+    document.getElementById('extMode').hidden = false;
+    document.getElementById('wlForm').hidden = true;
+  }
+
+  if ('IntersectionObserver' in window && !reduce) {
+    const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } }), { threshold: 0.12 });
+    document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+  }
+
+  /* Tabs + 24h loop bar */
+  const tabs = Array.from(document.querySelectorAll('.tab'));
+  const segs = Array.from(document.querySelectorAll('.loopbar .seg'));
+  function selectTab(i) {
+    tabs.forEach((x, k) => {
+      const on = k === i;
+      x.setAttribute('aria-selected', on); x.tabIndex = on ? 0 : -1;
+      const p = document.getElementById(x.getAttribute('aria-controls'));
+      p.hidden = !on; p.classList.toggle('in', on);
+      segs[k].classList.toggle('on', on);
     });
-  };
-  cloud.querySelectorAll('.chip').forEach(c => {
-    c.addEventListener('click', () => {
-      const v = c.dataset.value;
-      if (selected.has(v)) selected.delete(v);
-      else if (selected.size < MAX_CHALLENGES) selected.add(v);
-      refreshChips();
-    });
+  }
+  tabs.forEach((t, i) => {
+    t.addEventListener('click', () => selectTab(i));
+    t.addEventListener('keydown', e => { if (e.key === 'ArrowRight' || e.key === 'ArrowLeft') { const n = (i + (e.key === 'ArrowRight' ? 1 : tabs.length - 1)) % tabs.length; selectTab(n); tabs[n].focus(); } });
   });
+  segs.forEach((s, i) => s.addEventListener('click', () => selectTab(i)));
 
-  // Form -> WhatsApp
-  const form = document.getElementById('enrolForm');
-  const errorBox = document.getElementById('formError');
-  form.addEventListener('submit', (e) => {
-    e.preventDefault();
-    const data = new FormData(form);
-    const fullName = (data.get('fullName') || '').toString().trim();
-    const whatsapp = (data.get('whatsapp') || '').toString().trim();
-    const email    = (data.get('email')    || '').toString().trim();
-    const city     = (data.get('city')     || '').toString().trim();
-    const occupation = (data.get('occupation') || '').toString();
-    const plan     = (data.get('plan')     || '').toString();
-    const batch    = (data.get('batch')    || '').toString();
-    const challenges = Array.from(selected);
+  /* FAQ: one open at a time */
+  const faqs = Array.from(document.querySelectorAll('details.fq'));
+  faqs.forEach(d => d.addEventListener('toggle', () => { if (d.open) faqs.forEach(o => { if (o !== d && o.open) o.open = false; }); }));
 
-    if (!fullName || !whatsapp || !city || !occupation || !plan || !batch || challenges.length === 0) {
-      errorBox.classList.add('show');
-      window.scrollTo({ top: form.getBoundingClientRect().top + window.scrollY - 60, behavior: 'smooth' });
-      return;
+  /* Hero sky */
+  (function sky() {
+    const c = document.getElementById('sky'); if (!c) return;
+    const ctx = c.getContext('2d');
+    const timeEl = document.getElementById('skyTime'), litEl = document.getElementById('skyLit');
+    let W, H, stars = [], buildings = [], windows = [], raf = null; const t0 = performance.now(); const CYCLE = 26000;
+    const rand = (a, b) => a + Math.random() * (b - a);
+    function build() {
+      const dpr = Math.min(window.devicePixelRatio || 1, 2); const r = c.getBoundingClientRect(); W = r.width; H = r.height;
+      c.width = W * dpr; c.height = H * dpr; ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+      stars = Array.from({ length: 90 }, () => ({ x: rand(0, W), y: rand(0, H * .55), r: rand(.4, 1.5), p: rand(0, 6.28) }));
+      buildings = []; windows = []; let x = -10;
+      while (x < W + 10) {
+        const w = rand(34, 78), h = rand(H * .22, H * .62), top = H - h;
+        buildings.push({ x, w, top, tone: Math.random(), antenna: Math.random() < .3 });
+        const cols = Math.max(2, Math.floor((w - 10) / 9)), rows = Math.floor((h - 16) / 12);
+        for (let i = 0; i < cols; i++) for (let j = 0; j < rows; j++) { if (Math.random() < .18) continue; windows.push({ x: x + 6 + i * 9, y: top + 10 + j * 12, off: Math.pow(Math.random(), .8) * .92, warm: Math.random() < .75 }); }
+        x += w + rand(-4, 6);
+      }
     }
-    errorBox.classList.remove('show');
+    function fmt(frac) { const mins = 22 * 60 + Math.floor(frac * 240); const h = Math.floor(mins / 60) % 24, m = mins % 60; let hh = h % 12; if (hh === 0) hh = 12; return hh + ':' + String(m).padStart(2, '0') + (h >= 12 ? ' PM' : ' AM'); }
+    function draw(now) {
+      const t = (now - t0) % CYCLE, frac = Math.min(1, t / (CYCLE * .9)); const reset = t > CYCLE * .9 ? (t - CYCLE * .9) / (CYCLE * .1) : 0;
+      const g = ctx.createLinearGradient(0, 0, 0, H); g.addColorStop(0, '#05071C'); g.addColorStop(.65, '#0F1650'); g.addColorStop(1, '#1D2A8A'); ctx.fillStyle = g; ctx.fillRect(0, 0, W, H);
+      stars.forEach(s => { ctx.globalAlpha = (.35 + .65 * (.5 + .5 * Math.sin(now / 900 + s.p))) * (.5 + frac * .5); ctx.fillStyle = '#F2EDE3'; ctx.beginPath(); ctx.arc(s.x, s.y, s.r, 0, 6.283); ctx.fill(); });
+      ctx.globalAlpha = 1;
+      const mx = W * (.15 + .7 * frac), my = H * .32 - Math.sin(frac * Math.PI) * H * .14;
+      const mg = ctx.createRadialGradient(mx, my, 0, mx, my, 80); mg.addColorStop(0, 'rgba(242,237,227,.35)'); mg.addColorStop(1, 'rgba(242,237,227,0)');
+      ctx.fillStyle = mg; ctx.beginPath(); ctx.arc(mx, my, 80, 0, 6.283); ctx.fill(); ctx.fillStyle = '#F2EDE3'; ctx.beginPath(); ctx.arc(mx, my, 20, 0, 6.283); ctx.fill();
+      buildings.forEach(b => { ctx.fillStyle = b.tone < .5 ? '#0A0D2E' : '#0D1138'; ctx.fillRect(b.x, b.top, b.w, H - b.top); if (b.antenna) { ctx.fillRect(b.x + b.w / 2 - 1, b.top - 18, 2, 18); ctx.fillStyle = (Math.floor(now / 700) % 2) ? '#FF5500' : 'rgba(255,85,0,.25)'; ctx.beginPath(); ctx.arc(b.x + b.w / 2, b.top - 19, 2.2, 0, 6.283); ctx.fill(); } });
+      let lit = 0;
+      windows.forEach(w => { const on = reset > 0 ? (w.off < reset) : (frac < w.off); if (!on) { ctx.fillStyle = 'rgba(255,255,255,.03)'; ctx.fillRect(w.x, w.y, 4, 6); return; } lit++; ctx.fillStyle = w.warm ? '#FFB27A' : '#C9D2FF'; ctx.shadowColor = w.warm ? 'rgba(255,140,60,.8)' : 'rgba(150,170,255,.8)'; ctx.shadowBlur = 6; ctx.fillRect(w.x, w.y, 4, 6); ctx.shadowBlur = 0; });
+      timeEl.textContent = reset > 0 ? '10:00 PM' : fmt(frac);
+      litEl.textContent = Math.round(lit / windows.length * 100) + '%';
+    }
+    const loop = now => { draw(now); raf = requestAnimationFrame(loop); };
+    build();
+    window.addEventListener('resize', () => { build(); draw(reduce ? t0 + CYCLE * .5 : performance.now()); });
+    if (reduce) { draw(t0 + CYCLE * .5); return; }
+    draw(t0);
+    whenVisible(c, () => { if (!raf) raf = requestAnimationFrame(loop); }, () => { cancelAnimationFrame(raf); raf = null; });
+  })();
 
-    const lines = [
-      CONTENT.enrol.messagePrefix,
-      '',
-      'Hi! I would like to take the leap and enrol in SLEAP.',
-      '',
-      '*My Details:*',
-      '• Full Name: ' + fullName,
-      '• WhatsApp: ' + whatsapp,
-      '• Email: ' + (email || 'Not provided'),
-      '• City: ' + city,
-      '• Occupation: ' + occupation,
-      '',
-      '*Programme Choice:*',
-      '• Plan: ' + plan,
-      '• Batch: ' + batch,
-      '',
-      '*Current Challenges:*',
-      ...challenges.map(c => '• ' + c),
-      '',
-      'Please share the payment link to confirm my spot. Thank you.'
-    ];
-    const url = `https://wa.me/${CONTENT.enrol.whatsappNumber}?text=${encodeURIComponent(lines.join('\n'))}`;
-    window.open(url, '_blank', 'noopener');
-  });
+  /* 100 dots + rotating seat */
+  (function dots() {
+    const wrap = document.getElementById('dots'); if (!wrap) return;
+    const els = [];
+    for (let i = 0; i < 100; i++) { const d = document.createElement('span'); d.className = 'dot'; wrap.appendChild(d); els.push(d); }
+    const roles = ['A founder', 'A cardiac surgeon', 'A civil servant', 'A fund manager', 'A test pilot', 'A neuroscientist', 'A state legislator', 'A CEO', 'A classical musician', 'A high court lawyer', 'An Olympic hopeful', 'A paediatrician', 'A defence scientist', 'A venture investor', 'A chef', 'A mother of three'];
+    const seatN = document.getElementById('seatN'), seatR = document.getElementById('seatR');
+    if (reduce) return;
+    let t1 = null, t2 = null, k = 1;
+    function tick() { const d = els[Math.floor(Math.random() * 100)]; d.classList.add('lit'); setTimeout(() => d.classList.remove('lit'), 2200); }
+    function seat() {
+      const i = Math.floor(Math.random() * 100); els.forEach(e => e.classList.remove('hot')); els[i].classList.add('hot');
+      seatR.style.opacity = 0;
+      setTimeout(() => { seatN.textContent = 'Seat ' + String(i + 1).padStart(2, '0'); seatR.textContent = roles[k++ % roles.length]; seatR.style.opacity = 1; }, 300);
+    }
+    whenVisible(wrap, () => { if (!t1) { t1 = setInterval(tick, 150); t2 = setInterval(seat, 2200); } }, () => { clearInterval(t1); clearInterval(t2); t1 = t2 = null; });
+  })();
 
+  /* Anatomy cycle */
+  (function anatomy() {
+    const items = Array.from(document.querySelectorAll('#parts li')), fields = Array.from(document.querySelectorAll('.rc-field'));
+    if (!items.length) return; let idx = 0, timer = null;
+    function set(i) { idx = i; items.forEach((li, k) => { li.classList.remove('active'); if (k === i) { void li.offsetWidth; li.classList.add('active'); } }); fields.forEach((f, k) => f.classList.toggle('active', k === i)); }
+    set(0);
+    function restart() { clearInterval(timer); timer = reduce ? null : setInterval(() => set((idx + 1) % items.length), 3400); }
+    items.forEach((li, k) => li.addEventListener('click', () => { set(k); restart(); }));
+    whenVisible(document.getElementById('parts'), restart, () => { clearInterval(timer); timer = null; });
+  })();
+
+  /* Method steps cycle */
+  (function steps() {
+    const s = Array.from(document.querySelectorAll('#steps .step')); if (!s.length || reduce) return;
+    let i = 0, timer = null;
+    function go() { s.forEach(x => x.classList.remove('active')); void s[i].offsetWidth; s[i].classList.add('active'); i = (i + 1) % s.length; }
+    whenVisible(document.getElementById('steps'), () => { if (!timer) { go(); timer = setInterval(go, 2000); } }, () => { clearInterval(timer); timer = null; });
+  })();
+
+  /* Breathing */
+  (function breath() {
+    const w = document.getElementById('breathWord'); if (!w || reduce) return;
+    const words = ['Breathe in', 'Hold', 'Breathe out', 'Hold']; const start = performance.now(); let i = 0, timer = null;
+    const tick = () => { const k = Math.floor(((performance.now() - start) % 16000) / 4000); if (k !== i) { i = k; w.textContent = words[k]; } };
+    whenVisible(w, () => { if (!timer) timer = setInterval(tick, 200); }, () => { clearInterval(timer); timer = null; });
+  })();
+
+  /* Manifesto stars */
+  (function stars() {
+    const c = document.getElementById('stars'); if (!c) return; const ctx = c.getContext('2d');
+    let W, H, pts = [], shoot = null, raf = null;
+    function build() { const dpr = Math.min(window.devicePixelRatio || 1, 2); const r = c.getBoundingClientRect(); W = r.width; H = r.height; c.width = W * dpr; c.height = H * dpr; ctx.setTransform(dpr, 0, 0, dpr, 0, 0); pts = Array.from({ length: Math.round(W * H / 5000) }, () => ({ x: Math.random() * W, y: Math.random() * H, r: Math.random() * 1.3 + .2, p: Math.random() * 6.28, v: Math.random() * .08 + .02 })); }
+    function draw(now) {
+      const g = ctx.createRadialGradient(W / 2, H * 1.1, 0, W / 2, H * 1.1, Math.max(W, H)); g.addColorStop(0, '#1A2580'); g.addColorStop(.6, '#070A24'); g.addColorStop(1, '#03040F'); ctx.fillStyle = g; ctx.fillRect(0, 0, W, H);
+      pts.forEach(s => { s.x -= s.v; if (s.x < 0) s.x = W; ctx.globalAlpha = .3 + .7 * (.5 + .5 * Math.sin(now / 1100 + s.p)); ctx.fillStyle = '#F2EDE3'; ctx.beginPath(); ctx.arc(s.x, s.y, s.r, 0, 6.283); ctx.fill(); });
+      ctx.globalAlpha = 1;
+      if (!shoot && Math.random() < .006) shoot = { x: Math.random() * W * .7 + W * .2, y: Math.random() * H * .4, l: 0 };
+      if (shoot) { shoot.l += .02; const len = 140, x = shoot.x - shoot.l * 420, y = shoot.y + shoot.l * 180; const sg = ctx.createLinearGradient(x, y, x + len, y - len * .43); sg.addColorStop(0, 'rgba(255,178,122,.95)'); sg.addColorStop(1, 'rgba(255,178,122,0)'); ctx.strokeStyle = sg; ctx.lineWidth = 1.6; ctx.beginPath(); ctx.moveTo(x, y); ctx.lineTo(x + len, y - len * .43); ctx.stroke(); if (shoot.l > 1) shoot = null; }
+    }
+    const loop = now => { draw(now); raf = requestAnimationFrame(loop); };
+    build(); draw(0); window.addEventListener('resize', () => { build(); draw(0); });
+    if (reduce) return;
+    whenVisible(c, () => { if (!raf) raf = requestAnimationFrame(loop); }, () => { cancelAnimationFrame(raf); raf = null; });
+  })();
+
+  /* Bedside clock */
+  (function loopClock() {
+    const t = document.getElementById('loopTime'), th = document.getElementById('loopThought'), ap = document.getElementById('loopAmpm'); if (!t || reduce) return;
+    const f = [['11','58','PM','one more email'],['12','41','AM','still replaying the meeting'],['1','07','AM','what did I forget to send?'],['2','13','AM','if I sleep now, I get four hours'],['3','02','AM','awake again, for no reason'],['6','30','AM','alarm. tired before it starts']];
+    let i = 1, timer = null;
+    function step() { i = (i + 1) % f.length; const x = f[i]; th.style.opacity = 0; setTimeout(() => { t.innerHTML = x[0] + '<span class="colon">:</span>' + x[1]; ap.textContent = x[2]; th.textContent = x[3]; th.style.opacity = 1; }, 380); }
+    whenVisible(t, () => { if (!timer) timer = setInterval(step, 2600); }, () => { clearInterval(timer); timer = null; });
+  })();
+
+  /* Waitlist form */
+  (function form() {
+    const f = document.getElementById('wlForm'); if (!f) return;
+    const chips = Array.from(document.querySelectorAll('#needChips .chip')), count = document.getElementById('needCount'), MAX = 2;
+    const sel = () => chips.filter(c => c.getAttribute('aria-pressed') === 'true');
+    chips.forEach(c => c.addEventListener('click', () => { const on = c.getAttribute('aria-pressed') === 'true'; if (!on && sel().length >= MAX) return; c.setAttribute('aria-pressed', String(!on)); const n = sel().length; count.textContent = n ? '(' + n + '/' + MAX + ')' : ''; }));
+    const nom = document.getElementById('f-nom'), nomField = document.getElementById('nomField');
+    nom.addEventListener('change', () => { nomField.hidden = !nom.checked; });
+    const err = document.getElementById('formError');
+    f.addEventListener('submit', e => {
+      e.preventDefault();
+      const name = document.getElementById('f-name').value.trim(), email = document.getElementById('f-email').value.trim();
+      if (!name || !/^\S+@\S+\.\S+$/.test(email)) { err.textContent = !name ? 'Add your name so we know who to write to.' : 'Add a valid email address so we can reach you when the playbook goes live.'; err.hidden = false; document.getElementById(!name ? 'f-name' : 'f-email').focus(); return; }
+      err.hidden = true;
+      const lines = ['*SLEAP Playbook · Waitlist*', '', 'Name: ' + name, 'Email: ' + email, 'City: ' + document.getElementById('f-city').value.trim(), 'Role: ' + document.getElementById('f-role').value, 'Needs most: ' + (sel().map(c => c.textContent).join(', ') || 'Not specified'), 'Share own ritual: ' + (document.getElementById('f-share').checked ? 'Yes' : 'No'), 'Nominate: ' + (nom.checked ? (document.getElementById('f-nominee').value.trim() || 'Yes') : 'No')];
+      document.getElementById('successLink').href = 'https://wa.me/' + WHATSAPP_NUMBER + '?text=' + encodeURIComponent(lines.join('\n'));
+      document.getElementById('successTitle').textContent = 'One last tap, ' + name.split(' ')[0] + '.';
+      f.hidden = true; const s = document.getElementById('wlSuccess'); s.hidden = false; s.scrollIntoView({ behavior: reduce ? 'auto' : 'smooth', block: 'center' });
+    });
+    document.getElementById('copyLink').addEventListener('click', ev => { const b = ev.currentTarget; try { navigator.clipboard.writeText('https://sleap.in').then(() => { b.textContent = 'Link copied: sleap.in'; }, () => { b.textContent = 'Share: sleap.in'; }); } catch (_) { b.textContent = 'Share: sleap.in'; } });
+  })();
+
+  /* Mobile sticky CTA */
+  (function sticky() {
+    const s = document.getElementById('stickyCta'), hero = document.querySelector('.hero'), wl = document.getElementById('waitlist');
+    if (!s || !('IntersectionObserver' in window)) return; let hv = true, wv = false;
+    const upd = () => s.classList.toggle('show', !hv && !wv);
+    new IntersectionObserver(es => { hv = es[0].isIntersecting; upd(); }).observe(hero);
+    new IntersectionObserver(es => { wv = es[0].isIntersecting; upd(); }, { threshold: .05 }).observe(wl);
+  })();
 })();
 </script>
-
 </body>
 </html>
